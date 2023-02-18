@@ -1,0 +1,147 @@
+ 
+Matemáticas 2º Bachillerato
+
+Utilidad de las matrices:
+- Resolución de sistemas de ecuaciones lineales.
+- Problemas de Geometría.
+- Problemas de tablas y grafos (Economía, etc.)
+
+Matrices
+
+Una matriz mxn es una ordenación de números dispuestos en m filas y n columnas
+
+Se representan con una letra, con un subíndice con la cantidad total de filas, el símbolo x(multiplicar) y la cantidad total de columnas.
+Ej.: A(mxn) = A(4x3)
+
+En matemáticas se suele usar el 1 para iniciar, pero en informática, al usar arrays, se usa el índice 0.
+
+Para representar un elemento se usa el nombre de letra de la matriz y dos subíndices: El primero para la fila (normalmente i) y el segundo para la colunna (normalmente j)
+
+
+Igualdad de matrices
+
+Dos matrices son iguales si poseen la misma dirección (filas y columnas) y cada elemento tiene el mismo valor
+
+Matriz fila
+
+Es aquella que consta de una sola fila. También se suele llamar vector fila.
+
+Matriz columna
+Es aquella que consta de una sola columna». También se suele llamar vector columna
+
+
+Matriz cuadrada y matriz rectangular
+
+Matriz cuadrada: mismo número de filas que columnas
+Cuando se índica que es de orden 3, tanto las filas como las columnas tienen un máximo de 3.
+
+La matriz rectangular, simplemente no es cuadrada
+
+Diagonales principal y secundaria
+
+En las matrices cuadradas existen dos diagonales:
+La diagonal principal: con los elementos con el mismo subíndice para fila y columna.
+A(i,j) en matriz de orden n
+Ambos subíndice son iguales.
+
+elementos diagonal secundaria en matriz de orden 4:
+A(1,1) -> 4+1 = 5
+A(2,2) -> 4+1 = 5
+A(3,3) -> 4+1 = 5
+A(4,4) -> 4+1 = 5
+
+
+La diagonal secundaria: Cuando la suma de ambos subíndices son iguales al ancho (o largo) mas 1
+Ej.:
+A(i,j) en matriz de orden n
+Subíndice fila  + subíndice columna = ancho total + 1
+
+elementos diagonal secundaria en matriz de orden 4:
+A(4,1) -> 4+1 = 5
+A(3,2) -> 4+1 = 5
+A(2,3) -> 4+1 = 5
+A(1,4) -> 4+1 = 5
+
+Para Construir una matríz cuadrada A de orden 3, con elementos definidos, se puede hacer así
+
+          -
+         |  (-1)^(i+j)  si i > j
+A(ij) =  |    6         si i = j
+         |  2i + j      si i < j
+          -
+Organizamos:
+    i = j
+        ij = 11, 22, 33
+    i > j
+        ij = 21, 31, 32
+    i < j
+        ij = 12, 13, 23
+
+           -
+          |  a11 a12 a13      6   4   5
+A(3x3) =  |  a21 a22 a23  =  -1   6   7
+          |  a31 a32 a33      1  -1   6
+           -
+
+
+Matriz traspuesta
+
+Se cambia el orden de filas y columnas a columnas y filas.
+
+Dada una matriz A, se define su traspuesta, que se designa como A(t) ( también, a veces, (t)A ) como aquella que se obtiene cambiando ordenadamente sus filas por sus columnas». Por lo tanto, obviamente si A es m x n, A(t) será nxm.
+Ejemplo: A(3x4)
+ 1 -1  2  3
+ 4  5  0 -2
+ 4  7 -3  9
+
+Traspuesta = A(t) = A(4x3)
+ 1  4  4
+-1  5  7
+ 2  0 -3
+ 3 -2  9
+
+
+
+Matriz nula
+
+Es aquella que está formada completamente por ceros
+
+Matriz opuesta
+ çDada una matriz A se define su opuesta que se designa como –A, como aquella que se
+obtiene cambiando de signo todos sus elementos
+
+
+Matriz diagonal
+Es aquella que tiene nulos todos los elementos que no están en la diagona
+Grafos
+
+
+Matriz identidad o unidad
+Es una matriz diagonal cuadrada cuyos elementos de la diagonal son todos 1.
+Se designa como 1 o I».
+
+Matriz triangular superior
+Es aquella matriz cuyos elementos por encima de la diagonal son todos nulos
+
+Matriz triangular inferior
+Es aquella matriz cuyos elementos por debajo de la diagonal son todos nulos,
+es indispensable que sea cuadrada. Además, cada elemento
+tiene que ser simétrico respecto a la diagona
+
+Matriz simétrica
+Es aquella matriz que coincide con su traspuesta, es decir, A=At
+
+
+Matriz antisimétrica
+Es aquella matriz que coincide con la opuesta de su traspuesta, es decir, A= - At
+
+
+Un grafo (del griego grafein, trazar) es una forma de representar de una manera cómoda las posibles
+relaciones entre objetos:
+
+
+Los grafos están formados por vértices y aristas (que son las conexiones entre los vértices).
+Si hay conexión entre dos vértices se denota con un 1 y si no hay conexión se denota con un 0. La
+matriz cuadrada que representa estas relaciones se denomina matriz de adyacencia del grafo.
+Si las aristas de un grafo están orientadas, como en el ejemplo, el grafo se denomina grafo
+dirigido.

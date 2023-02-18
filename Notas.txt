@@ -1,0 +1,9 @@
+Creamos carpeta con datos instrucciones y proyectos.
+
+Existirán varios proyectos git con un git remoto nuestro o del profesor, en gitlab de iessanclemente (https://gitlab.iessanclemente.net/)
+	Nombre usuario: Rafael Martínez Costas
+	Correo incluido: a20rafaelmc@iessanclemente.net o a20rafaelMC
+	Contraseña: __|Pasando|__
+
+Carpetas
+	Lo_basico_para_usar_Gitlab_con_VSC				Instrucciones para acceder a git con la cuenta gitlab. Crear proyectos, incluir al profesor, etc.
