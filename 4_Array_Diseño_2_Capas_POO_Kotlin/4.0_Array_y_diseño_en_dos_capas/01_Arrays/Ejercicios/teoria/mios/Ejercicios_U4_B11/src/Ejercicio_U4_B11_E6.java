@@ -12,10 +12,10 @@
  * 
  * <p>Entrada</p>
  * La entrada comenzará con un entero para especificar el número de casos de 
- * prueba que vendrá a continuación. Para cada caso de prueba se mostrará una 
- * línea en la que aparecerán dos enteros, el primero de ellos será 
- * correspondiente al día y el segundo correspondiente al mes de una fecha 
- * válida.
+ * prueba que vendrá a continuación.<p>
+ * Para cada caso de prueba se mostrará una línea en la que aparecerán dos 
+ * enteros, el primero de ellos será correspondiente al día y el segundo ç
+ * correspondiente al mes de una fecha válida.
  * 
  * <p>Salida</p>
  * Para cada fecha de la entrada, se mostrarán el número de días completos que 
@@ -36,8 +36,12 @@
 </pre>
  */
 
- public class Ejercicio_U4_B11_E6{
-        public static void main(String[] args){
+public class Ejercicio_U4_B11_E6 {
 
-        }
- }
+  public static void main(String[] args) {
+        // Casos prueba (intentos)
+        // por caso prueba
+        //    dia y mes
+        // Salida: Días hasta Nochevieja
+  }
+}
