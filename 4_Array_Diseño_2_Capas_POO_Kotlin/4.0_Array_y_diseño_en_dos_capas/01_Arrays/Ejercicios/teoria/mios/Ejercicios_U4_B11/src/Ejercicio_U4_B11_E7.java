@@ -8,10 +8,13 @@ int[] c;
 c=a;
 a=b;
  * </pre>
- * la situación pasa a ser <code>c</code> apunta al primer array y <code>a</code> y <code>b</code> apuntan al segundo
+ * la situación pasa a ser <code>c</code> apunta al primer array y 
+ * <code>a</code> y <code>b</code> apuntan al segundo
  * <p>
  * Para demostrarlo imprime los Arrays a los que referencian <code>a</code>, <code>b</code> y <code>c</code>.
  */
 public class Ejercicio_U4_B11_E7 {
-        
+        public static void main(String[] args){
+
+        }
 }
