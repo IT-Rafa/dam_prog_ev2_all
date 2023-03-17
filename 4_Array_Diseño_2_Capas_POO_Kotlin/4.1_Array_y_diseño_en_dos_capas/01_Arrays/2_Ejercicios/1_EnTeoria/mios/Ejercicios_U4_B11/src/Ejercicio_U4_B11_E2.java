@@ -29,8 +29,7 @@ class Ejercicio_U4_B11_E2 {
     nums[3] = 34;
     nums[4] = 13;
 
-    min = nums[0];
-    max = nums[0];
+    min = max = nums[0];
     for (int i = 1; i < nums.length; i++) {
       if (nums[i] < min) {
         min = nums[i];

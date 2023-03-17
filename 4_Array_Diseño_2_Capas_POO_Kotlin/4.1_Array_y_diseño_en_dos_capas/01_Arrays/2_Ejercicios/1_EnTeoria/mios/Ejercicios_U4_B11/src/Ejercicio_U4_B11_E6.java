@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * Ejercicio U4_B11_E6:<p>
  * Acepta el reto ¿Cuántos días faltan? id 157<p>
@@ -37,47 +35,41 @@ import java.util.Scanner;
 364
 </pre>
  */
+import java.util.Scanner;
 
 public class Ejercicio_U4_B11_E6 {
 
   public static void main(String[] args) {
-    // Casos prueba (intentos)
     Scanner sc = new Scanner(System.in);
-    int casos = 0;
-    do {
-      if (sc.hasNextInt()) {
-        casos = sc.nextInt();
-      } else {
-        sc.nextLine();
+    // cant dias en cada mes; 0 no cuenta.
+    int[] diasMes = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+    //  Pedimos casos prueba (intentos)
+    int versiones = sc.nextInt();
+    // Repetimos por cada intento
+    while (versiones > 0) {
+      // Pedimos dia y mes
+      int dia = sc.nextInt();
+      int mes = sc.nextInt();
+      // Variable para calcular dias
+      int dias = 0;
+      // Recorremos del mes que nos dieron, hasta fin año (12 /12)
+      for (int m = mes; m < diasMes.length; m++) {
+        if (m == mes) {
+          // en mes que nos dieron,
+          //añadimos los dias del mes,
+          //menos los dias que nos dieron
+          dias += diasMes[m] - dia;
+        } else {
+          // En el resto añadimos los dias del mes
+          dias += diasMes[m];
+        }
       }
-    } while (casos <= 0);
-    System.out.println("casos: " + casos);
-
-    // por caso prueba
-    while (casos-- > 0) {
-      System.out.println("paso casos: " + casos);
-
-      // dia y mes
-      int dia = 0;
-      int mes = 0;
-      do {
-        if (sc.hasNextInt()) {
-          dia = sc.nextInt();
-          mes = sc.nextInt();
-        } else {
-          sc.nextLine();
-        }
-        if (dia > 0 && dia < 33) {
-          // Salida: Días hasta Nochevieja
-          System.out.println("día: " + dia);
-          System.out.println("mes: " + mes);
-          break;
-        } else {
-          System.out.println("error");
-        }
-      } while (true);
+      // Mostramos resultado
+      System.out.println(dias);
+      // Bajamos intento
+      --versiones;
     }
-
     sc.close();
   }
 }
