@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Ejercicio U4_B11_E6:<p>
  * Acepta el reto ¿Cuántos días faltan? id 157<p>
@@ -39,9 +41,43 @@
 public class Ejercicio_U4_B11_E6 {
 
   public static void main(String[] args) {
-        // Casos prueba (intentos)
-        // por caso prueba
-        //    dia y mes
-        // Salida: Días hasta Nochevieja
+    // Casos prueba (intentos)
+    Scanner sc = new Scanner(System.in);
+    int casos = 0;
+    do {
+      if (sc.hasNextInt()) {
+        casos = sc.nextInt();
+      } else {
+        sc.nextLine();
+      }
+    } while (casos <= 0);
+    System.out.println("casos: " + casos);
+
+    // por caso prueba
+    while (casos-- > 0) {
+      System.out.println("paso casos: " + casos);
+
+      // dia y mes
+      int dia = 0;
+      int mes = 0;
+      do {
+        if (sc.hasNextInt()) {
+          dia = sc.nextInt();
+          mes = sc.nextInt();
+        } else {
+          sc.nextLine();
+        }
+        if (dia > 0 && dia < 33) {
+          // Salida: Días hasta Nochevieja
+          System.out.println("día: " + dia);
+          System.out.println("mes: " + mes);
+          break;
+        } else {
+          System.out.println("error");
+        }
+      } while (true);
+    }
+
+    sc.close();
   }
 }
