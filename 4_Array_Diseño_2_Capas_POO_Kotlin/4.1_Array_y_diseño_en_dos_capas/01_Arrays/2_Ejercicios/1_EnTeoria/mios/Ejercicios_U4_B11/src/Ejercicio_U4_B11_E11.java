@@ -22,7 +22,9 @@ public class Ejercicio_U4_B11_E11 {
   public static void main(String[] args) {
     Persona[] amigos = new Persona[5];
     Scanner sc = new Scanner(System.in);
+    // Utiliza un bucle para recoger los dato
     for (int i = 0; i < 5; i++) {
+        // Pide datos por teclado
       System.out.println("Cliente " + i);
 
       System.out.print("   Nombre: ");
@@ -32,10 +34,11 @@ public class Ejercicio_U4_B11_E11 {
 
       amigos[i] = new Persona(nombre, edad);
     }
-
+    // muestra los datos del array por pantalla
     for(Persona p: amigos){
         System.out.println("Nombre: " + p.nombre + "; Edad: " + p.edad);
     }
+    sc.close();
   }
 }
 
