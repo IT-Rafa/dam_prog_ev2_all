@@ -22,8 +22,10 @@ public class Ejercicio_U4_B11_E15 {
       System.out.println("No hay argumentos");
     } else {
       System.out.println(args[0]);
-      for(int i = 0; i < args[0].length(); i++){
-        
+      String palabra = args[0];
+      for (int i = 0; i < palabra.length(); i++) {
+        palabra = palabra.substring(1) + palabra.charAt(0);
+        System.out.println(palabra);
       }
     }
   }
