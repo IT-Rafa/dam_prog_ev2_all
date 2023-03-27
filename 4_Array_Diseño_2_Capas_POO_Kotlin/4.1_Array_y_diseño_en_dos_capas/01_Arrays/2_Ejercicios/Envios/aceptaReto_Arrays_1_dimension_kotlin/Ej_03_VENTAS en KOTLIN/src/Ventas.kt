@@ -1,43 +1,44 @@
 fun main() {
-        val totalDias = 6
-        val diasSemana =  listOf("LUNES", "MARTES", "MIÉRCOLES", "JUEVES", "VIERNES", "SÁBADO", "DOMINGO")
-        val valoresDias = mutableListOf<Double>()
-        for (indices in 0 until totalDias) {
-            valoresDias.add(readln().toDouble())
-        }
-    
-        var indiceMax = 0
-        var indiceMin = 0
-        var sumaDias = 0.0
-        for (index in valoresDias.indices) {
-            sumaDias += valoresDias[index]
-            if (valoresDias[indiceMax] <= valoresDias[index]) {
-                indiceMax = index
-            }
-            if (valoresDias[indiceMin] >= valoresDias[index]) {
-                indiceMin = index
-            }
-    
-        }
-        indiceMax++
-        indiceMin++
-        val media = sumaDias / totalDias
-        val domingo = valoresDias[totalDias - 1]
-        print(if (indiceMax == indiceMin) "EMPATE" else "${diasSemana[indiceMax]} ${diasSemana[indiceMin]}")
-        println(if (domingo >= media) " SI" else " NO")
+	val totalDias = 6
+	val diasSemana = listOf("LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO", "DOMINGO")
+
+	val valoresDias = mutableListOf<Double>()
+	while (true) {
+		// Comprobamos primer valor semana. -1 no entra como double, usamos string
+		val input = readln()
+		if (input.startsWith("-1")) {
+			break
+		} else {
+			// si no es -1 deberían estar toda la semana
+			// Capturamos el primer día y el resto
+			valoresDias.add(input.toDouble())
+			for (i in 1 until totalDias) {
+				valoresDias.add(readln().toDouble())
+			}
+		}
+		// Capturamos mínimo y máximo por índice
+		var indiceMax = 0
+		var indiceMin = 0
+		var sumaDias = 0.0
+		for (i in 1 until totalDias) {
+			sumaDias += valoresDias[i]
+			if (valoresDias[indiceMax] < valoresDias[i]) {
+				indiceMax = i
+			}
+			if (valoresDias[indiceMin] > valoresDias[i]) {
+				indiceMin = i
+			}
+		}
+		indiceMax++
+		indiceMin++
+		if (diasSemana[indiceMax] == diasSemana[indiceMin]) {
+			println("EMPATE")
+		} else {
+			print("${diasSemana[indiceMax]} ${diasSemana[indiceMin]}")
+			println(if (valoresDias[totalDias - 1] > (sumaDias / totalDias)) " SI" else " NO")
+		}
+			
+		// Eliminamos días de la semana para empezar de nuevo
+		valoresDias.clear()
+	}	
 }
-    /*
-    -- ENTRADA
-    185.50
-    250.36
-    163.45
-    535.20
-    950.22
-    450.38
-    -- SALIDA
-    SABADO JUEVES SI
-    -- ENTRADA
-    -1
-    -- FIN
-    
-    
