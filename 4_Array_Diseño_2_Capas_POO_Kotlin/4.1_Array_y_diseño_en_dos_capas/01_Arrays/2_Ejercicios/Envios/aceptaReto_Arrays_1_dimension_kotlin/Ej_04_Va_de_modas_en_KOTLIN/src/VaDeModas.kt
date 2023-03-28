@@ -1,33 +1,42 @@
 fun main() {
-    // Capturamos cantidad valores; 0 finaliza
-    var valores  = mutableListOf<Int>()
+	// Capturamos cantidad valores; 0 finaliza
+	var valores = mutableListOf<Int>()
 
-    do{
-        var cantValores = readln().toInt()
-        if(cantValores <= 0){
-            break
-        }else{
-            val valoresSt = readln().split(" ")
-            for(valor in valoresSt){
-                valores.add(valor.toInt())
-            }
-        }
+	do {
+		// Capturamos los valores de 1 string
+		val input = readln()
+		if (input.isEmpty()) {
+			break
+		}
+		var cantValores = input.toInt()
+		if (cantValores <= 0) {
+			break
+		} else {
+			val valoresSt = readln().split(" ")
+			for (valor in valoresSt) {
+				valores.add(valor.toInt())
+			}
+		}
 
-        var numeros = listOf<Int>()
-        for(valor in valores){
-            for(n in numeros){
-                if(valor == n){
+		data class Numbs(val number: Int, var cant: Int)
 
-                }
-            }
-        }
-    }while(true)
+		var numbs = mutableListOf<Numbs>()
+		for (valor in valores) {
+			val n = numbs.find { num -> valor == num.number }
+			if (n == null) {
+				numbs.add(Numbs(valor, 1))
+			} else {
+				n.cant++
+			}
+		}
+		val max = numbs.maxByOrNull { n -> n.cant }
+		if (max != null) {
+			println(max.number)
+		} else {
+			println("Error al buscar máximo")
+		}
+
+		valores.clear()
+		numbs.clear()
+	} while (true)
 }
-/*
-11
-1 2 2 3 3 3 4 4 4 4 5
-17
-1 8 9 6 3 2 1 5 4 7 9 6 3 2 1 4 7
-0
-
- */
