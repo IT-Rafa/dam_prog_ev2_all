@@ -44,7 +44,43 @@ D:\Programacion\ProgramasJavaConsola>
  * </pre>
  */
 public class Ejercicio_U6_B1A_E4 {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+
+  public static void main(String[] args) {
+    String[] dirIPs = {
+      "2.3",
+      "1.2.3.4",
+      "1.2.3.4.",
+      "255.255.255.255",
+      "256.1.1.1",
+      "1.1.1.01",
+      "127.0.0.1",
+      "",
+      "0.1.2.3",
+      "255.255.255.255",
+      "9.234.1.199",
+      "0.1.2.",
+      "0.1.2.3.",
+      "256.1.2.3",
+      "192.168.1.01",
+    };
+    System.out.println("CTRL-C para fin");
+    // 3º digitos ----------------------------
+    // 1º=2, el 2º es entre 0 y 5
+    //      - Si el 2º=0-4; El 3º=0-9
+    //      - Si el 2º=5; El 3º=0-5
+    //
+    // 1º=1, el 2º y el 3º es 0-9; Ej 100 101 110
+    //
+    // 2º digitos ----------------------------
+    // 1º=1-9, el 2º es 0-9; Ej 10 11 19 99
+
+    String er =
+      //-----  3 digitos -------------|-----  2 digitos ------------||-----  1 digitos ------------|
+      //2[0-4][0-9] 25[0-5] | 1\d\d        
+      "(((2[0-4]\\d|25[0-5])|(1\\d\\d)|([1-9]\\d)|(\\d))\\.){3}(((2[0-4]\\d|25[0-5])|(1\\d\\d)|([1-9]\\d)|(\\d)))";
+    for (String ip : dirIPs) {
+      System.out.print("IP: " + ip);
+      System.out.println("\n\t" + (ip.matches(er) ? "OK" : "MAL"));
     }
+  }
 }

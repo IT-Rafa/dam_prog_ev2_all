@@ -1,0 +1,91 @@
+ 
+EXPRESIONES REGULARES EN JAVA
+
+Las expresiones regulares son formas de describir un grupo de strings con características comunes.
+Se usan para buscar o editar texto.
+
+En java, la sintaxis se crea a través deĺ java.util.regex API, bastante similar a la creada para Perl
+Este paquete contiente 3 clases:
+	- Pattern: Que almacena una expresión regular. 
+			Se crea invocando un método público estatico de la clase que devuelve un objeto Pattern
+	- Matcher: Gestiona la comparación de un String con el patrón.
+	- PatternSyntaxException: Objetos del tipo Unchecked excepciones para indicar los errores en la sintaxis.
+	
+Sintaxis de expresiones regulares
+
+	Character classes
+	Nada que ver con las clases de Java
+	En las expresiones regulares una clase de caracteres se refiere a una colección de caracteres encerrados 
+	entre parentesis cuadrados que encajará con un caracter según las reglas especificadas.
+	
+	Nota: Dentro de las clases algunos caracteres tienen un significado especial:
+					^ : Indica negación
+
+		Simple class
+			[abc] 
+				Es válida cualquiera de los caracteres marcados 'a' o 'b' o 'c'
+
+		Negation
+			[^abc]
+				Es válido cualquiera de los caracteres, excepto los marcados
+
+		Range
+			[a-zA-Z]
+				Son válidos los caracteres entre a y z o los caracteres entre A-Z
+				No cuentan los caracteres españoles o las tildes
+				
+		Union
+			[a-d[m-p]] 
+				Son válidos los caracteres entre a y d, o los caracteres entre m y p. 
+				Otra forma de escribir lo mismo [a-dm-p] 
+
+		Interseccion
+			[a-z&&[def]] 	d, e, or f (intersection)
+
+		Substraction
+			[a-z&&[^bc]] 	
+				Son válidos los caracteres entre a y z, pero no los caracteres  'b' o 'c'
+				Otra forma de escribir lo mismo [ad-z] 
+				
+		Subtraction
+			[a-z&&[^m-p]]
+				Son válidos los caracteres entre a y z, pero no los caracteres entre 'm' y 'p'
+				Otra forma de escribir lo mismo [a-lq-z]
+		
+	Predefined Character Classes
+	Similar a las Character classes, pero simplificados para indicarlos de forma rápida
+		
+		. 	Cualquier caracter 
+		\d 	Un digito decimal: [0-9]
+		\D 	Cualquiera menos dígitos decimales: [^0-9]
+		\s 	Un caracter para mostrar espacios: [ \t\n\x0B\f\r]
+		\S 	Cualquiera menos caracter para mostrar espacios: [^\s]
+		\w 	Letras minúsculas o mayúsculas y dígitos decimales: [a-zA-Z_0-9]
+		\W 	Cualquiera menos Letras minúsculas o mayúsculas y dígitos decimales: [^\w]
+		
+		
+	Símbolos cuantificadores o Quantifiers
+		Greedy: 			codicioso
+		Reluctant: 		reacio
+		Possessive: 	Posesivo
+		
+		Greedy 	Reluctant 	Possessive 	Meaning
+		X? 			X?? 				X?+ 			X, once or not at all
+		X* 			X*? 				X*+ 			X, zero or more times
+		X+ 			X+? 				X++ 			X, one or more times
+		X{n} 		X{n}? 				X{n}+ 			X, exactly n times
+		X{n,} 		X{n,}? 			X{n,}+ 		X, at least n times
+		X{n,m} 	X{n,m}? 			X{n,m}+ 		X, at least n but not more than m times
+		
+	Símbolos de límites o  Boundary matchers
+		^ 		The beginning of a line
+		$ 		The end of a line
+		\b 	A word boundary
+		\B 	A non-word boundary
+		\A 	The beginning of the input
+		\G 	The end of the previous match
+		\Z 	The end of the input but for the final terminator, if any
+		\z 	The end of the input
+		
+	Capturar Grupos
+		Se usan los paréntesis
