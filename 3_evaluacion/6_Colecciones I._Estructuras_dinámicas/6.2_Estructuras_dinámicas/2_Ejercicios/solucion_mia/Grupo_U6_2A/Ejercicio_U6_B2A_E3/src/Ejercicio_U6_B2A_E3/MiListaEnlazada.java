@@ -1,3 +1,4 @@
+package Ejercicio_U6_B2A_E3;
 public class MiListaEnlazada implements MiLista {
 
   private Nodo primero = null;
@@ -48,5 +49,28 @@ public class MiListaEnlazada implements MiLista {
       temp = temp.getSiguiente();
     }
     return i;
+  }
+}
+
+class Nodo {
+
+  private Nodo sig;
+  private int dato;
+
+  public Nodo(int dato, Nodo sig) {
+    this.dato = dato;
+    this.sig = sig;
+  }
+
+  public void setSiguiente(Nodo sig) {
+    this.sig = sig;
+  }
+
+  public Nodo getSiguiente() {
+    return sig;
+  }
+
+  public int getDato() {
+    return dato;
   }
 }

@@ -1,3 +1,4 @@
+package Ejercicio_U6_B2A_E2;
 /**
  * Ejercicio U6_B2A_E2: <p>
  * Escribe los métodos tamano() y obtener para que funcione el

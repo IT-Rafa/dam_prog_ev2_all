@@ -1,3 +1,4 @@
+package Ejercicio_U6_B1A_E2;
 /**
  * Ejercicio U6_B1A_E2:<p>
  * Valida strings que contienen DNIs usando una expresión regular que

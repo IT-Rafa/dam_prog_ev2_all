@@ -1,3 +1,4 @@
+package Ejercicio_U6_B2A_E3;
 public class ArrayListCasero implements MiLista {
 
   private int[] arrayInterno;
