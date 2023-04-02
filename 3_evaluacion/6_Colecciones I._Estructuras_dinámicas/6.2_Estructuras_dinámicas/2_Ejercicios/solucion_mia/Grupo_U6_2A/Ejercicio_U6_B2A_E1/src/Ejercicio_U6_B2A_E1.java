@@ -22,17 +22,26 @@ class App {
 
 class Ejercicio_U6_B2A_E1 {
 
+  /**
+   * Crea lista, inserta datos y muestra los datos en la lista
+   */
   public static void main(String[] args) {
     MiListaEnlazada miLista = new MiListaEnlazada();
     miLista.insertar(8);
     miLista.insertar(88);
     miLista.insertar(888);
+
     for (int i = 0; i < miLista.tamano(); i++) {
       System.out.print(miLista.obtener(i) + " ");
     }
+    System.out.println();
   }
 }
 
+/**
+ * Clase autoreferenciada para crear una lista con estructura dinámica.
+ * Cada objeto apunta al siguiente al 
+ */
 class Nodo {
 
   private Nodo sig;
@@ -56,12 +65,16 @@ class Nodo {
   }
 }
 
+/**
+ * Lista con estructura dinámica
+ */
 class MiListaEnlazada {
 
   private Nodo primero = null;
 
   //en este mismo boletín veremos más adelante una versión más compacta de insertar()
   public void insertar(int dato) {
+
     if (primero == null) {
       primero = new Nodo(dato, null);
     } else {
@@ -70,11 +83,24 @@ class MiListaEnlazada {
     }
   }
 
-  public String obtener(int i) {
-    return null;
+  public int obtener(int i) {
+    Nodo objeto = primero;
+    int indexOb = 0;
+    while (indexOb < i) {
+      objeto = objeto.getSiguiente();
+      indexOb++;
+    }
+    return objeto.getDato();
   }
 
   public int tamano() {
-    return 0;
+    int size = 0;
+    Nodo actual = primero;
+
+    while (actual != null) {
+      actual = actual.getSiguiente();
+      size++;
+    }
+    return size;
   }
 }

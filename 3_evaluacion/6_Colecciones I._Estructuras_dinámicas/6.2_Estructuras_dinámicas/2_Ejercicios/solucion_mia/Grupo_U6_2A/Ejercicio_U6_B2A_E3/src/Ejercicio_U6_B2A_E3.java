@@ -31,7 +31,20 @@ class App{
  * </pre>
  */
 public class Ejercicio_U6_B2A_E3 {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+    public static void main(String[] args){
+        MiLista ml1=(MiLista) new MiListaEnlazada();
+        MiLista ml2= (MiLista) new ArrayListCasero();
+        for(int i =20;i < 30;i++){
+            ml1.insertar(i);
+            ml2.insertar(i);
+        }
+        System.out.print("Lista 1: ");
+        for(int i=0;i < ml1.tamano();i++){
+            System.out.print(ml1.obtener(i)+" ");
+        }
+        System.out.print("\nLista 2: ");
+        for(int i=0;i < ml2.tamano();i++){
+            System.out.print(ml2.obtener(i)+" ");
+        }
     }
 }
