@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * Ejercicio U6_B2B_E3: <p>
- * Conseguir aceptado en el problema de suma de dígitos pero
+ * Conseguir "aceptado" en el problema de suma de dígitos pero
  * utilizando OBLIGATORIAMENTE aritmética decimal para extraer 
  * los dígitos y una pila.
  * Podemos acceder a las cifras de un número e ir introduciendo 
@@ -27,23 +27,47 @@ public class Ejercicio_U6_B2B_E3 {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    Pila pila = new MiPila();
-    String numero = "";
-    while (!(numero = sc.next()).startsWith("-")) {
-      int suma = 0;
-      String resultado = "";
-      int n =  Integer.parseInt(numero) ;
-      if (n == 0) {
+
+    do {
+        // Capturamos número String a int
+      int numero = Integer.parseInt(sc.next());
+      // si nº es negativo finalizamos
+      if (numero < 0) {
+        break;
+      }
+      // preparamos pila 
+      Pila pila = new MiPila();
+
+      // Capturamos cada dígito del número y metemos en pila
+      // Rebajando cada decena
+      if (numero == 0) {
         pila.push(0);
       } else {
-        while (n > 0) {
-          pila.push(n % 10);
-          n = n / 10;
+        while (numero > 0) {
+        
+          pila.push(numero % 10);
+          numero = numero / 10;
         }
       }
 
-      System.out.println(resultado);
-      sc.close();
-    }
+      // Salida
+      String salida ="";
+      int suma = 0;
+      // Recorremos pila
+      while (!pila.esVacia()) {
+        // Capturamos número de la pila
+        int n = pila.pop();
+        // Añadimos mensaje
+        salida += n + " + ";
+        // Calculamos suma
+        suma += n;
+      }
+      // Quitamos el último " + "
+      salida = salida.substring(0, salida.length() - 3);
+      // Mostramos mensaje con dato de la suma
+      System.out.println(salida + " = " + suma);
+    } while (true);
+
+    sc.close();
   }
 }
