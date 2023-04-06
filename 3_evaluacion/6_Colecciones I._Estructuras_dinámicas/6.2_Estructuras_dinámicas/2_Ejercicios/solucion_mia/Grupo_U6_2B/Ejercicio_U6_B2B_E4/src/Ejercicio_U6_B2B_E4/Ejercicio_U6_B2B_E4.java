@@ -50,6 +50,7 @@ public class Ejercicio_U6_B2B_E4 {
     mc.encolar(1);
     mc.encolar(2);
     mc.encolar(3);
+
     while (!mc.esVacia()) {
       System.out.println(mc.desencolar());
     }

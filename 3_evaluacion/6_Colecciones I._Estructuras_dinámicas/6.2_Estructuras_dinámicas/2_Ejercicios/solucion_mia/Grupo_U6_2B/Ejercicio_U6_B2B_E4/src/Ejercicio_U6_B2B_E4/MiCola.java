@@ -5,37 +5,55 @@ public class MiCola implements Cola {
   /**
    * Salida de la cola
    */
-  Nodo primero = null;
+  private Nodo primero = null;
   /**
    * Entrada de la cola
    */
-  Nodo ultimo = null;
+  private Nodo ultimo = null;
+  /**
+   * Cantidad nodos incluidos
+   */
+  private int size = 0;
 
   @Override
   public void encolar(int dato) {
-    System.out.println("Encolando " + dato);
-    ultimo = new Nodo(dato, ultimo);
-
+    // Creamos Nodo
+    Nodo nuevo = new Nodo(dato, null);
+    if (esVacia()) {
+      // Si vacia, es el primero
+      primero = nuevo;
+    } else {
+      // Si no; ponemos la ruta siguiente del último al nuevo
+      ultimo.setSiguiente(nuevo);
+    }
+    // En ambos casos cambiamos el último por el nuevo
+    ultimo = nuevo;
+    // Subimos cantidad de nodos
+    size++;
   }
 
   @Override
   public int desencolar() {
-    System.out.println("Desencolando");
-    if(primero == null){
-        primero = ultimo;
-    }
+    // Capturamos dato
     int result = primero.getDato();
+    // Pasamos la dirección del siguiente Nodo como primero
     primero = primero.getSiguiente();
+
+    // Bajamos cantidad de nodos
+    size--;
+
+    // y Devolvemos dato
     return result;
   }
 
   @Override
   public boolean esVacia() {
-    if (ultimo == null) {
-      return true;
-    } else {
-      return false;
-    }
+    return primero == null;
+  }
+
+  @Override
+  public int getSize() {
+    return size;
   }
 }
 
