@@ -1,4 +1,4 @@
-package Ejercicio_U6_2C_E1;
+package Ejercicio_U6_2C_E3;
 
 /**
  * Organizador tipo arbol, en este caso Árbol binario de búsqueda
@@ -156,6 +156,51 @@ class Arbol {
     // 3. Visite la raíz
     System.out.print(nodo.dato + " ");
   }
+
+  /**
+   * Busca si el entero del parámetro existe en la lista.
+   * @param i Entero a buscar
+   * @return Si entero existe devuelve true, si no false
+   */
+  public Boolean existe(int i) {
+    return buscar(raiz, i);
+  }
+
+  /**
+   * Busqueda recursiva de si el entero del parámetro existe en la lista
+   * en cada nodo
+   *
+   * @param nodo Nodo en el que estamos
+   * @param i Entero a buscar
+   * @return Si entero existe devuelve true, si no false
+   */
+  private Boolean buscar(NodoArbol nodo, int i) {
+    // si nodo = null
+    //      false
+    // si valorBuscado = nodo.datos
+    //      true
+    // si nodo.datos < valorBuscado
+    //      busca en subarbol izquierdo (y esto da true o false)
+    //        - En teoria, en practica funciona al reves (derecho)
+    // sino
+    //      busca en subarbol derecho (y esto da true o false)
+
+    if (nodo == null) {
+      return false;
+    } else {
+      if (nodo.dato == i) {
+        return true;
+      } else if (nodo.dato < i) {
+        return buscar(nodo.der, i);
+      } else { // nodo.dato > i
+        return buscar(nodo.izq, i);
+      }
+    }
+  }
+
+  public void recorridoPreOrdenConTAB() {}
+
+  private void ayudanteecorridoPreordenConTAB(){}
 }
 
 /**
