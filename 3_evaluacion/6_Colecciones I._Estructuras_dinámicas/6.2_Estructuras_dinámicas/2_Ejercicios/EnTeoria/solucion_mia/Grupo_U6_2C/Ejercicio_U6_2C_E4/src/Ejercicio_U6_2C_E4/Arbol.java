@@ -1,4 +1,4 @@
-package Ejercicio_U6_2C_E3;
+package Ejercicio_U6_2C_E4;
 
 /**
  * Organizador tipo arbol, en este caso Árbol binario de búsqueda
@@ -199,7 +199,7 @@ class Arbol {
   }
 
   /**
-   * Método para ver todos los objetos NodoArbol en orden PreOrden. 
+   * Método para ver todos los objetos NodoArbol en orden PreOrden.
    * En este caso con tabuladores como ayuda para ver mejor el arbol.
    */
   public void recorridoPreOrdenConTAB() {
@@ -215,6 +215,7 @@ class Arbol {
    */
   private void recorridoPreOrdenConTAB(NodoArbol nodo, String tab) {
     if (nodo == null) {
+      System.out.println(tab + "null");
       return;
     }
     // 1 Visite la raíz
