@@ -1,7 +1,14 @@
 package Ejercicio_U6_2C_E4;
 
+/**
+ * Clase que contiene el main del Ejercicio_U6_2C_E4
+ */
 public class Ejercicio_U6_2C_E4 {
 
+  /**
+   * Crea arbol, inserta datos, Muestra recorrido preOrden y
+   * recorrido preOrden con tabs mostrando los nulos
+   */
   public static void main(String args[]) {
     Arbol arbol = new Arbol();
     arbol.insertar(8);
