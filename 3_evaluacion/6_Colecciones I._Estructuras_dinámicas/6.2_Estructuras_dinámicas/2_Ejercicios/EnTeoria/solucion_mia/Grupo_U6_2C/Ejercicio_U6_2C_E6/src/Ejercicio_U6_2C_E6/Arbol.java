@@ -85,6 +85,89 @@ class Arbol {
   }
 
   /**
+   * Método para ver todos los objetos NodoArbol en orden PreOrden.<p>
+   */
+  public void recorridoPreOrden() {
+    recorridoPreOrden(raiz);
+  }
+
+  /**
+   * Método recursivo para ver los objetos NodoArbol en orden PreOrden
+   * usando el objeto NodoArbol indicado
+   *
+   * @param nodo Objeto en arbol desde el que comienza la búsqueda
+   */
+  private void recorridoPreOrden(NodoArbol nodo) {
+    if (nodo == null) {
+      return;
+    }
+    // 1 Visite la raíz
+    System.out.print(nodo.dato + " ");
+
+    // 2 Atraviese el sub-árbol izquierdo
+    recorridoPreOrden(nodo.izq);
+
+    // 3 Atraviese el sub-árbol derecho
+    recorridoPreOrden(nodo.der);
+  }
+
+  /**
+   * Método para ver todos los objetos NodoArbol en orden InOrden.<p>
+   * Este método muestra los objetos en un arbol ABB (Arbol Binario de Busqueda)
+   * por orden de tamaño.
+   */
+  public void recorridoInOrden() {
+    recorridoInOrden(raiz);
+  }
+
+  /**
+   * Método recursivo para ver los objetos NodoArbol en orden InOrden
+   * usando el objeto NodoArbol indicado
+   *
+   * @param nodo Objeto en arbol desde el que comienza la búsqueda
+   */
+  private void recorridoInOrden(NodoArbol nodo) {
+    if (nodo == null) {
+      return;
+    }
+    // 1. Atraviese el sub-árbol izquierdo
+    recorridoInOrden(nodo.izq);
+
+    // 2. Visite la raíz
+    System.out.print(nodo.dato + " ");
+
+    // 3. Atraviese el sub-árbol derecho
+    recorridoInOrden(nodo.der);
+  }
+
+  /**
+   * Método para ver todos los objetos NodoArbol en orden PostOrden
+   */
+  public void recorridoPostOrden() {
+    recorridoPostOrden(raiz);
+  }
+
+  /**
+   * Método recursivo para ver los objetos NodoArbol en orden PostOrden
+   * usando el objeto NodoArbol indicado
+   *
+   * @param nodo Objeto en arbol desde el que comienza la búsqueda
+   */
+  private void recorridoPostOrden(NodoArbol nodo) {
+    if (nodo == null) {
+      return;
+    }
+    // 1. Atraviese el sub-árbol izquierdo
+    recorridoPostOrden(nodo.izq);
+
+    // 2. Atraviese el sub-árbol derecho
+    recorridoPostOrden(nodo.der);
+
+    // 3. Visite la raíz
+    System.out.print(nodo.dato + " ");
+  }
+
+  /**
    * Método para ver todos los objetos NodoArbol en orden PreOrden.
    * En este caso con tabuladores como ayuda para ver mejor el arbol.
    */
@@ -113,6 +196,47 @@ class Arbol {
 
     // 3 Atraviese el sub-árbol derecho
     recorridoPreOrdenConTAB(nodo.der, tab);
+  }
+
+  /**
+   * Busca si el entero del parámetro existe en la lista.
+   * @param i Entero a buscar
+   * @return Si entero existe devuelve true, si no false
+   */
+  public Boolean existe(int i) {
+    return existe(raiz, i);
+  }
+
+  /**
+   * Busqueda recursiva de si el entero del parámetro existe en la lista
+   * en cada nodo
+   *
+   * @param nodo Nodo en el que estamos
+   * @param num Entero a buscar
+   * @return Si entero existe devuelve true, si no false
+   */
+  private Boolean existe(NodoArbol nodo, int num) {
+    // si nodo = null
+    //      false
+    // si valorBuscado = nodo.datos
+    //      true
+    // si nodo.datos < valorBuscado
+    //      busca en subarbol izquierdo (y esto da true o false)
+    //        - En teoria, en practica funciona al reves (derecho)
+    // sino
+    //      busca en subarbol derecho (y esto da true o false)
+
+    if (nodo == null) {
+      return false;
+    } else {
+      if (nodo.dato == num) {
+        return true;
+      } else if (nodo.dato < num) {
+        return existe(nodo.der, num);
+      } else { // nodo.dato > num
+        return existe(nodo.izq, num);
+      }
+    }
   }
 
   /**
@@ -148,28 +272,64 @@ class Arbol {
   /**
    * Devuelve el valor máximo de este arbol
    *
-   * @return Altura en este nodo
+   * @return Valor máximo
    */
   public int getMax() {
+    return getMax(raiz);
+  }
+
+  /**
+   * Devuelve el valor máximo de este arbol, según el nodo
+   *
+   * @param nodo Nodo desde el que se busca
+   * @return Valor máximo
+   */
+  public int getMax(NodoArbol nodo) {
+    // CAPTURAR MÁXIMO
     // Si nodo vacio
-    //  return Integer.MIN_VALUE (el valor más pequeño posible)
+    //      return Integer.MIN_VALUE (el valor más pequeño posible)
     // sino
-    //   return elMáximoDe(nodo.datos, max(nodo.nodoIzquierdo), max(nodo.nodoDerecho))
-    return 0;
+    //      elMáximoDe(nodo.datos, max(nodo.nodoIzquierdo), max(nodo.nodoDerecho))
+    if (nodo == null) {
+      return Integer.MIN_VALUE;
+    }
+
+    int izq = getMax(nodo.izq);
+    int der = getMax(nodo.der);
+
+    int result = Integer.max(nodo.dato, izq);
+    return Integer.max(result, der);
   }
 
   /**
    * Devuelve el valor mínimo de este arbol
    *
-   * @return Altura en este nodo
+   * @return Valor mínimo
    */
   public int getMin() {
-    return 0;
+    return getMin(raiz);
+  }
+
+  /**
+   * Devuelve el valor mínimo de este arbol, según el nodo
+   *
+   * @param nodo Nodo desde el que se busca
+   * @return valor mínimo
+   */
+  public int getMin(NodoArbol nodo) {
+    if (nodo == null) {
+      return Integer.MAX_VALUE;
+    }
+
+    int izq = getMin(nodo.izq);
+    int der = getMin(nodo.der);
+
+    int result = Integer.min(nodo.dato, izq);
+    return Integer.min(result, der);
   }
 }
 
 /**
- * /**
  * Es una clase autorreferenciadas, usada para crear la estructura dinámica.<p>
  * El valor del objeto (dato) y el enlace con los siguentes objetos (izq y der)
  * se guardan aquí.<p>

@@ -1,4 +1,4 @@
-package Ejercicio_U6_2C_E4;
+package Ejercicio_U6_2C_E7;
 
 /**
  * Organizador tipo arbol, en este caso Árbol binario de búsqueda
@@ -20,57 +20,80 @@ class Arbol {
   private NodoArbol raiz;
 
   /**
-   * Constructor para preparar la raíz del arbol
+   * lista datos del arbol
    */
-  public Arbol() {
+  private char[] datosNodos;
+
+  /**
+   *
+   */
+  private int posArray = 0;
+
+  /**
+   * Constructor objeto Arbol con parámetro con lista de strings con
+   * sus datos
+   */
+  public Arbol(char[] descArbol) {
+    // Crea raiz vacia
     raiz = null;
+    // Guarda el parametro como atributo
+    this.datosNodos = descArbol;
+    // Crea el arbol según argumento arbolString
+    this.crearArbol();
   }
 
   /**
-   * Inserta objeto, tipo int, en el arbol
-   *
-   * @param valorInsertar Valor a insertar en el arbol
+   * Crea el arbol según los datos en arbolString
    */
-  public void insertar(int valorInsertar) {
-    // Si la raiz es nulo, Crea el nodo raiz con ese dato
-    if (raiz == null) {
-      raiz = new NodoArbol(valorInsertar);
+  private void crearArbol() {
+    // Convierte el primar dato [0] de arbolString a entero
+    // y lo guarda para construir la raiz
+    boolean dato;
+    if (datosNodos[0] == '*') {
+      dato = true;
+      raiz = new NodoArbol(dato);
+      // sigue creando datos con según resto datos arbolString
+      ayudanteCrearArbol(raiz);
+    } else if (datosNodos[0] == '.') {
+      dato = false;
+      raiz = null;
     } else {
-      // si no, Busca donde colocar el nuevo nodo con ese dato
-      ayudanteInsertarNodo(raiz, valorInsertar);
+      System.out.println("Error al crear árbol; array extraño");
+      System.exit(posArray);
     }
   }
 
   /**
-   * Busca una posición en el arbol para insertar el nodo, según tamaño.<p>
-   * Funciona con datos de distintos tamaños
+   * Método recurrente para recorrer lista datos arbolString y
+   * crear nodos y enlazarlos.
    *
-   * @param a Nodo en el que estamos
-   * @param valorInsertar valor a añadir
+   * @param padre arbol donde se crean los enlaces
    */
-  private void ayudanteInsertarNodo(NodoArbol a, int valorInsertar) {
-    // BUSCA DE FORMA RECURSIVA POR CADA LADO SEGÚN MENOR (IZQ) O MAYOR(DER)
-    // Si el nodo tiene menor valor que el dato a insertar
-    if (valorInsertar < a.dato) {
-      // Comprobamos el enlace izquierdo
-      if (a.izq == null) {
-        // Si está vacio, añade nuevo nodo en esta posición
-        a.izq = new NodoArbol(valorInsertar);
-      } else {
-        // Si no, sigue buscando por el lado izq (datos con menos valor)
-        ayudanteInsertarNodo(a.izq, valorInsertar);
-      }
-      // Si el nodo tiene mayor valor que el dato a insertar
-      // vamos por el lado derecho
-    } else if (valorInsertar > a.dato) {
-      // Comprobamos el enlace derecho
-      if (a.der == null) {
-        // Si está vacio, añade nuevo nodo en esta posición
-        a.der = new NodoArbol(valorInsertar);
-      } else {
-        // Si no, sigue buscando por el lado izq (datos con menos valor)
-        ayudanteInsertarNodo(a.der, valorInsertar);
-      }
+  private void ayudanteCrearArbol(NodoArbol padre) {
+    boolean dato;
+
+    posArray++;
+    if (datosNodos[posArray] == '*') {
+      dato = true;
+      padre.izq = new NodoArbol(dato);
+      ayudanteCrearArbol(padre.izq);
+    } else if (datosNodos[posArray] == '.') {
+      dato = false;
+    } else {
+      System.out.println("Error al crear árbol; array extraño");
+      System.exit(posArray);
+    }
+
+    posArray++;
+    if (datosNodos[posArray] == '*') {
+      dato = true;
+      padre.der = new NodoArbol(dato);
+      ayudanteCrearArbol(padre.der);
+    } else if (datosNodos[posArray] == '.') {
+      dato = false;
+    } else {
+      System.out.println("Error al crear árbol; array extraño");
+      System.exit(posArray);
     }
   }
 
@@ -158,47 +181,6 @@ class Arbol {
   }
 
   /**
-   * Busca si el entero del parámetro existe en la lista.
-   * @param i Entero a buscar
-   * @return Si entero existe devuelve true, si no false
-   */
-  public Boolean existe(int i) {
-    return buscar(raiz, i);
-  }
-
-  /**
-   * Busqueda recursiva de si el entero del parámetro existe en la lista
-   * en cada nodo
-   *
-   * @param nodo Nodo en el que estamos
-   * @param num Entero a buscar
-   * @return Si entero existe devuelve true, si no false
-   */
-  private Boolean buscar(NodoArbol nodo, int num) {
-    // si nodo = null
-    //      false
-    // si valorBuscado = nodo.datos
-    //      true
-    // si nodo.datos < valorBuscado
-    //      busca en subarbol izquierdo (y esto da true o false)
-    //        - En teoria, en practica funciona al reves (derecho)
-    // sino
-    //      busca en subarbol derecho (y esto da true o false)
-
-    if (nodo == null) {
-      return false;
-    } else {
-      if (nodo.dato == num) {
-        return true;
-      } else if (nodo.dato < num) {
-        return buscar(nodo.der, num);
-      } else { // nodo.dato > num
-        return buscar(nodo.izq, num);
-      }
-    }
-  }
-
-  /**
    * Método para ver todos los objetos NodoArbol en orden PreOrden.
    * En este caso con tabuladores como ayuda para ver mejor el arbol.
    */
@@ -212,6 +194,7 @@ class Arbol {
    * como ayuda para ver mejor el arbol
    *
    * @param nodo Objeto en arbol desde el que comienza la búsqueda
+   * @param tab Cantidad de tabs a añadir
    */
   private void recorridoPreOrdenConTAB(NodoArbol nodo, String tab) {
     if (nodo == null) {
@@ -227,10 +210,39 @@ class Arbol {
     // 3 Atraviese el sub-árbol derecho
     recorridoPreOrdenConTAB(nodo.der, tab);
   }
+
+  /**
+   * Devuelve la altura del arbol
+   *
+   * @return altura del arbol
+   */
+  public int getHeight() {
+    return getHeight(raiz);
+  }
+
+  /**
+   * Recorre los hijos recurrentemente y devuelve la altura del arbol
+   *
+   * @param nodo Nodo desde el que calcular la altura
+   * @return Altura en este nodo
+   */
+  private int getHeight(NodoArbol nodo) {
+    int size = 0;
+
+    if (nodo == null) {
+      // si el árbol es vacío
+      //      altura 0
+      return size;
+    } else {
+      // sino
+      //      Mayor altura de ambos lados
+      //      1 + máximo(alturasubarbolizquierdo,alturasubarbolderecho)
+      return 1 + Math.max(getHeight(nodo.izq), getHeight(nodo.der));
+    }
+  }
 }
 
 /**
- * /**
  * Es una clase autorreferenciadas, usada para crear la estructura dinámica.<p>
  * El valor del objeto (dato) y el enlace con los siguentes objetos (izq y der)
  * se guardan aquí.<p>
@@ -242,17 +254,17 @@ class NodoArbol {
   /**
    * Contiene el valor del elemento
    */
-  int dato;
+  boolean dato;
 
   /**
-   * Enlaces con los siguientes objetos NodoArbol
+   * Enlace con los otro objeto NodoArbol
    */
   NodoArbol izq, der;
 
   /**
    * Constructor que pide valor
    */
-  public NodoArbol(int dato) {
+  public NodoArbol(boolean dato) {
     this.dato = dato;
     izq = der = null; //recien creado un nodo, no tiene hijos
   }

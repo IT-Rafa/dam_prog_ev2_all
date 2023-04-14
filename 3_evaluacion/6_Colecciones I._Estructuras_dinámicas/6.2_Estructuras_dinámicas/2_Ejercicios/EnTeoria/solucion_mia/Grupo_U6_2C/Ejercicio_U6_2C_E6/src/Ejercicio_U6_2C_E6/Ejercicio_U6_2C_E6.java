@@ -9,7 +9,7 @@ public class Ejercicio_U6_2C_E6 {
 
   /**
    * Pide al usuario una lista con datos del arbol, crea el arbol,
-   * y muestra su altura
+   * y muestra el malor máximo y mínimo
    */
   public static void main(String args[]) {
     Scanner sc = new Scanner(System.in);
@@ -20,9 +20,9 @@ public class Ejercicio_U6_2C_E6 {
     // crea el arbol
     Arbol arbol = new Arbol(arbolString);
 
-    // Mostramos arbol
+    // test Mostramos arbol
     // arbol.recorridoPreOrdenConTAB();
-    // Mostramos altura
+    // Mostramos valor máximo y mínimo
     System.out.println(
       "Máximo: " + arbol.getMax() + "\nMínimo: " + arbol.getMin()
     );
