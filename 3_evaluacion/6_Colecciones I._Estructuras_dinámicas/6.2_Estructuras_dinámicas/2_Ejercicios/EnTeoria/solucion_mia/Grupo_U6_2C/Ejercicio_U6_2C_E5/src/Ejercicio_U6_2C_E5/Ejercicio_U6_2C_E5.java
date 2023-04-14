@@ -21,7 +21,7 @@ public class Ejercicio_U6_2C_E5 {
     Arbol arbol = new Arbol(arbolString);
 
     // Mostramos arbol
-    arbol.recorridoPreOrdenConTAB();
+    // arbol.recorridoPreOrdenConTAB();
     // Mostramos altura
     System.out.println("altura: " + arbol.getHeight());
 
