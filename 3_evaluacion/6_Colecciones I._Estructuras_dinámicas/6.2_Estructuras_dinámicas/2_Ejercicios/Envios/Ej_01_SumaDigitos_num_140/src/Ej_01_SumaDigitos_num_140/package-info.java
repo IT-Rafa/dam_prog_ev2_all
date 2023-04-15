@@ -2,7 +2,6 @@
  * Contiene clases para:<p>
  * <h3>Suma de dígitos</h3>
  * <h4>aceptaelreto: nº 140</h4>
-
  * https://www.aceptaelreto.com/problem/statement.php?id=140#:~:text=Se%20trata%20de%20implementar%20un,%2B%203%20%2B%203%20%3D%2013
  * Tiempo máximo: 1,000-4,000 sMemoria máxima: 4096 KiB<p>
  * 
