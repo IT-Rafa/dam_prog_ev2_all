@@ -114,9 +114,10 @@ public class Ej_04_AlturaArbolGeneral_num_310 {
       // Pedimos descripción del árbol
       String input = sc.nextLine();
       // Dividimos string en array
-      char[] desc = input.toCharArray();
+      String[] desc = input.split(" ");
       // Usamos descripción para crear árbol
       Arbol arbol = new Arbol(desc);
+      arbol.imprimirArbol();
       System.out.println(arbol.getHeight());
     }
 
@@ -137,11 +138,48 @@ public class Ej_04_AlturaArbolGeneral_num_310 {
 
 class Arbol {
 
-  public NodoArbol raiz;
+  private NodoArbol raiz;
+  private String[] desc;
 
-  public Arbol(char[] desc) {
-    System.out.println(desc);
-    raiz = null;
+  public Arbol(String[] desc) {
+    this.raiz = null;
+    this.desc = desc;
+    crearArbol();
+  }
+
+  private void crearArbol() {
+    ayudanteCrearArbol(raiz, 0);
+  }
+
+  /**
+   * Método recurrente para recorrer lista dato1s arbolString y
+   * crear nodos y enlazarlos.
+   *
+   * @param padre arbol donde se crean los enlaces
+   */
+  private void ayudanteCrearArbol(NodoArbol nodo, int pos) {
+    nodo = new NodoArbol();
+    int cantHijos = Integer.parseInt(desc[pos]);
+    nodo.hijos = new NodoArbol[cantHijos];
+    for (int i = 0; i < cantHijos; i++) {
+      nodo.hijos[i] = new NodoArbol();
+      if (desc.length < i + 1) {
+        ayudanteCrearArbol(nodo.hijos[i], pos + 1);
+      }
+    }
+  }
+
+  public void imprimirArbol() {
+    imprimirArbol(raiz, "");
+  }
+
+  private void imprimirArbol(NodoArbol raiz, String tab) {
+    System.out.println(tab + "*");
+    if (raiz.hijos != null) {
+      for (NodoArbol nodo : raiz.hijos) {
+        imprimirArbol(nodo, tab + "\t");
+      }
+    }
   }
 
   public int getHeight() {
@@ -152,4 +190,8 @@ class Arbol {
 class NodoArbol {
 
   public NodoArbol[] hijos;
+
+  public NodoArbol(String hijos) {
+    this.hijos = new NodoArbol[Integer.parseInt(hijos)];
+  }
 }

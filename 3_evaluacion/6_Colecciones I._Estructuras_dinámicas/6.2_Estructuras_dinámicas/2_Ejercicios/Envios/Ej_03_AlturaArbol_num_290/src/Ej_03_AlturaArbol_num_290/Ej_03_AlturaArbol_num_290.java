@@ -113,12 +113,12 @@ class Arbol {
     raiz = null;
     // Guarda el parametro como atributo
     this.datosNodos = descArbol;
-    // Crea el arbol según argumento arbolString
+    // Crea el arbol según argumento descArbol
     this.crearArbol();
   }
 
   /**
-   * Crea el arbol según los datos en arbolString
+   * Crea el arbol según los datos en datosNodos
    */
   private void crearArbol() {
     // Convierte el primar dato [0] de arbolString a entero
