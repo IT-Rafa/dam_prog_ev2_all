@@ -244,7 +244,7 @@ class Arbol {
 
 /**
  * Es una clase autorreferenciadas, usada para crear la estructura dinámica.<p>
- * El valor del objeto (dato) y el enlace con los siguentes objetos (izq y der)
+ * El valor del objeto boolean (dato) y el enlace con los siguentes objetos (izq y der)
  * se guardan aquí.<p>
  * Autorreferenciada es una clase que contiene un atributo (izq y der, en este caso)
  * que que apunta a otros objetos de la misma clase.
@@ -263,6 +263,8 @@ class NodoArbol {
 
   /**
    * Constructor que pide valor
+   *
+   * @param dato valor que tiene el nodo
    */
   public NodoArbol(boolean dato) {
     this.dato = dato;

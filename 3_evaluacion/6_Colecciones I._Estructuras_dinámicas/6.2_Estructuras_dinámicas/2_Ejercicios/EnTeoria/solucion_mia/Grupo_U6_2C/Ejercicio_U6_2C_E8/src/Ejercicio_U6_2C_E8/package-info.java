@@ -7,7 +7,7 @@
  * operando. <p>
  * Observa el siguiente el árbol de expresión:
  * <pre>
-        x        ( ?            x ?)
+.       x        ( ?            x ?)
        / \         
       -   3      ((? -       ?) x 3) 
      / \
@@ -26,43 +26,44 @@
  * Es una expresión totalmente parentizada, por cada operador hay siempre 
  * un paréntesis de apertura y otro de cierre. Hay paréntesis que se podrían 
  * suprimir pero para nuestro objetivo es más fácil pensar en una expresión 
- * totalmente parentizada.<pre>
+ * totalmente parentizada.<p>
  * El siguiente código, por el momento incompleto, obtendría del árbol anterior 
  * la expresión anterior.
  * <pre>
 class NodoArbol {
-NodoArbol nodoIzq;
-String datos;
-NodoArbol nodoDer;
-public NodoArbol(String datosNodo) {
-datos = datosNodo;
-nodoIzq = nodoDer = null;
-}
+    NodoArbol nodoIzq;
+    String datos;
+    NodoArbol nodoDer;
+
+    public NodoArbol(String datosNodo) {
+        datos = datosNodo;
+        nodoIzq = nodoDer = null;
+    }
 }
 class Arbol {
-NodoArbol raiz;
+    NodoArbol raiz;
 }
 public class App {
-public static void main(String args[]) {
-Arbol arbol = new Arbol();
-NodoArbol n=new NodoArbol("x");
-arbol.raiz=n;
-NodoArbol n1=new NodoArbol("-");
-NodoArbol n2=new NodoArbol("3");
-n.nodoIzq=n1;
-n.nodoDer=n2;
-NodoArbol n11=new NodoArbol("9");
-NodoArbol n12=new NodoArbol("+");
-n1.nodoIzq=n11;
-n1.nodoDer=n12;
-NodoArbol n121=new NodoArbol("5");
-NodoArbol n122=new NodoArbol("2");
-n12.nodoIzq=n121;
-n12.nodoDer=n122;
-obtendría del árbol anterior la expresión
+    public static void main(String args[]) {
+        Arbol arbol = new Arbol();
+        NodoArbol n=new NodoArbol("x");
+        arbol.raiz=n;
+        NodoArbol n1=new NodoArbol("-");
+        NodoArbol n2=new NodoArbol("3");
+        n.nodoIzq=n1;
+        n.nodoDer=n2;
+        NodoArbol n11=new NodoArbol("9");
+        NodoArbol n12=new NodoArbol("+");
+        n1.nodoIzq=n11;
+        n1.nodoDer=n12;
+        NodoArbol n121=new NodoArbol("5");
+        NodoArbol n122=new NodoArbol("2");
+        n12.nodoIzq=n121;
+        n12.nodoDer=n122;
+        //arbol.imprimir();
+    }
 }
-}
-//arbol.imprimir();
+
  * </pre>
  * 
  * SE PIDE:<p>
