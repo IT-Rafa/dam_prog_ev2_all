@@ -158,15 +158,7 @@ class Arbol {
    * @param padre arbol donde se crean los enlaces
    */
   private void ayudanteCrearArbol(NodoArbol nodo, int pos) {
-    nodo = new NodoArbol();
-    int cantHijos = Integer.parseInt(desc[pos]);
-    nodo.hijos = new NodoArbol[cantHijos];
-    for (int i = 0; i < cantHijos; i++) {
-      nodo.hijos[i] = new NodoArbol();
-      if (desc.length < i + 1) {
-        ayudanteCrearArbol(nodo.hijos[i], pos + 1);
-      }
-    }
+    nodo = new NodoArbol(Integer.parseInt(desc[pos]));
   }
 
   public void imprimirArbol() {
@@ -191,7 +183,7 @@ class NodoArbol {
 
   public NodoArbol[] hijos;
 
-  public NodoArbol(String hijos) {
-    this.hijos = new NodoArbol[Integer.parseInt(hijos)];
+  public NodoArbol(int hijos) {
+    this.hijos = new NodoArbol[hijos];
   }
 }
