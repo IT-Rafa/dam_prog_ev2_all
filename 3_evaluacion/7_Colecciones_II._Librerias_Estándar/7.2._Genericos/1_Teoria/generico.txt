@@ -1,0 +1,49 @@
+ 
+Uso de Clases Genéricas en Java
+
+Añadido en Java 5
+
+Ya hemos probado a crear pilas y colas de elementos de un tipo.
+Usando las clases genéricas, podemos usar una misma clase para crear distintas colecciones, cada una
+con un tipo de datos.
+
+Esto nos evita crear distintas clases con básicamente el mismo código para cada una de las colecciones.
+
+Para hacer esto, al crear un objeto genérico, le indicamos el tipo de dato que vamos a usar.
+Si no indicamos un tipo de dato para la clase genérica, tomara Object como parámetro
+
+Ejemplo
+
+ArrayList, HashSet, HashMap, LinkedList, son ejemplos de clases genéricas creadas en java
+
+La interfaz más importante es Collection<E>
+A continuación, mostramos un ejemplo.
+
+Collection<String> lista = new ArrayList<String>();
+lista.add("uno");
+lista.add("");
+lista.add("dos");
+for (String item : lista)
+System.out.println(item);
+Iterator<String> it = lista.iterator();
+while (it.hasNext()) {
+    String s = it.next();
+    if (s.equals("")) it.remove();
+}
+
+
+Existen un conjunto de interfaces que heredan de Collection, que nos aportan más prestaciones. Algunos
+de ellos son:
+     List. Es una colección donde se mantiene la posición de los elementos. No está ordenada y puede
+        haber elementos repetidos
+     Set. Es una colección en la que no existen elementos repetidos
+     SortedSet. Además se mantiene un orden.
+     Queue. Es una colección que mantiene una prioridad de procesamient
+
+También las interfaces pueden ser genéricas. Un ejemplo claro es la interface Comparable
+
+import java.util.*;
+
+public interface Comparable<T> {
+    public int compareTo(T o);
+}
