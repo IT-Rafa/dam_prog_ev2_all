@@ -8,6 +8,8 @@
  * lista de objetos Persona. <p>
  * El siguiente código no obstante, por despiste, usa tipos crudos. <p>
  * La ejecución es correcta pero ya se discutió que deben evitarse.<p>
- * Compila con y sin -Xlint y corrige para evitar warnings.
+ * Compila con y sin -Xlint y corrige para evitar warnings.<p>
+ * javac App.java
+ * javac App.java -Xlint
  */
 package Ejercicio_U6_B2_E4;
