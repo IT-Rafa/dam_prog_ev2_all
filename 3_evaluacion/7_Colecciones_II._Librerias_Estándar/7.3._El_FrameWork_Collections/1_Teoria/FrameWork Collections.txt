@@ -1,0 +1,68 @@
+ 
+FRAMEWORK
+En programación, son un conjunto de librerias organizadas y las reglas sobre como usarlas.
+Suelen estar orientadas a distintos elementos.
+
+Java Collections Framework
+En este framework se centran en las distintas formas de almacenar datos.
+Estas clases se van dividiendo para centrarse en una parte concreta.
+
+Estas clases están hechas para ser genéricas y pueden almacenar cualquier tipo de datos.
+
+Estos son las principales interfaces de las cuales se heredan las demas
+Iterable<E>
+    Colection<E>
+        Set<E>
+        List<E>
+        Queue<E>
+
+Map<F,V>
+        SortedMap<K, V>
+        AbstractMap<K,V> (clase)
+
+
+LinkedList<E>
+     java.lang.Object
+        java.util.AbstractCollection<E>
+            java.util.AbstractList<E>
+                java.util.AbstractSequentialList<E>
+                    java.util.LinkedList<E>
+
+    Type Parameters:
+        E - the type of elements held in this collection
+
+    All Implemented Interfaces:
+        Serializable, Cloneable, Iterable<E>, Collection<E>, Deque<E>, List<E>, Queue<E>
+
+        Constructores
+            LinkedList()
+                Construye lista vacia.
+
+        LinkedList(Collection<? extends E> c)
+            Construye una lista que contiene los elementos según el tipo especificado, en el orden que son devueltos por el iterator de la collection
+
+ Doubly-linked list implementation of the List and Deque interfaces. Implements all optional list operations, and permits all elements (including null).
+Los elementos empiezan por índice 0:
+Esta implemantación no está sincronizada
+
+
+    Creación para LinkedList de Integer
+    LinkedList<Integer> listaEnlazada = new LinkedList<>();
+
+    Añadimos a la lista de Integer un entero (Se pasa a Integer con autobox)
+    El objeto aparece al final de la lista. Al ser primero, final y principio es lo mismo
+    boolean add(E e)
+    listaEnlazada.add(1):
+
+    Añadimos a la lista de Integer un entero (Se pasa a Integer con autobox) en una posición
+    índicada con índice (En este caso, se agrega al principio de la lista)
+    Inserts the specified element at the specified position in this list.
+
+    void 	add(int index, E element)
+    listaEnlazada.add(0,2);
+
+    Eliminamos objeto de la lista según índice. En este caso, el primero
+    listaEnlazada.remove(0)
+
+    int size()
+ArrayList<E>
