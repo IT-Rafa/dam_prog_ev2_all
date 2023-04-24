@@ -47,6 +47,7 @@
  * <h4>Entrada de ejemplo</h4>
  * 
  * <pre>
+
 ({[]})()
 Tengase en cuenta (obviamente) que puede haber otros simbolos.
 :)
