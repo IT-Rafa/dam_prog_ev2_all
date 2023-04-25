@@ -85,7 +85,6 @@ public class Ejercicio_U7_B4_7 {
   /**
    *
    */
-
   private static boolean insertPairChar(
     char c,
     Stack<Character> pila,
