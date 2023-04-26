@@ -1,5 +1,8 @@
 package Ejercicio_U7_B4_7;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 import java.util.Stack;
 
 /**
@@ -8,82 +11,83 @@ import java.util.Stack;
 public class Ejercicio_U7_B4_7 {
 
   /**
-   * Creamos varios String con expresión con parentesis y mostramos
-   * si los paréntesis están balanceados o no, es decir si los parentesis
-   * abiertos coinciden con los cerrados.
+   * Captura entradas de usuario.
+   * - Si alguna está vacia, finaliza programa
+   * Analiza paréntesis, corchetes y llaves.
+   * Si aparece el cerrado o no coinciden apertura y cierre, muestra "No".
+   * Si están correcto muestra "Sí"
    */
   public static void main(String[] args) {
-    String expresion = "( (2+3)/ (3 * (8-2))"; // Falta parentesis
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    // expresion = ")4(";
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    // expresion = "(4)";
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    // expresion = "(2+3)/(3*(8-2))";
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    // expresion = "))";
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    expresion = ":)";
-    System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    // expresion = "({[]})()";
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    // expresion =
-    //   "Tengase en cuenta (obviamente) que puede haber otros simbolos.";
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
-    // expresion = ":)";
-    // System.out.println((parentesisBalanceados(expresion)) ? "YES" : "NO");
+    Scanner sc = new Scanner(System.in);
+
+    // Captura mientras haya líneas del usuario.
+    while (sc.hasNextLine()) {
+      // Cogemos línea del usuario
+      String input = sc.nextLine();
+      if (input.compareToIgnoreCase("") == 0) {
+        // Fin si línea vacia
+        break;
+      }
+      System.out.println((parentesisBalanceados(input) ? "Si" : "No"));
+    }
+    sc.close();
   }
 
   /**
    *
    */
   public static boolean parentesisBalanceados(String expresion) {
-    // Creamos pila para almacenar los parentesis
-    Stack<Character> pilaParentesis = new Stack<>(); // /()
-    Stack<Character> pilaCorchetes = new Stack<>(); // []
-    Stack<Character> pilaLlaves = new Stack<>(); // {}
-    final String parentesis = "()";
-    final String corchetes = "[]";
-    final String llaves = "{}";
+    // Creamos array pila para almacenar los stacks de cada símbolo
+    List<Stack<Character>> pilas = new ArrayList<Stack<Character>>();
+    pilas.add(new Stack<>());
+    pilas.add(new Stack<>());
+    pilas.add(new Stack<>());
 
-    // Convertimos String, donde está la expresión, en Array[]
+    // Guardamos String con llaves apertura y cierre
+    String[] simbolos = { "()", "[]", "{}" };
+
+    // Convertimos expresión del usuario en Array[]
     char[] expArray = expresion.toCharArray();
-    boolean result = true;
+
+    // Recorremos caracteres de expresión
     for (char c : expArray) {
-      if (c == parentesis.charAt(0) || c == parentesis.charAt(1)) {
-        if (!insertPairChar(c, pilaParentesis, parentesis)) {
-          result = false;
-          break;
-        }
-      } else if (c == corchetes.charAt(0) || c == corchetes.charAt(1)) {
-        if (!insertPairChar(c, pilaCorchetes, corchetes)) {
-          result = false;
-          break;
-        }
-      } else if (c == llaves.charAt(0) || c == llaves.charAt(1)) {
-        if (!insertPairChar(c, pilaLlaves, llaves)) {
-          result = false;
-          break;
+      // Revisamos cada stack (pila) de simbolos
+      for (int i = 0; i < simbolos.length; i++) {
+        if (simbolos[i].indexOf(c) != -1) {
+          if (!insertPairChar(c, pilas.get(i), simbolos[i])) {
+            // Si devuelve falso, se encontro un cierre sin apertura
+            return false;
+          }
+          // Si encontro símbolo, ya no pertenece a los otros stack
+          continue;
         }
       }
     }
-    if (result == false) {
-      return false;
-    } else {
-      if (
-        pilaParentesis.size() == 0 &&
-        pilaCorchetes.size() == 0 &&
-        pilaLlaves.size() == 0
-      ) {
-        return true;
-      } else {
+
+    // Si llega aqui, no hubo cierres sin abrir
+    // Revisamos que cada pila está a 0
+    for (int i = 0; i < pilas.size(); i++) {
+      if (pilas.get(i).size() != 0) {
+        // Si no está a 0 sobran simbolos de apertura
         return false;
       }
     }
+
+    // Si llega aquí, todo está bien
+    return true;
   }
 
   /**
+   * Según el caracter c, si es la apertura, introduce en la pila.
+   * Si no, es cierre y lo elimina, si existe,
+   * Si es cierre y no hay ninguno en la lista, devuelve false.
    *
+   * @param c Caracter a leer
+   * @param pila Pila de caracteres correspondientes a tipo de símbolo
+   * @param simbolos String con los símbolos de apertura y cierre.
+   *
+   * @return Devuelve True si la entrada fue correcta. False si c es símbolo de
+   * cierre y no existe ningúno de apertura.
    */
   private static boolean insertPairChar(
     char c,
@@ -91,8 +95,9 @@ public class Ejercicio_U7_B4_7 {
     String simbolos
   ) {
     if (c == simbolos.charAt(0)) {
+      // Apertura simbolo
       pila.push(c);
-    } else {
+    } else { // cierre simbolo
       if (pila.isEmpty()) {
         return false;
       } else {
