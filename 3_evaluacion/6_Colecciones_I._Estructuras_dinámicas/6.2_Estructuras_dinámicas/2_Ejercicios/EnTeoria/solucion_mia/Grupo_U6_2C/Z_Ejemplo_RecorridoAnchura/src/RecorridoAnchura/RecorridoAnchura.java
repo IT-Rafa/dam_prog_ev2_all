@@ -1,24 +1,9 @@
-package Ejercicio_U7_B4_10;
+package RecorridoAnchura;
 
 import java.util.Scanner;
 
-/**
- * Clase que contiene el main del Ejercicio_U7_B4_10
- */
-public class Ejercicio_U7_B4_10 {
+public class RecorridoAnchura {
 
-  /**
-   * Pasos a seguir
-   * <ul>
-   *    <li>Recreamos el ejemplo de Recorrido en anchura:
-   *  6_Colecciones_I_EstructurasDinámicas - 6.2_Estructuras
-   * dinamicas - 2_Ejercicios - EnTeoria - solucion_mia -
-   * Grupo U6_2C - Z_Ejemplo_RecorridoAnchura</li>
-   *
-   * <li>Adaptamos a objeto Queue</li>
-   * </ul>
-   *.
-   */
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     //10 66 7 -1 -1 -1 4 9 -1 -1 5 -1 88 -1 -1
@@ -28,7 +13,7 @@ public class Ejercicio_U7_B4_10 {
     arbol.recorridoPreorden();
     System.out.println("\nrecorrido en anchura");
     arbol.recorridoAnchura();
-
+    System.out.println();
     sc.close();
   }
 }

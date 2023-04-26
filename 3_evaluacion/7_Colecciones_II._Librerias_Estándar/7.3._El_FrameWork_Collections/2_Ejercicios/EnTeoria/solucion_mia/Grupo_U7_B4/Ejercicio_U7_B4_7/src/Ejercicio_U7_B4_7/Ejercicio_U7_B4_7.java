@@ -28,7 +28,7 @@ public class Ejercicio_U7_B4_7 {
         // Fin si línea vacia
         break;
       }
-      System.out.println((parentesisBalanceados(input) ? "Si" : "No"));
+      System.out.println((parentesisBalanceados(input) ? "YES" : "NO"));
     }
     sc.close();
   }
@@ -36,7 +36,7 @@ public class Ejercicio_U7_B4_7 {
   /**
    *
    */
-  public static boolean parentesisBalanceados(String expresion) {
+  private static boolean parentesisBalanceados(String expresion) {
     // Creamos array pila para almacenar los stacks de cada símbolo
     List<Stack<Character>> pilas = new ArrayList<Stack<Character>>();
     pilas.add(new Stack<>());
