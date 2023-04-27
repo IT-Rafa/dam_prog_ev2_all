@@ -1,5 +1,8 @@
 package Ejercicio_U7_B4_10;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -21,161 +24,121 @@ public class Ejercicio_U7_B4_10 {
    */
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-    //10 66 7 -1 -1 -1 4 9 -1 -1 5 -1 88 -1 -1
+    // 10 66 7 -1 -1 -1 4 9 -1 -1 5 -1 88 -1 -1
     String[] arbolString = sc.nextLine().split(" ");
     Arbol arbol = new Arbol(arbolString);
     System.out.println("recorrido preorden con TABS");
-    arbol.recorridoPreorden();
+    arbol.recorridoPreordenConTAB();
     System.out.println("\nrecorrido en anchura");
     arbol.recorridoAnchura();
 
     sc.close();
-  }
-}
-
-class Arbol {
-
-  public NodoArbol raiz;
-  String[] arbolString; //el arbol como una línea de
-  int posArray = 0;
-
-  public Arbol(String[] arbolString) {
-    raiz = null;
-    this.arbolString = arbolString;
-    this.crearArbol();
-  }
-
-  public void recorridoPreorden() {
-    ayudantePreorden(raiz, "");
-  }
-
-  private void ayudantePreorden(NodoArbol nodo, String tab) {
-    if (nodo == null) {
-      System.out.println(tab + "null");
-      return;
+    /* 
+    Arbol arbol = new Arbol();
+    int valor;
+    Random numeroAleatorio = new Random();
+    System.out.println("Insertando los siguientes valores: ");
+    // inserta 10 enteros aleatorios de 0 a 99 en arbol
+    // puede ser menos de 10 si se generan duplicados
+    for (int i = 1; i <= 10; i++) {
+      valor = numeroAleatorio.nextInt(100);
+      System.out.print(valor + " ");
+      arbol.insertar(valor);
     }
-    System.out.println(tab + nodo.datos);
-    tab = tab + "\t";
-    ayudantePreorden(nodo.nodoIzq, tab);
-    ayudantePreorden(nodo.nodoDer, tab);
+    System.out.println("\nRecorrido preorden con indentaciones.....");
+    arbol.recorridoPreordenConTAB();
+    System.out.println("\nrecorrido en anchura");
+    arbol.recorridoAnchura();
+  }
+  */
   }
 
-  private void crearArbol() {
-    //la raiz está en arbolString[0]
-    int dato = Integer.parseInt(arbolString[0]);
-    if (dato == -1) { //árbol vacío
+  class NodoArbol {
+
+    int datos;
+    NodoArbol nodoIzq;
+    NodoArbol nodoDer;
+
+    public NodoArbol(int datosNodo) {
+      datos = datosNodo;
+      nodoIzq = nodoDer = null; //recien creado un nodo, no tiene hijos
+    }
+  }
+
+  class Arbol {
+
+    private NodoArbol raiz;
+
+    public Arbol() {
       raiz = null;
-    } else {
-      raiz = new NodoArbol(dato);
-      ayudanteCrearArbol(raiz);
     }
-  }
 
-  private void ayudanteCrearArbol(NodoArbol padre) {
-    //subarbol izquierdo del padre
-    posArray++;
-    int dato = Integer.parseInt(arbolString[posArray]);
-    if (dato != -1) { //si es -1 entonces nodoIzq queda con null
-      padre.nodoIzq = new NodoArbol(dato);
-      ayudanteCrearArbol(padre.nodoIzq);
-    }
-    //subarbol derecho del padre
-    posArray++;
-    dato = Integer.parseInt(arbolString[posArray]);
-    if (dato != -1) {
-      padre.nodoDer = new NodoArbol(dato);
-      ayudanteCrearArbol(padre.nodoDer);
-    }
-  }
-
-  void recorridoAnchura() {
-    MiCola cola = new MiCola();
-    if (raiz == null) {
-      return;
-    }
-    cola.encolar(raiz);
-    while (!cola.esVacia()) {
-      NodoArbol n = cola.desencolar();
-      System.out.print(n.datos + " ");
-      if (n.nodoIzq != null) {
-        cola.encolar(n.nodoIzq);
-      }
-      if (n.nodoDer != null) {
-        cola.encolar(n.nodoDer);
+    public Arbol(String[] arbolString) {
+      for (int i = 1; i <= arbolString.length; i++) {
+        int valor = Integer.parseInt(arbolString[i]);
+        System.out.print(valor + " ");
+        this.insertar(valor);
       }
     }
-  }
-}
 
-class NodoArbol {
-
-  NodoArbol nodoIzq;
-  int datos;
-  NodoArbol nodoDer;
-
-  public NodoArbol(int datosNodo) {
-    datos = datosNodo;
-    nodoIzq = nodoDer = null; //recien creado un nodo, no tiene hijos
-  }
-}
-
-class MiCola {
-
-  private Nodo primero = null;
-  private Nodo ultimo = null;
-
-  public boolean esVacia() {
-    //vacia si primero==ultimo==null
-    return ultimo == null;
-  }
-
-  public void encolar(NodoArbol dato) {
-    if (esVacia()) {
-      ultimo = new Nodo(dato, null);
-      primero = ultimo;
-    } else {
-      Nodo temp = new Nodo(dato, ultimo);
-      ultimo = temp;
-    }
-  }
-
-  public NodoArbol desencolar() {
-    NodoArbol dato = primero.getDato();
-    //recorrer la cola para hacer el segundo el primero
-    if (primero == ultimo) {
-      //si sólo hay un elemento al borrar la cola queda vacía
-      ultimo = null;
-      primero = null;
-    } else {
-      Nodo temp = ultimo;
-      while (temp.getSiguiente() != primero) {
-        temp = temp.getSiguiente();
+    // si el valor ya existe en el arbol, no inserta nada
+    public void insertar(int valorInsertar) {
+      if (raiz == null) {
+        raiz = new NodoArbol(valorInsertar);
+      } else {
+        ayudanteInsertarNodo(raiz, valorInsertar);
       }
-      primero = temp;
     }
-    return dato;
-  }
-}
 
-class Nodo {
+    private void ayudanteInsertarNodo(NodoArbol a, int valorInsertar) {
+      // inserta en el subárbol izquierdo
+      if (valorInsertar < a.datos) {
+        // inserta nuevo NodoArbol
+        if (a.nodoIzq == null) {
+          a.nodoIzq = new NodoArbol(valorInsertar);
+        } else {
+          ayudanteInsertarNodo(a.nodoIzq, valorInsertar);
+        }
+      } else if (valorInsertar > a.datos) { // inserta en el subárbol derecho
+        if (a.nodoDer == null) {
+          a.nodoDer = new NodoArbol(valorInsertar);
+        } else {
+          ayudanteInsertarNodo(a.nodoDer, valorInsertar);
+        }
+      }
+    }
 
-  private Nodo sig;
-  private NodoArbol dato;
+    public void recorridoPreordenConTAB() {
+      ayudantePreordenConTAB(raiz, "");
+    }
 
-  public Nodo(NodoArbol dato, Nodo sig) {
-    this.dato = dato;
-    this.sig = sig;
-  }
+    private void ayudantePreordenConTAB(NodoArbol nodo, String tab) {
+      if (nodo == null) {
+        System.out.println(tab + "null");
+        return;
+      }
+      System.out.println(tab + nodo.datos);
+      tab = tab + "\t";
+      ayudantePreordenConTAB(nodo.nodoIzq, tab);
+      ayudantePreordenConTAB(nodo.nodoDer, tab);
+    }
 
-  public void setSiguiente(Nodo sig) {
-    this.sig = sig;
-  }
-
-  public Nodo getSiguiente() {
-    return sig;
-  }
-
-  public NodoArbol getDato() {
-    return dato;
+    void recorridoAnchura() {
+      Queue<NodoArbol> cola = new LinkedList<>();
+      if (raiz == null) {
+        return;
+      }
+      cola.add(raiz);
+      while (!cola.isEmpty()) {
+        NodoArbol n = cola.remove();
+        System.out.print(n.datos + " ");
+        if (n.nodoIzq != null) {
+          cola.add(n.nodoIzq);
+        }
+        if (n.nodoDer != null) {
+          cola.add(n.nodoDer);
+        }
+      }
+    }
   }
 }
