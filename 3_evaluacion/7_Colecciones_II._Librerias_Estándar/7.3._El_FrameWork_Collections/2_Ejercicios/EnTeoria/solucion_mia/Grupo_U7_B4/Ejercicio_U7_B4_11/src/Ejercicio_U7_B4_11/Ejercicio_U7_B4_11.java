@@ -9,82 +9,88 @@ import java.util.Scanner;
  */
 public class Ejercicio_U7_B4_11 {
 
-  /**
-   * Pasos a seguir:
-   * <ul>
-   *    <li>Esperamos que usuario introduzca dos números, en la misma línea
-   *        <ul>
-   *            <li>El primero es número de balones inicial. Mínimo 1</li>
-   *            <li>tras cuántos tiros  acaba un balón en el agua. Máximo 100</li>
-   *        </ul>
-   *        Ejemplo: 1 10 : Tienen un balon y se lanza fuera en el tiro 10. Lanzo 9 dentro.
-   *    </li>
-   *    <li>Si la entrada del usuario es 0 0 (o similar), el programa finaliza
-   *    <li>Creamos balones </li>
-   *    <li>Se tiran; cada x tiros desaparecen y el resto se guarda y se repite
-   *        hasta fin balones</li>
-   *    <li>Mostramos balón desaparecido</li>
-   * </ul>
-   *
-   */
-  public static void main(String[] args) {
-    Scanner sc = new Scanner(System.in);
-    while (sc.hasNextLine()) {
-      int cantBalones = sc.nextInt();
-      int limite = sc.nextInt();
-      if (cantBalones == 0 && limite == 0) {
-        break;
-      }
+    /**
+     * Enunciado:
+     * <ul>
+     * <li>Esperamos que usuario introduzca dos números, en la misma línea
+     * <ul>
+     * <li>El primero es número de balones inicial. Mínimo 1</li>
+     * <li>tras cuántos tiros acaba un balón en el agua. Máximo 100</li>
+     * </ul>
+     * </li>
+     * <li>Si la entrada del usuario es 0 0 (o similar), el programa finaliza
+     * </ul>
+     * Pasos a seguir:
+     * <ul>
+     * <li>Usuario introduce 2 números, en ejemplo: 2 2</li>
+     * <li>Datos correctos, seguimos, si no finalizamos</li>
+     * <li>Creamos cola y añadimos las pelotas (Integer con nº balón), creadas con
+     * array</li>
+     * <li>Anotamos tirosLanzados == 0 y balones perdidos == null</li>
+     * <ul>
+     * <li>Repetimos hasta que cola esté vacia</li>
+     * <ul>
+     * <li>Quitamos balón de la cola y lo lanzamos (subimos tirosLanzados a 1)</li>
+     * <li>Si se han tirado los mismos tiros que el límite, guardamos pelota
+     * eliminada y reiniciamos tiros; si no guardamos la pelota en la cola de
+     * nuevo</li>
+     * </ul>
+     * </li>
+     * </ul>
+     * <li>Mostramos la última pelota eliminada</li>
+     *
+     */
+    public static void main(String[] args) {
+        // Datos usuario
+        Scanner sc = new Scanner(System.in);
+        // Mientras haya linea entrada
+        while (sc.hasNextLine()) {
+            // Capturamos los balones totales
+            int cantBalones = sc.nextInt();
 
-      Queue<Pelota> balonesPendientes = new LinkedList<Pelota>();
+            // Capturamos máx cantidad tiros correctos
+            int limite = sc.nextInt();
 
-      Pelota[] listaBalones = new Pelota[cantBalones];
-      for (int i = 0; i < cantBalones; i++) {
-        listaBalones[i] = new Pelota(i + 1);
-        balonesPendientes.add(listaBalones[i]);
-      }
-      Pelota balonPerdido = null;
-      int tirosLanzados = 0;
-      while (!balonesPendientes.isEmpty()) {
-        Pelota p = balonesPendientes.remove();
-        limite--;
-        if (tirosLanzados == limite) {
-          tirosLanzados = 0;
-          balonPerdido = p;
-        } else {
-          balonesPendientes.add(p);
+            // Si ambos son 0, finalizamos programa
+            if (cantBalones == 0 && limite == 0) {
+                break;
+            }
+
+            // Preparamos cola con los balones a usar
+            Queue<Integer> balonesPendientes = new LinkedList<Integer>();
+
+            // Creamos los balones y los añadimos a la cola
+            Integer[] listaBalones = new Integer[cantBalones];
+            for (int i = 0; i < cantBalones; i++) {
+                listaBalones[i] = Integer.valueOf(i + 1);
+                balonesPendientes.add(listaBalones[i]);
+            }
+
+            // último balon que se pierde
+            Integer balonPerdido = null;
+            // Cantidad lanzamientos hechos
+            int tirosLanzados = 0;
+
+            // Repetimos hasta que no haya más balones
+            while (!balonesPendientes.isEmpty()) {
+                // Sacamos balon de la cola
+                Integer p = balonesPendientes.remove();
+                // Tiramos el balón
+                tirosLanzados++;
+                if (tirosLanzados == limite) {
+                    // Cuando tiremos hasta el límite
+                    // Reiniciamos tiros y guardamos el balón del agua
+                    tirosLanzados = 0;
+                    balonPerdido = p;
+                } else {
+                    // Si no se llega, guardamos balón en cola
+                    balonesPendientes.add(p);
+                }
+            }
+
+            // Mostramos último balón perdido
+            System.out.println(balonPerdido);
         }
-      }
-
-      System.out.println(
-        "última pelota " + balonPerdido.getNombre() + " perdida"
-      );
+        sc.close();
     }
-    sc.close();
-  }
-}
-
-/**
- * Clase balón que contiene el nº del balón, para identificarlo y
- * los tiros hechos con él
- */
-class Pelota {
-
-  /**
-   * Tipo Caracter que indentifica el pelota. Será un número
-   */
-  private int numPelota;
-
-  /**
-   * Constructor con el número usado para reconocer la pelota
-   *
-   * @param numPelota Número usado para reconocer la pelota
-   */
-  public Pelota(int numPelota) {
-    this.numPelota = numPelota;
-  }
-
-  public int getNombre() {
-    return numPelota;
-  }
 }
