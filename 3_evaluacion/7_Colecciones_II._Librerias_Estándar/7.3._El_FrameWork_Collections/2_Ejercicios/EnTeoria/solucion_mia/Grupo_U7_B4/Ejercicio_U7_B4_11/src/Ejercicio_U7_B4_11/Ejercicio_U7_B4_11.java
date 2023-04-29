@@ -1,5 +1,7 @@
 package Ejercicio_U7_B4_11;
 
+import java.util.Scanner;
+
 /**
  * Clase que contiene el main del Ejercicio_U7_B4_11
  */
@@ -21,6 +23,15 @@ public class Ejercicio_U7_B4_11 {
    *
    */
   public static void main(String[] args) {
-    System.out.println("Hello, World!");
+    Scanner sc = new Scanner(System.in);
+    while (sc.hasNextLine()) {
+      int cantBalones = sc.nextInt();
+      int limite = sc.nextInt();
+      if (cantBalones == 0 && limite == 0) {
+        break;
+      }
+      System.out.println(cantBalones);
+    }
+    sc.close();
   }
 }
