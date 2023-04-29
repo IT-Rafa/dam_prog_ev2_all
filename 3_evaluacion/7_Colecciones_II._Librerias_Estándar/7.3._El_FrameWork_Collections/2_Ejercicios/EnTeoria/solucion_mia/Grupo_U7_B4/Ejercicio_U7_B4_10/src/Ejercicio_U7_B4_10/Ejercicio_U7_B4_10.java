@@ -181,6 +181,7 @@ class Arbol {
     while (!cola.isEmpty()) {
       // Eliminamos el valor de la cola y lo guardamos
       NodoArbol n = cola.remove();
+
       // Imprimimos el valor del NodoArbol guardado
       System.out.print(n.datos + " ");
       if (n.nodoIzq != null) {

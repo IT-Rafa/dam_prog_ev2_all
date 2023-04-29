@@ -1,0 +1,21 @@
+2 2
+Devuelve 1; porque?
+
+no es 10 tiros en la misma pelota
+Es 10 tiros en cualquier pelota.
+
+Usar cola
+
+balon 1 preparado: 1
+balon 2 preparado: 1, 2
+
+Tira el primer balon cola: 1
+Balon se tiró 1 vez
+Se guarda en cola: 2, 1
+
+Tira el primer balon cola: 2
+Balon se tiró 1 vez
+Se guarda en cola: 1, 2
+
+Tira el primer balon cola: 1
+Balon se tiró 2 veces; Se cae al agua
