@@ -1,0 +1,27 @@
+Patrón Composite
+o Composite Pattern
+
+El patrón Composite muestra como crear un árbol n-ario, con dos tipos de objetos, nodos simples y nodos compuestos
+
+objetos simples y sus containers, en algunos lenguajes se llaman colecciones
+
+es uno de los 23 patrones de diseño “GoF”
+
+se conoce como jerarquía parte-todo (en inglés: part-whole hierarchy), en la que un objeto es siempre, o una parte de un todo, o un todo compuesto por varias partes.
+
+ los objetos simples y complejos pueden ser tratados de la misma manera.
+
+ objetos leaf (hoja, en inglés), y los objetos complejos
+
+ Los objetos leaf simples integran esta interfaz directamente, mientras que
+ los objetos complejos envían peticiones específicas del cliente automáticamente a la interfaz y a sus componentes subordinados
+
+ Esta basado en un árbol en el que todas las hojas se representan por una clase abstracta, o interfaz, con las propiedades que serán usadas por todos los componentes que la apliquen.
+ Esta interfaz es la llamada Component
+
+Estos objetos pueden ser de dos tipos:
+    Objeto leaf: También conocido como objeto simple, que no contienen otros objetos y devuelven directamente su valor
+
+    Objeto Composite: Que contiente otros objetos de tipo Componente, ya sean hojas o complejos, y que deben revisar esos componentes para devolver la información total
+    de sus elementos
+
