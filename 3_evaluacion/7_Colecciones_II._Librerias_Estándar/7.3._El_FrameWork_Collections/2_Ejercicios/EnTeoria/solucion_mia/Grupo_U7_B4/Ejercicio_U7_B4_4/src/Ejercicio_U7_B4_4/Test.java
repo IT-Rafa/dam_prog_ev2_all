@@ -1,7 +1,5 @@
 package Ejercicio_U7_B4_4;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
