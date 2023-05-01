@@ -26,7 +26,7 @@ public class Menu extends ComponenteMenu {
    */
   Menu(String name, Scanner sc) {
     super(name, sc);
-    MenuItem salir = new MenuItem("Salir", sc);
+    MenuItem salir = new MenuItem("Salir Programa", sc);
     this.contenido.add(salir);
   }
 
@@ -42,9 +42,18 @@ public class Menu extends ComponenteMenu {
     this.contenido.remove(contenido.get(contenido.size() - 1));
     nuevoArchivo.setPadre(this);
     this.contenido.add(nuevoArchivo);
-
+    MenuItem salir;
     // Añadimos opción Salir al final
-    MenuItem salir = new MenuItem("Salir", this.getScanner());
+    if (this.getPadre() == null) {
+      salir = new MenuItem("Salir Programa ", this.getScanner());
+    } else {
+      salir =
+        new MenuItem(
+          "Salir a " + this.getPadre().getNombre(),
+          this.getScanner()
+        );
+      salir.setPadre(this);
+    }
     this.contenido.add(salir);
   }
 
