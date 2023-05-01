@@ -23,7 +23,6 @@ public class MenuItem extends ComponenteMenu {
       System.out.println("ejecutando cosas de " + this.getNombre());
       System.out.print("pulsa RETURN para regresar a menú anterior");
       getScanner().nextLine();
-      getScanner().nextLine();
       this.getPadre().ejecutar();
     }
   }

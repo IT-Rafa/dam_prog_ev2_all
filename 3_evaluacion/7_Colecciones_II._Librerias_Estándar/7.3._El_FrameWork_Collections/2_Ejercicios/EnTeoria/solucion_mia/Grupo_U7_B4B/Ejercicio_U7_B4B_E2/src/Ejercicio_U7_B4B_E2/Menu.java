@@ -26,8 +26,6 @@ public class Menu extends ComponenteMenu {
    */
   Menu(String name, Scanner sc) {
     super(name, sc);
-    MenuItem salir = new MenuItem("Salir Programa", sc);
-    this.contenido.add(salir);
   }
 
   // METHODS
@@ -38,22 +36,33 @@ public class Menu extends ComponenteMenu {
    * @param nuevoArchivo objeto para añadir al menú de este nodo
    */
   public void addMenu(ComponenteMenu nuevoArchivo) {
-    // Eliminamos contenido final: Salir
-    this.contenido.remove(contenido.get(contenido.size() - 1));
+    System.out.println(
+      "Desde add en " + this.getNombre() + " para " + nuevoArchivo.getNombre()
+    );
+    System.out.println("padre = " + this.getPadre());
+
+    // MenuArchivo.addMenu(guardarArchivo);
+
+    // Eliminamos submenu salir del final
+    if (contenido.size() > 0) {
+      contenido.remove(contenido.size() - 1);
+    }
+    // Añadimos el nuevo submenu y le ponemos el padre
     nuevoArchivo.setPadre(this);
     this.contenido.add(nuevoArchivo);
-    MenuItem salir;
-    // Añadimos opción Salir al final
+
+    // Añadimos submenu salir al final
+    String padreSalir;
     if (this.getPadre() == null) {
-      salir = new MenuItem("Salir Programa ", this.getScanner());
+      padreSalir = " del programa";
     } else {
-      salir =
-        new MenuItem(
-          "Salir a " + this.getPadre().getNombre(),
-          this.getScanner()
-        );
-      salir.setPadre(this);
+      padreSalir = " al menú " + this.getPadre().getNombre();
     }
+    ComponenteMenu salir = new MenuItem(
+      "Salir" + padreSalir,
+      this.getScanner()
+    );
+    salir.setPadre(this);
     this.contenido.add(salir);
   }
 
@@ -72,9 +81,18 @@ public class Menu extends ComponenteMenu {
 
     // que el usuario escoja una opción
     int opElegida = askOp();
-    --opElegida;
+    opElegida--;
+
     // lanzar la ejecución de la opción escogida
-    contenido.get(opElegida).ejecutar();
+    if (opElegida == contenido.size() - 1) {
+      if (getPadre() == null) {
+        System.out.println("Chao");
+      } else {
+        getPadre().ejecutar();
+      }
+    } else {
+      contenido.get(opElegida).ejecutar();
+    }
   }
 
   /**
@@ -109,7 +127,7 @@ public class Menu extends ComponenteMenu {
     while (true) {
       System.out.print("Teclea número opcion: ");
       if (getScanner().hasNextLine()) {
-        op = getScanner().nextInt();
+        op = Integer.parseInt(getScanner().nextLine());
       }
 
       if (op >= 1 && op <= contenido.size()) {
