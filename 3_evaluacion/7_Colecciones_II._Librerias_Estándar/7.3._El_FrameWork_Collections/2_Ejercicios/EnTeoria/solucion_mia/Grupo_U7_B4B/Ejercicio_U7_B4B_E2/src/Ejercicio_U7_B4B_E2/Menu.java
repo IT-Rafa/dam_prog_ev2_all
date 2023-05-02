@@ -13,128 +13,144 @@ import java.util.Scanner;
  */
 public class Menu extends ComponenteMenu {
 
-    // ATTRIBUTES
-    /**
-     * Conjunto de objetos guardados
-     */
-    private List<ComponenteMenu> contenido = new ArrayList<>();
+  // ATTRIBUTES
+  /**
+   * Conjunto de objetos guardados
+   */
+  private List<ComponenteMenu> contenido = new ArrayList<>();
 
-    /**
-     * Constructor del Menu que pide el nombre y el Scanner que usará
-     * <p>
-     * Crea opción Salir al final del menú
-     *
-     * @param name Nombre del Nodo
-     * @param sc   Scanner que usará este Nodo
-     */
-    Menu(String name, Scanner sc) {
-        super(name, sc);
+  /**
+   * Constructor del Menu que pide el nombre y el Scanner que usará
+   * <p>
+   * Crea opción Salir al final del menú
+   *
+   * @param name Nombre del Nodo
+   * @param sc   Scanner que usará este Nodo
+   */
+  Menu(String name, Scanner sc) {
+    super(name, sc);
+  }
+
+  // METHODS
+  /**
+   * Permite añadir nuevos menús a la colección del nodo
+   * <p>
+   * Recrea opción Salir al final del menú
+   *
+   * @param nuevoArchivo objeto para añadir al menú de este nodo
+   */
+  public void addMenu(ComponenteMenu nuevoArchivo) {
+    this.contenido.add(nuevoArchivo);
+    nuevoArchivo.setPadre(this);
+  }
+
+  /**
+   * Ejecuta las ordenes del menú:
+   * <ul>
+   * <li>Imprimir las opciones</li>
+   * <li>Permitir al usuario elegir una opción</li>
+   * <li>Ejecutar la operación</li>
+   * </ul>
+   */
+  @Override
+  void ejecutar() {
+    // Imprimir las opciones
+    showSubmenu();
+
+    // que el usuario escoja una opción. restamos 1 porque para evitar 0 en menú
+    int opElegida = askOp();
+    opElegida--;
+
+    // lanzar la ejecución de la opción escogida
+    ejecutarPorOp(opElegida);
+  }
+
+  /**
+   * Según la opción elegida, decide que hacer
+   *
+   * @param opElegida Opción que marco el usuario
+   */
+  private void ejecutarPorOp(int opElegida) {
+    // Eliminamos opción salir
+    this.contenido.remove(contenido.size() - 1);
+
+    //
+    if (opElegida == contenido.size()) {
+      // Si es la última opción (Salir) ya eliminada
+      if (getPadre() == null) {
+        // Si no tiene padre, debe ser el menú principal y finaliza programa
+        System.out.println("Chao");
+      } else {
+        // Si tiene padre, volvemos a mostrarlo
+        getPadre().ejecutar();
+      }
+    } else {
+      // En cualquier otro caso, ejecutamos la opción elegida
+      contenido.get(opElegida).ejecutar();
     }
+  }
 
-    // METHODS
-    /**
-     * Permite añadir nuevos menús a la colección del nodo
-     * <p>
-     * Recrea opción Salir al final del menú
-     *
-     * @param nuevoArchivo objeto para añadir al menú de este nodo
-     */
-    public void addMenu(ComponenteMenu nuevoArchivo) {
-        // Eliminamos submenu salir del final
-        if (contenido.size() > 0) {
-            contenido.remove(contenido.size() - 1);
-        }
-        // Añadimos el nuevo submenu y le ponemos el padre
-        this.contenido.add(nuevoArchivo);
-        nuevoArchivo.setPadre(this);
-        // this no tiene padre, pero en anteriores addMenu, en linea anterior deberia
-
-        // Añadimos submenu salir al final
-        String padreSalir;
-        if (this.getPadre() == null) {
-            padreSalir = "Fin programa";
-        } else {
-            padreSalir = "Volver al menú " + this.getPadre().getNombre();
-        }
-        ComponenteMenu salir = new MenuItem(
-                padreSalir,
-                this.getScanner());
-        salir.setPadre(this);
-        this.contenido.add(salir);
+  /**
+   * Mostrar las opciones del menú
+   *
+   */
+  private void showSubmenu() {
+    // Añadimos opción salir al menú
+    String nombreSalir;
+    if (this.getPadre() == null) {
+      nombreSalir = "salir sin padre";
+    } else {
+      nombreSalir = "salir con padre";
     }
+    ComponenteMenu salir = new MenuItem(nombreSalir, this.getScanner());
+    this.contenido.add(salir);
 
-    /**
-     * Ejecuta las ordenes del menú:
-     * <ul>
-     * <li>Imprimir las opciones</li>
-     * <li>Permitir al usuario elegir una opción</li>
-     * <li>Ejecutar la operación</li>
-     * </ul>
-     */
-    @Override
-    void ejecutar() {
-        // Imprimir las opciones
+    // Mostramos título menú
+    String title = "\nMenú " + this.getNombre();
+    System.out.println(title);
+
+    // Mostramos subrayado según titulo y Menu
+    for (int i = 0; i < title.length(); i++) {
+      System.out.print("*");
+    }
+    System.out.println();
+
+    // Mostramos elementos del menu con número de opción
+    int menuIndex = 1;
+    for (ComponenteMenu submenu : contenido) {
+      System.out.println(menuIndex + ": " + submenu.getNombre());
+      menuIndex++;
+    }
+  }
+
+  /**
+   * Pide la opción, comrueba que sea correcta y la devuelve
+   *
+   * @return Devuelve la opción elegida del usuario
+   */
+  private int askOp() {
+    int op = 0;
+    // Repetimos hasta que sea correcta
+    while (true) {
+      // Pedimos la opción
+      System.out.print("Teclea número opcion: ");
+      // Usamos NextLine para que no queden restos en Scanner
+      if (getScanner().hasNextLine()) {
+        // Convertimos a integer
+        op = Integer.parseInt(getScanner().nextLine());
+      }
+
+      // Comprobamos que esté dentro del rango de opciones
+      if (op >= 1 && op <= contenido.size()) {
+        // es válida y finalizamos bucle
+        break;
+      } else {
+        // No válida; avisamos, mostramos menú y repetimos bucle para pedir
+        System.out.println("Opción no válida. Repetimos");
         showSubmenu();
-
-        // que el usuario escoja una opción
-        int opElegida = askOp();
-        opElegida--;
-
-        // lanzar la ejecución de la opción escogida
-        if (opElegida == contenido.size() - 1) {
-            if (getPadre() == null) {
-                System.out.println("Chao");
-            } else {
-                getPadre().ejecutar();
-            }
-        } else {
-            contenido.get(opElegida).ejecutar();
-        }
+      }
     }
-
-    /**
-     * Mostrar las opciones del menú
-     *
-     */
-    private void showSubmenu() {
-        // Mostramos título menú
-        String title = "\nMenú " + this.getNombre();
-        System.out.println(title);
-
-        // Mostramos subrayado según titulo y Menu
-        for (int i = 0; i < title.length(); i++) {
-            System.out.print("*");
-        }
-        System.out.println();
-
-        // Mostramos elementos del menu
-        int menuIndex = 1;
-        for (ComponenteMenu submenu : contenido) {
-            System.out.print(menuIndex + ": ");
-            menuIndex++;
-            System.out.println(submenu.getNombre());
-        }
-    }
-
-    /**
-     * Pide la opción, comrueba que sea correcta y la devuelve
-     */
-    private int askOp() {
-        int op = 0;
-        while (true) {
-            System.out.print("Teclea número opcion: ");
-            if (getScanner().hasNextLine()) {
-                op = Integer.parseInt(getScanner().nextLine());
-            }
-
-            if (op >= 1 && op <= contenido.size()) {
-                break;
-            } else {
-                System.out.println("Opción no válida. Repetimos");
-                showSubmenu();
-            }
-        }
-
-        return op;
-    }
+    // Devolvemos la opción
+    return op;
+  }
 }
