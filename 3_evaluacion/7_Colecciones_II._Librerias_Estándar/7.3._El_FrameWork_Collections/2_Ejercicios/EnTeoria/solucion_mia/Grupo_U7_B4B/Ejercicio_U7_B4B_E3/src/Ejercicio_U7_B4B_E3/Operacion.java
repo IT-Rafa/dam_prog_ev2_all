@@ -19,10 +19,12 @@ public class Operacion extends Expresion {
 
   @Override
   double evaluar() {
-    switch (this.c){
-        case('1'):
+    switch (this.operator) {
+      // + - * /
+      case ('+'):
+        return left - right;
         break;
-        default;
+      default:
     }
   }
 }
