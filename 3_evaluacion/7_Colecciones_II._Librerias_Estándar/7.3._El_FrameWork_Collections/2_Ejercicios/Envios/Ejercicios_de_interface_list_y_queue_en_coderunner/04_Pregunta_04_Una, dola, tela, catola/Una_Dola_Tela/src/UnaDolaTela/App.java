@@ -1,7 +1,8 @@
 package UnaDolaTela;
 
 /**
- * Clase que contiene el main del Ejercicio_U7_B4B_E2
+ * Clase que contiene el main del Ejercicios de interface list
+ * y queue en coderunner: Pregunta 4
  */
 public class App {
 
