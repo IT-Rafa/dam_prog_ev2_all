@@ -11,79 +11,62 @@ import java.util.List;
  */
 class NodoAlmacen extends AbstractNodo {
 
-  // ATTRIBUTES
-  /**
-   * Conjunto de objetos guardados
-   */
-  private List<AbstractNodo> partes = new ArrayList<>();
+    // ATTRIBUTES
+    /**
+     * Conjunto de objetos guardados
+     */
+    private List<AbstractNodo> partes = new ArrayList<>();
 
-  // CONSTRUCTOR
-  /**
-   * Constructor con nombre
-   *
-   * @param nombre Nombre del objeto
-   */
-  public NodoAlmacen(String nombre) {
-    super(nombre);
-  }
-
-  /**
-   * Devuelve el precio del objeto.
-   *
-   * @return Precio del objeto en double
-   */
-  @Override
-  public double getPrecio() {
-    // Creamos variable a devolver
-    double precio = 0;
-
-    // Si tiene objetos dentro, los revisa para coger sus precios
-    for (AbstractNodo parte : partes) {
-      precio += parte.getPrecio();
+    // CONSTRUCTOR
+    /**
+     * Constructor con nombre
+     *
+     * @param nombre Nombre del objeto
+     */
+    public NodoAlmacen(String nombre) {
+        super(nombre);
     }
-    return precio;
-  }
 
-  /**
-   * Añade nuevo a la lista de objetos guardados (partes)
-   *
-   * @param parte Objeto ParteAbstracta a añadir
-   */
-  public void addParte(AbstractNodo parte) {
-    this.partes.add(parte);
-  }
+    /**
+     * Devuelve el precio del objeto.
+     *
+     * @return Precio del objeto en double
+     */
+    @Override
+    public double getPrecio() {
+        // Creamos variable a devolver
+        double precio = 0;
 
-  /**
-   *
-   */
-  @Override
-  public String getPrecioDesglosado() {
-    // Usamos param tab para añadir separación entre nodos
-    return getPrecioDesglosado("");
-  }
-
-  /**
-   * Devuelve String con el nombre y precio de este objeto y los internos,
-   * separando los nodos con tab
-   *
-   * @param tab tabuladores acumulados para separar nodos
-   * @return String con el nombre y precio de este objeto y los internos, con tabs
-   */
-  private String getPrecioDesglosado(String tab) {
-    String salida = tab + this.getNombre() + " " + this.getPrecio() + "\n";
-    for (AbstractNodo parte : this.partes) {
-      if (parte instanceof NodoAlmacen) {
-        // Es NodoAlmacen (Composite)
-        NodoAlmacen n = (NodoAlmacen) parte;
-        // Agregamos la descripción interna
-        salida += n.getPrecioDesglosado(tab + "\t");
-      } else {
-        // En este caso es NodoHoja
-        // Si el objeto es simple, creamos el tab directamente
-        // La causa es evitar que cliente tenga que incluir el tab
-        salida += tab + "\t" + parte.getPrecioDesglosado();
-      }
+        // Si tiene objetos dentro, los revisa para coger sus precios
+        for (AbstractNodo parte : partes) {
+            precio += parte.getPrecio();
+        }
+        return precio;
     }
-    return salida;
-  }
+
+    /**
+     * Añade nuevo a la lista de objetos guardados (partes)
+     *
+     * @param parte Objeto ParteAbstracta a añadir
+     */
+    public void addParte(AbstractNodo parte) {
+        this.partes.add(parte);
+    }
+
+    /**
+     * Imprimimos el árbol desde la raíz, usando pre-orden con tabs para
+     * mostrar los sub-nodos
+     */
+    @Override
+    public String getPrecioDesglosado() {
+        // Creamos variable a devolver
+        double precio = 0;
+
+        // Si tiene objetos dentro, los revisa para coger sus precios
+        for (AbstractNodo parte : partes) {
+            precio += parte.getPrecio();
+        }
+        return this.getNombre() + ": " + this.getPrecio();
+    }
+
 }
