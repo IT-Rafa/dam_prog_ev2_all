@@ -1,11 +1,19 @@
-package Ejercicio_U7_B4B_E3;
+abstract class Expresion {
+
+  /**
+   * Muestra el valor de la expresión
+   *
+   * @exception ExpresionException Muestra el fallo de la Exception
+   */
+  abstract double evaluar() throws ExpresionException;
+}
 
 /**
  * Representa a las expresiones construidas en el árbol que
  * incluyen Expresiones internas y la operación.<p>
  * Clase compuesta de Patrón Composite
  */
-public class Operacion extends Expresion {
+class Operacion extends Expresion {
 
   /**
    * Enlace a Expresión izquierda del objeto
@@ -66,5 +74,42 @@ public class Operacion extends Expresion {
         throw new ExpresionException("Operador desconocido: " + this.operator);
     }
     return result;
+  }
+}
+
+/**
+ * Representa a las expresiones construidas en el árbol que
+ * solo tienen un valor entero.<p>
+ * Clase Leaf de Patrón Composite
+ */
+class Operando extends Expresion {
+
+  /**
+   * Valor que contiene el objeto
+   */
+  private int valor;
+
+  /**
+   * Constructor que pide el valor
+   *
+   * @param i valor que contendrá el objeto
+   */
+  public Operando(int i) {
+    this.valor = i;
+  }
+
+  /**
+   * Devuelve el valor en double
+   */
+  @Override
+  double evaluar() {
+    return (double) valor;
+  }
+}
+
+class ExpresionException extends Exception {
+
+  public ExpresionException(String msg) {
+    super(msg);
   }
 }

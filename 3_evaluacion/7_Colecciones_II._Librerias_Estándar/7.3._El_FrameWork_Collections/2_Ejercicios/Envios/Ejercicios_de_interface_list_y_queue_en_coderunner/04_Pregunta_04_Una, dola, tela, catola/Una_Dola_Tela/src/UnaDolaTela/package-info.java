@@ -53,7 +53,8 @@ uno, dos, tres…"
  * Por ejemplo:
  * <h4>Ejemplo Entrada</h4>
  * <pre>
- Anastasio Ignacio Felipe Borja Daniel Cesar F 2 3
+4
+Anastasio Ignacio Felipe Borja Daniel Cesar F 2 3
 Javier Ramiro Luis Rosa Carmen Paola Josefa F 0 3
 Petra Santiago Pepi F 2 20
 Merche Juanjo Miriam Pilar Marina Ovidio Rafael Eustaquio F 4 7
