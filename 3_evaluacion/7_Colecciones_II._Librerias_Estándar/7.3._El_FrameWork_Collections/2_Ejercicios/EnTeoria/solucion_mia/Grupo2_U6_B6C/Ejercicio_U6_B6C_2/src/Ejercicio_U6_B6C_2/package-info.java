@@ -1,52 +1,37 @@
 /**
  * Lista clases para ejercicio:
  * <p>
- * <h3>Ejercicio_U6_B6C_1:</h3>
+ * <h3>Ejercicio U6_B6C_2:</h3>
  * <p>
- * <h4>Combinaciones sin recursividad</h4>
- * Normalmente, cuando el método recursivo en su interior tiene sólo un caso
- * recursivo
- * suele haber también una solución “fácil” con bucles, piensa por ejemplo en el
- * ejemplo
- * de factorial. En cambio, cuando existen varias llamadas recursivas, como por
- * ejemplo
- * en los típicos métodos de los árboles, la versión no recursiva es más
- * difícil.
- * <p>
- * En este caso, podemos entonces aspirar a una solución con bucle. Se pide que
- * escribas
- * el método combinar(), qué es un método auxiliar que ayuda a nuestro método
- * combinaciones() a resolver el problema. El método combinaciones() podría ser
- * cómo
- * sigue y queda como ejercicio escribir el método combinar()
+ * <h4>De vuelta a la recursividad, combinaciones sin repetición</h4>
+ * Se trata ahora modificar el código recursivo anterior de tal forma que para
+ * el main
+ * anterior la salida sea la siguiente:
  * 
  * <pre>
- * import java.util.ArrayList;
- * import java.util.Arrays;
- * import java.util.List;
- * 
- * public class App {
- *     // falta método combinar, que es en este caso un método NO RECURSIVO
- *     static List<String> combinaciones(int longitud, List<String> numeros) {
- *         // en principio result almacena la combinación de longitud 1
- *         // es decir, es la copia de la la lista numeros
- *         // List<String> result= numeros; MAL, así modificaré el original
- *         List<String> result = new ArrayList<>(numeros);
- * 
- *         for (int i = 0; i < longitud - 1; i++) {// longitud-1 porque ya inicializamos con 1 combinacion
- *             result = combinar(result, numeros);
- *         }
- *         return result;
- *     }
- * 
- *     public static void main(String[] args) {
- *         List<String> numeros = Arrays.asList("0", "1", "2");
- * 
- *         // suponemos longitud >0
- *         for (String combinacion : combinaciones(3, numeros))
- *             System.out.println(combinacion);
- *     }
- * }
+combinaciones sin repetición de 0, 1 y 2 con longitud 1
+0
+1
+2
+combinaciones sin repetición de 0, 1 y 2 con longitud 2
+01
+02
+10
+12
+20
+21
+combinaciones sin repetición de 0, 1 y 2 con longitud 3
+012
+021
+102
+120
+201
+210
+combinaciones sin repetición de 8 y 5 con longitud 4
  * </pre>
+ * 
+ * Observa el último resultado (para 8 y 5), no imprime nada
+ * ya que no es posible, con sólo dos números, y sin repetirlos,
+ * listas de longitud 4
  */
 package Ejercicio_U6_B6C_2;
