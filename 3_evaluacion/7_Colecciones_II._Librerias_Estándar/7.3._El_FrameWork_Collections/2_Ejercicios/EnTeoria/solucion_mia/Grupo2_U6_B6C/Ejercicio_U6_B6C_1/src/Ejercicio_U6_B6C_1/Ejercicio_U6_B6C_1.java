@@ -38,13 +38,12 @@ public class Ejercicio_U6_B6C_1 {
     List<String> result,
     List<String> numeros
   ) {
-    List<String> sublista = new ArrayList<>(numeros);
-
-    for (String numero : numeros) {
-      for (String numeroCombinado : sublista) {
+    for (int i = 0; i < numeros.size(); i++) {
+      for (String numero : numeros) {
         result.add(numero + numeroCombinado);
       }
     }
+
     return result;
   }
 }
