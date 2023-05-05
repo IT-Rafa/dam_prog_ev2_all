@@ -32,7 +32,7 @@ public class Ejercicio_U6_B6C_1 {
     List<String> result,
     List<String> numeros
   ) {
-    for (String n1 : numeros) {
+    for (for int i= 0; i < numeros.lo; i++) {
       for (String n2 : numeros) {
         result.add(n1 + n2);
       }
