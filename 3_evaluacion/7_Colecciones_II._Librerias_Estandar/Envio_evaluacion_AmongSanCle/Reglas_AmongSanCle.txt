@@ -1,0 +1,125 @@
+ 
+Regla general:
+    Implementar simulación del juego Among Us
+
+Reglas juego:
+    - Personajes o jugadores:
+        - Usuario:
+            Identificar a los impostores antes de que eliminen todos los estudiantes
+        - Estudiantes:
+            Hacer tareas
+        - Impostores:
+            Evitar que tareas se cumplan
+            Eliminar estudiantes
+
+    - Tareas
+        -
+        - Ejemplos Tareas:
+            - Cambiar cable ethernet sala profesorado
+            - Coger tizas en la conserjeria para reponerlos en las aulas
+            - Reparar o proyector de la bodega
+            - Otras
+
+    - Orden: Por Rondas
+        - En cada ronda, los jugadores (estudiantes e impostores) realizarán las tareas.
+        - Las tareas estarán en una cola
+        - En cada ronda, cada estudiante intentará la de la primera posición (cola FIFO)
+        - al final de cada ronda, el programa nos dice quien hizo una tarefa y en que localización y las eliminaciones de impostores a los otros estudiantes.
+        - Tras la información puedes acusar/expulsar a alguien de impostor, o pasar, para que
+            continuen las rondas
+
+    - Estados Juego
+        - Estudiantes terminan tareas: - Victoria
+        - Jugadores impostores expulsados - Victoria
+        - Impostores >= estudiantes
+
+
+    Instrucciones programa
+    - Clonado de gitlab y modificar
+        https://gitlab.iessanclemente.net/damlozano/amongsancle_enunciado
+    - En VSC
+    - Uso paquetes irrelevante
+    - Evitar static sin sentido. Si tiene sentido, como en patrón Singleton, está bien, pero
+        un main que llame a static no.
+    - Clases elementales como Xogador, Tarefa, sean independientes da Entrada/Salida.
+        Aunque para el resto se pode mezclar lógica con E/S
+    - dos Jugadores - Estudiantes e impostores - con atributos: alias y cola tareas
+    - Atributos impostores: lista de estudianes eliminados.
+    - Alias de jugadores no se pueden repetir.
+        Formato de alias = @xxx (Siendo x una letra o dígito)
+    - Al crear al jugador se le asignan 5 o mas tareas escogidas aleatoriamente de la lista
+        de tareas.
+    - La tareas irán en una lista general.
+        - Una tarea tiene 2 atributos. Nombre y habitación.
+            - Ejemplo "Arreglar el proyector" en habitación "Aula da bodega".
+        - Procurar que haya mas de una tarea en la misma habitación
+    - Antes de iniciar una partida (Elegir "Xogar" en menú) el programa decide aleatoriamente
+        que jugadores son impostores en la partida.
+            - Impostores >= 1
+            - Estudiantes > impostores
+            - Jugadores = Impostores + Estudiantes
+
+    - Listados ordenados por varios compos. Ejemplo listado tareas se ordenan por habitación
+        y por descripción (nombre)
+    - En cada ronda, cada impostor observará al resto de jugadores y los intentará asesinar
+        El intento se hará de forma aleatoria.
+    - Puede haber varios asesinatos en la misma ronda
+    - Los impostores no pueden matarse entre ellos
+    - El usuario tiene un tiempo de respuesta para leer listado de la ronda y elegir a
+        quien se quiere expulsar.
+        - Puede indicar un nombre para expulsar a alguien
+            - Si el usuario supera el límite, se ignora lo que indique.
+            - Si no supera el límite, el jugador queda eliminado (muerto).
+        - Se puede disminuir el tiempo del jugador por pasar el límite.
+    - Al finalizar la partida, se puede volver a jugar sin salir de la APP.
+        Los jugadores reinician (vivos y no-expulsados) y se vuelven a
+        establecer los impostores
+    - Antes de jugar también se pueden reconfigurar las opciones.
+        - Cambiando jugadores que participan
+        - tareas
+        - tiempo responsta del usuario
+        - etc.
+    PATRONES
+        - Patrón singleton para un solo scanner asociado al mismo System.in
+            Evitar varible compartida
+        - Para el menú, usar Patrón composite con los siguientes valores
+            0. Configuración
+
+                0. Tarefas
+                    0. Engadir tarefa
+                    1. Borrar tarefa
+                    2. Ver tarefas
+                    3. Salir
+
+                1. Xogadores
+                    0. Engadir xogador
+                    1. Borrar xogador
+                    2. Ver xogadores
+                    3. Salir
+                2. Configurar tempo máximo de responsta
+
+                3 Salir
+
+            1. Xogar
+
+            2. Salir.
+
+
+        - Tarea en java
+
+        - Crear un video de ejecución entre 5 y 10 munutos. Donde se vea
+            - Estructura del menu, viendo todo, pero sin ejecutar nada
+            - 2 Dos partidas consecutivas ( SIN SALIR DE APP), rápidas.
+
+        - Para mas explicaciones, crear Markdown
+            - Impresións ao escribir a app
+                - sesación de mejorar código por no usar un patrón o outra cousa
+                - Indica si precisaste empregar iteradores, donde y porque
+                - Indica si precisaste sobreescribir hashcode/equals, donde e porque
+                - Indica si usaste comparable/comparador, y porque
+                - Lista breve de mejoras creadas por ti no indicadas no enunciado
+                - Outras observaciones
+
+       -  na tarefa de moodle a url do teu proxecto gitla.
+                - incluir como membro a lozano@iessanclemente.net
+

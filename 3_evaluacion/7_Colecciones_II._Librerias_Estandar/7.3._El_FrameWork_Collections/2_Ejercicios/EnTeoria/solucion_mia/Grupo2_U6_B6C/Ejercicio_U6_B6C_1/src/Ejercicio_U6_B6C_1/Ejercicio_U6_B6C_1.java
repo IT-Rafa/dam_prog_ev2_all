@@ -22,7 +22,8 @@ public class Ejercicio_U6_B6C_1 {
 
   static List<String> combinaciones(int longitud, List<String> numeros) {
     List<String> result = new ArrayList<>(numeros);
-    for (int i = 0; i < longitud - 1; i++) { // longitud-1 porque ya inicializamos con 1 combinacion
+    // longitud-1 porque ya inicializamos con 1 combinacion
+    for (int i = 0; i < longitud - 1; i++) {
       result = combinar(result, numeros);
     }
     return result;
@@ -32,10 +33,8 @@ public class Ejercicio_U6_B6C_1 {
     List<String> result,
     List<String> numeros
   ) {
-    for (for int i= 0; i < numeros.lo; i++) {
-      for (String n2 : numeros) {
-        result.add(n1 + n2);
-      }
+    for (String n1 : numeros) {
+      result.add(n1);
     }
 
     return result;
