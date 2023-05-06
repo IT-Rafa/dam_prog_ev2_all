@@ -1,4 +1,7 @@
- 
+Creado en
+https://gitlab.iessanclemente.net/a20rafaelmc/amongsancle
+
+
 Regla general:
     Implementar simulación del juego Among Us
 
