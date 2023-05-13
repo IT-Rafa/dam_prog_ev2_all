@@ -1,0 +1,106 @@
+ 
+Iterable<E> :   interface que hace referencia a una colección de elementos
+    |               que se puede recorrer.
+    |               Necesitamos una clase que implemente iterator, con:
+    |                   - boolean hasNext()
+    |                   - <E> next()
+    |
+Collections<E>  interface que representa una collection como un conjunto
+    |               de elementos SIN ORDEN en concreto.
+    |               Permite añadir (add) y eliminar (remove, clear, remove)
+    |               y transformar en otros objetos (iterador, sequential Stream,
+    |               array, etc)
+    |
+    |
+    |_List<E>   interface que representa un conjunto de elementos CON ORDEN
+    |     |      (secuencia) y VALORES DUPLICADOS.
+    |     |         Métodos similares a collection, pero con acceso directo por ||índice
+    |     |         El usuario puede acceder a los elementos de la List con indices.
+    |     |         Usando get(index) y otros métodos que devuelven posiciones
+    |     |            de índices concretos (lastIndexOf (Object o)),
+    |     |
+    |     |_ArrayList       Clase que representa un array de tamaño variable.
+    |     |                 Contiene los métodos de null y puede TENER NULL en cada objeto guardado
+    |     |                 Permite VALORES DUPLICADOS .add(<E>) y ACCESO POR indices .get(1)
+    |     |                 El ArrayList es UNSYNCRONISED
+    |     |                 ArrayList<Integer> intArr = new ArrayList<Integer>();
+    |     |
+    |     |_Vector         Clase que representa un array de tamaño variable.
+    |     |    |             Contiene los métodos de null y puede TENER NULL en cada objeto guardado
+    |     |    |             Permite VALORES DUPLICADOS .add(<E>) y ACCESO POR indices .get(1)
+    |     |    |                El ArrayList es SYNCRONISED
+    |     |    |                Vector<Integer> intVector = new Vector<Integer>();
+    |     |    |
+    |     |    |_Stack          Clase que hereda de class Vector. Usa el sistema último Entrar, Primero Salir
+    |     |                       LIFO.
+    |     |                     Usa los métodos (añadir)push(<E>), (eliminar elemento mas alto)pop(),
+    |     |                     (Devuelve elemento mas alto) peek, empty,
+    |     |                     (busca)index search, Stack<?> stackName = new Stack<?>();
+    |     |                    Stack<String> strStack = new Stack<String>();
+    |     |
+    |     |
+    |     |_LinkedList      Clase que implementa los interfaces List y Deque.
+    |     |                 Se crea usando Nodos de un objeto al siguiente objeto, pudiendo estar
+    |     |                 cada elemento en distintas zonas de la memoria.
+    |     |                 cLinkedList<?> linkedListName = new LinkedList<?>();
+    |
+    |
+    |_Queue     Interface que representa un grupo de elementos guardados en Cola, con FIFO
+    |     |      primero entrar, primero salir.
+    |     |
+    |     |_PriorityQueue       Clase que implementa la interface Queue. Define el orden
+    |     |                     en orden natural o eligiendo un orden especifico con un
+    |     |                     Comparador, indicado en su Constructor
+    |     |                     PriorityQueue<?> priorityQueueName = new PriorityQueue<?>();
+    |     |
+    |     |
+    |     |_Deque               Interface para grupo donde los datos pueden entrar o salir
+    |         |                 por ambos extremos de la cola LIFO o FIFO
+    |         |
+    |         |_ArrayDeque              Clase
+    |                                   ArrayDeque<?> arrayDequeName = new ArrayDeque<?>();
+    |
+    |
+    |
+    |_Set<E>    interface que representa un conjunto de elementos con CON ORDEN
+        |        (secuencia) y VALORES SIN DUPLICAR, incluyendo 1 NULO.
+        |
+        |_HashSet          Clase que permite almacenar grupos SIN DUPLICADOS.
+        |                  El orden de los elementos no coincide con el orden de inserción.
+        |                  HashSet<String> strHashSet = new HashSet<String>();
+        |
+        |
+        |_LinkedHashSet    Clase que permite almacenar grupos SIN DUPLICADOS.
+        |                  Los elementos están enlazados con doble enlace.
+        |                  El orden es mejor que en _HashSet.
+        |                  LinkedHashSet<String> strLinkedHashSet = new LinkedHashSet<String>(strHashSet);
+        |
+        |
+        |_SortedSet        Interface que impone un orden completo de los elementos.
+              |            El orden será natural y ascendente, salvo que se use un Comparador
+             |
+              |
+              |_ NavigableSet      Interface.
+                       |           Incluye métodos de navegación que se acerca a los
+                       |
+                       |_TreeSet           Usa una estructura de árbol para ordenar los elementos
+                                          En principio usa el orden natural, salvo que se incluya
+                                            un comparador.
+                                            Es unsynchronized
+                                            TreeSet<?> treeSetName = new TreeSet<?>();
+
+
+
+Map     Es una iterface que conecta (mapea) una clave a cada valor.
+ |       Un mapa NO PERMITE ELEMENTOS DUPLICADOS.
+ |        Existen tres formas de ver un mapa:
+ |            El grupo de claves
+ |            El grupo de claves con valor
+ |            una colección de valores
+ |        El mapa debe definir definiciones para esos métodos
+ |
+ |_HashMap      Clase
+                HashMap<? , ?> hashMapName = new HashMap<? , ?>();
+
+
+                 Hashtable
