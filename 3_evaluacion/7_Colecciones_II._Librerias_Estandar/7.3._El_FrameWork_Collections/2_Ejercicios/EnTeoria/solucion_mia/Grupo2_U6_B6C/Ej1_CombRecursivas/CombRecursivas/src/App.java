@@ -8,17 +8,15 @@ import java.util.List;
 public class App {
 
   /**
-   * Según lista de números, creamos una lista de Strings, de una longitud
-   * dada, usando esos números, para crear todas las posibles combinaciones.
+   * Según lista de números, creamos una lista de Strings,
+   * de una longitud dada, usando esos números, para crear
+   * todas las posibles combinaciones. <p>
    *
-   *
-   *
-   * Combinar m numeros en combinaciones de de longitud n consiste en:
+   * Combinar m numeros en combinaciones de de longitud n
+   * consiste en:<p>
    *
    * concatenar cada uno de los m números con el resultado de combinar
    * los m números con longitud -1
-   *
-   *
    *
    */
   public static void main(String[] args) {
