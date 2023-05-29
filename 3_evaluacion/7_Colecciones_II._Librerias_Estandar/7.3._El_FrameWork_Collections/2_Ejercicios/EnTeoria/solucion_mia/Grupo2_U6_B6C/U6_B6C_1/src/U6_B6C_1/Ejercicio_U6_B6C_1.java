@@ -10,38 +10,52 @@ import java.util.List;
 public class Ejercicio_U6_B6C_1 {
 
   /**
-   * C
+   * Crea lista de Strings de números y muestra las combinaciones de
+   * esos números
    */
   public static void main(String[] args) {
     List<String> numeros = Arrays.asList("0", "1", "2");
+    int longitud = 3;
+
     // suponemos longitud >0
-    for (String combinacion : combinaciones(3, numeros)) {
+    for (String combinacion : combinaciones(longitud, numeros)) {
       System.out.println(combinacion);
     }
   }
 
   /**
+   * Calcula las combinaciones de la longitud indicada basadas en
+   * la lista de números
    *
+   * @param longitud Longitud de la lista
+   * @param numeros Lista de números que forman parte de la combinación
+   *
+   * @return Lista de Strings con todas las combinaciones que se pueden hacer
    */
   static List<String> combinaciones(int longitud, List<String> numeros) {
-    // en principio result almacena la combinación de longitud 1
-    // es decir, es la copia de la la lista numeros
-    // List<String> result= numeros; MAL, así modificaré el original
+    // Copiamos el arrray con los números.
     List<String> result = new ArrayList<>(numeros);
-    // longitud-1 porque ya inicializamos con 1 combinacion
+
+    // el array result ya tiene la lista de números, con lo que repetimos
+    // uno menos
     for (int i = 0; i < longitud - 1; i++) {
       result = combinar(result, numeros);
     }
     return result;
   }
 
-  static List<String> combinar(List<String> sublista, List<String> numeros) {
-    List<String> result = new ArrayList<>(numeros);
+  /**
+   * Añade al array result la combinación de los números
+   */
+  private static List<String> combinar(
+    List<String> result,
+    List<String> numeros
+  ) {
+    // Recorremos los números
     for (String numero : numeros) {
-      for (String numeroCombinado : sublista) {
-        if (numeroCombinado.length() == 1) {
-          result.add(numero + numeroCombinado);
-        }
+      // añadimos a la lista cada opción de la sublista con cada número
+      for (String numeroCombinado : result) {
+        numeroCombinado = numero + numeroCombinado;
       }
     }
     return result;
