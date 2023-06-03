@@ -3,6 +3,13 @@ package U7_B8A_E1;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Ejercicio U7_B8A_E1:<p>
+ * Hicimos el siguiente ejercicio en el boletín de mapas<p>
+ * Tenemos la siguiente tabla de latitudes/longitudes de ciudades nacionales
+ * e internacionales.
+ *
+ */
 public class App {
 
   public static void main(String[] args) {

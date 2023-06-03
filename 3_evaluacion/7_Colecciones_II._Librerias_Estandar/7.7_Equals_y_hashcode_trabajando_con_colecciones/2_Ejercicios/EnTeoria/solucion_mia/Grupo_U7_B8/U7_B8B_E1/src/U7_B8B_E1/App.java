@@ -100,7 +100,7 @@ class Cliente implements Observador {
     System.out.println(
       "Soy el cliente " +
       idCliente +
-      " y fui avisado de bajada de precio en producto" +
+      " y fui avisado de bajada de precio en producto " +
       aviso.idProducto +
       " a " +
       aviso.precio +
