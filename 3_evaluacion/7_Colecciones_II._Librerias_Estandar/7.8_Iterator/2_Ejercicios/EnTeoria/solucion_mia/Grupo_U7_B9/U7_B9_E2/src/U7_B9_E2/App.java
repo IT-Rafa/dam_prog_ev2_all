@@ -26,6 +26,7 @@ public class App {
 
     //añadir aquí código
     Iterator<Integer> it_a = a.iterator();
+    // for(Iterator<Integer> it= a.iterator() ; it.hasNext() ; )
     while (it_a.hasNext()) {
       Integer n = it_a.next();
       if (n % 2 == 0) {
