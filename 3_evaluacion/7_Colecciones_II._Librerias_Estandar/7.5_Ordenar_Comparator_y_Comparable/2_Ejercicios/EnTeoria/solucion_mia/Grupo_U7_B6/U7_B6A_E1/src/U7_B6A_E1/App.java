@@ -4,9 +4,7 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 /**
- * Ejercicio U7_B6A_E1:<p>
- * Modifica el ejemplo anterior con TreeSet para que imprima las
- * personas por orden descendente de edad.
+ * Clase con el programa ejecutor de  U7_B6A_E1
  */
 public class App {
 

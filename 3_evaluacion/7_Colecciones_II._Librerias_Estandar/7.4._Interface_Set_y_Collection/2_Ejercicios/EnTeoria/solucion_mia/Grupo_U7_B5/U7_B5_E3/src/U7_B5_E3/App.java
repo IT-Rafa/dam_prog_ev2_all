@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Ejercicio U7_B5_E3:<p>
- * Modifica el código anterior para que la referencia
- * conjuntoVehiculos sea de tipo Set.<p>
- *
- * Set vale para HashSet, LinkedHashSet, TreeSet,
+ * Clase que contiene las clases para ejecutar el
+ * Ejercicio_U7_B5_E3
  */
 public class App {
 
+  /**
+   * Creamos grupo Set<String> y lo montamos con HashSet<String>
+   */
   public static void main(String[] args) {
     Set<String> conjuntoVehiculos = new HashSet<>();
     conjuntoVehiculos.add("moto");

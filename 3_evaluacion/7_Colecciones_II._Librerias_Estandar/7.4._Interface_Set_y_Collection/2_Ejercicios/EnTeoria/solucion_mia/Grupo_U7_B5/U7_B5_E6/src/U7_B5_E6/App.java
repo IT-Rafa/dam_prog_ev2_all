@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Ejercicio U7_B5_E5:<p>
+ * Ejercicio U7_B5_E6:<p>
  * RETO Bingo infantil 452. Puedes ayudarte de arrays pero no olvides
  * incluir sets en tu solución.
  */

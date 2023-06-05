@@ -3,8 +3,8 @@ package U7_B5_E2;
 import java.util.TreeSet;
 
 /**
- * Ejercicio U7_B5_E2:<p>
- *  Repite el ejercicio anterior pero utilizando la clase TreeSet
+ * Clase que contiene las clases para ejecutar el
+ * Ejercicio_U7_B5_E2
  */
 public class App {
 

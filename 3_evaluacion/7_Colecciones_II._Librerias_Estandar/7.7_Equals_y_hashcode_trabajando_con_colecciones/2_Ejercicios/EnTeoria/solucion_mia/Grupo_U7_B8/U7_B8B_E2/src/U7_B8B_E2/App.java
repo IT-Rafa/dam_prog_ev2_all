@@ -5,11 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Ejercicio U7_B8B_E2:<p>
- * Si usamos el código que generamos en el ejercicio anterior, el
- * siguiente main no hace el borrado en la lista que se pretende. <p>
- * Soluciona el problema
-
+ * Clase con método ejecutor para Ejercicio U7_B8B_E2:<p>
  */
 public class App {
 
@@ -23,7 +19,8 @@ public class App {
    * Le sobreescribimos a EmpleadoMarketing, hashCode() y boolean equals(Object obj),
    * usando el propio IDE de visual studio, con Source Action, usando los atributos
    * codigo(int) y puesto(String).<p>
-   * Ahora se borra ok; También sería bueno hacerlo con cliente.
+   * Ahora se borra ok; También hacemos lo mismo con cliente y lo eliminamos en main.<p>
+   * También se borra
    */
   public static void main(String[] args) throws Exception {
     Producto p1 = new Producto("p1", 100);
@@ -36,8 +33,8 @@ public class App {
     System.out.println("");
     EmpleadoMarketing quieroBorrar = new EmpleadoMarketing("111", "ofertas");
     p1.removeObservador(quieroBorrar);
-    //Cliente quieroBorrar2 = new Cliente("Juan");
-    //p1.removeObservador(quieroBorrar2);
+    Cliente quieroBorrar2 = new Cliente("Juan");
+    p1.removeObservador(quieroBorrar2);
 
     p1.setPrecio(80);
   }

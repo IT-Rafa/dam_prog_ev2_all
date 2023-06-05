@@ -4,9 +4,7 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 /**
- * Ejercicio U7_B6A_E3:<p>
- * Modifica el ejemplo anterior para que imprima las personas por
- * orden descendente de nombre.
+ * Clase con el método ejecutor de Ejercicio U7_B6A_E3
  */
 public class App {
 

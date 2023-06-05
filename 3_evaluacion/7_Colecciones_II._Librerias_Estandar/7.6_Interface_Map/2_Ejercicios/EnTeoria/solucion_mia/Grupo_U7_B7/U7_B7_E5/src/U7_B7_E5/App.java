@@ -5,11 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Ejercicio U7_B7_E5:
- * <p>
- * reto Liga de pádel id 109
- * <p>
- * https://www.aceptaelreto.com/problem/statement.php?id=109&cat=18
+ * Clase con el ejecutor del Ejercicio U7_B7_E5:
  */
 public class App {
 

@@ -5,10 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 /**
- * Ejercicio U7_B7_E4:<p>
- * Acepta el reto va de modas 152<p>
- * Ya lo propusimos con arrays y con el boletín introductorio a mapas.<p>
- * Si no llegaste a hacerlo en su momento hazlo ahora. Con mapas es más fácil.
+ * Clase con el ejecutor del Ejercicio U7_B7_E4:<p>
  */
 public class App {
 

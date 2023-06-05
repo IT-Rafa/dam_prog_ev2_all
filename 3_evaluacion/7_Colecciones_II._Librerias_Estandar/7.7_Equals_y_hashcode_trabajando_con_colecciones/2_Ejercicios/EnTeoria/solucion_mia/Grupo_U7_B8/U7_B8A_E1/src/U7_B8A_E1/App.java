@@ -4,11 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Ejercicio U7_B8A_E1:<p>
- * Hicimos el siguiente ejercicio en el boletín de mapas<p>
- * Tenemos la siguiente tabla de latitudes/longitudes de ciudades nacionales
- * e internacionales.
- *
+ * Clase con método ejecutor de Ejercicio U7_B8A_E1:
  */
 public class App {
 

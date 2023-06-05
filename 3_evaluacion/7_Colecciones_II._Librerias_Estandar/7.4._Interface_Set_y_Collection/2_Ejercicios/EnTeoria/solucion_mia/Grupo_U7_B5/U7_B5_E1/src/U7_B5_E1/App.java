@@ -3,8 +3,8 @@ package U7_B5_E1;
 import java.util.LinkedHashSet;
 
 /**
- * Ejercicio U7_B5_E1:<p>
- * Repite el ejemplo anterior pero utilizando la clase LinkedHashSet
+ * Clase que contiene las clases para ejecutar el
+ * Ejercicio_U7_B5_E1
  */
 public class App {
 

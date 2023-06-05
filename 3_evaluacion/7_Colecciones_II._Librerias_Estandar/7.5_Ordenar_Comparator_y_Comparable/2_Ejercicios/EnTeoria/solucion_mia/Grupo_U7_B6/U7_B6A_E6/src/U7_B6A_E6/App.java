@@ -4,12 +4,7 @@ import java.util.HashSet;
 import java.util.TreeSet;
 
 /**
- * Ejercicio U7_B6A_E6:<p>
- * Imprimir un HashSet ordenado.<p>
- * Crea un HashSet de enteros. Ya que un TreeSet en su
- * constructor admite como parámetro una colección, por
- * ejemplo un HashSet, crea un TreeSet para imprimir el
- * HashSet ordenado
+ * Clase con ejecutor de Ejercicio U7_B6A_E6:<p>
  */
 public class App {
 

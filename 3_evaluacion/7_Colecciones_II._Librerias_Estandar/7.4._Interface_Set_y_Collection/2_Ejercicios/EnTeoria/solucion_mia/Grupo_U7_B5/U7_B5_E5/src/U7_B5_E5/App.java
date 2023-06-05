@@ -5,10 +5,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * Ejercicio U7_B5_E5:
- * <p>
- * Reto Michael J. Fox y el Pato Donald categoría conjuntos.
- * Utiliza obligatoriamente conjuntos para resolverlo.
+ * Clase que contiene las clases para ejecutar el
+ * Ejercicio_U7_B5_E5
  */
 public class App {
 

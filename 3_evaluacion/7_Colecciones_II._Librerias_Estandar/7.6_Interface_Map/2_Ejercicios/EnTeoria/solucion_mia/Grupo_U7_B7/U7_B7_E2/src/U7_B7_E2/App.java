@@ -4,11 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Ejercicio U7_B7_E2:<p>
- * Fíjate en el API para ver cómo se comporta put() si se indica una
- * clave existente<p>
- * Como extensión del ejercicio anterior, comprueba que ocurre cuando
- * intentas insertar algo con una clave existente en el mapa.
+ * Clase con ejecutor para Ejercicio U7_B7_E2:
  */
 public class App {
 

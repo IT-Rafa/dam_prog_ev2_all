@@ -4,71 +4,42 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Ejercicio U7_B5_E4:
- * <p>
- * Quizá las operaciones matemáticas más típicas de conjuntos son:
- * <p>
- * union, diferencia e intersección.
- * <p>
- * Haz un programa que prueba con los datos de los conjuntos A y B las
- * tres operaciones indicadas.
- * <p>
- * El resultado del programa debe ser el siguiente.
- * <p>
- * Union = Juntar ambos grupos
- * <p>
- * Diferencia = Eliminar de un grupo los elementos que están en el otro
- * <p>
- * Intersección = Quedarse solo con los elementos que también tiene el otro
- * grupo
- * <p>
- * 
- * <pre>
-run:
-A:[5, 7, 9, 19]
-B:[5, 7, 10, 20]
-A union B: [5, 7, 9, 10, 19, 20]
-A diferencia B: [9, 19]
-A intersección B: [5, 7]
- * </pre>
- * 
- * Consulta el API para saber los métodos que debes usar para hacer las
- * operaciones deseadas. Usa TreeSet ya que al ver los elementos ordenados
- * es más fácil comprobar que las operaciones son OK.
+ * Clase que contiene las clases para ejecutar el
+ * Ejercicio_U7_B5_E4
  */
 public class App {
 
-    /**
-     * Usamos métodos para poner los conjuntos con los valores originales
-     * <p>
-     * Mostramos los conjuntos originales
-     * <p>
-     * Para cada operación
-     * <p>
-     * <ul>
-     * <li>Hacemos la operación y mostramos resultado con la variable
-     * que lo llamo, A</li>
-     * <li>Como la variable cambió, la volvemos a dejar como estaba,
-     * con el método inicial</li>
-     * </ul>
-     */
-    public static void main(String[] args) {
-        Set<Integer> elementosA = Set.of(5, 7, 9, 19);
-        Set<Integer> elementosB = Set.of(5, 7, 10, 20);
+  /**
+   * Usamos métodos para poner los conjuntos con los valores originales
+   * <p>
+   * Mostramos los conjuntos originales
+   * <p>
+   * Para cada operación
+   * <p>
+   * <ul>
+   * <li>Hacemos la operación y mostramos resultado con la variable
+   * que lo llamo, A</li>
+   * <li>Como la variable cambió, la volvemos a dejar como estaba,
+   * con el método inicial</li>
+   * </ul>
+   */
+  public static void main(String[] args) {
+    Set<Integer> elementosA = Set.of(5, 7, 9, 19);
+    Set<Integer> elementosB = Set.of(5, 7, 10, 20);
 
-        System.out.println("A:" + elementosA);
-        System.out.println("B:" + elementosB);
+    System.out.println("A:" + elementosA);
+    System.out.println("B:" + elementosB);
 
-        Set<Integer> operacion = new TreeSet<>(elementosA);
-        operacion.addAll(elementosB);
-        System.out.println("A union B:" + operacion);
+    Set<Integer> operacion = new TreeSet<>(elementosA);
+    operacion.addAll(elementosB);
+    System.out.println("A union B:" + operacion);
 
-        operacion = new TreeSet<>(elementosA);
-        operacion.removeAll(elementosB);
-        System.out.println("A diferencia B:" + operacion);
+    operacion = new TreeSet<>(elementosA);
+    operacion.removeAll(elementosB);
+    System.out.println("A diferencia B:" + operacion);
 
-        operacion = new TreeSet<>(elementosA);
-        operacion.retainAll(elementosB);
-        System.out.println("A intersección B:" + operacion);
-    }
+    operacion = new TreeSet<>(elementosA);
+    operacion.retainAll(elementosB);
+    System.out.println("A intersección B:" + operacion);
+  }
 }

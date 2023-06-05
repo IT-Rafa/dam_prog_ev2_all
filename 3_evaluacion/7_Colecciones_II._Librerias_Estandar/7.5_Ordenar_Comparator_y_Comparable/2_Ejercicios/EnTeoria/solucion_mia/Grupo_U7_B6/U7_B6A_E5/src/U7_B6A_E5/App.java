@@ -3,16 +3,15 @@ package U7_B6A_E5;
 import java.util.HashSet;
 
 /**
- * Ejercicio U7_B6A_E5:<p>
- * ¿Puedo sustituir en los ejercicios anteriores TreeSet por HashSet?
+ * Clase con ejecutor del Ejercicio U7_B6A_E5
  */
 public class App {
 
   /**
-   * No completamente, ya que HashSet no tiene constructor con parámetro
-   * de una clase que implemente Comparator.<p>
-   * En este caso, cambiamos a HashSet y le quitamos en Comparator y funciona,
-   * pero no usa orden
+   * No completamente, ya que HashSet no tiene constructor con
+   * parámetro de una clase que implemente Comparator.<p>
+   * En este caso, cambiamos a HashSet y le quitamos en Comparator
+   * y funciona, pero no se guarda con orden
    */
   public static void main(String[] args) {
     HashSet<Persona> tp = new HashSet<>();
