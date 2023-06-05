@@ -5,9 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Ejercicio U7_B9_E2: <p>
- * Añade código iterator para que a pase a contener sólo números
- * impares
+ * Clase con método ejecutor del Ejercicio U7_B9_E2: <p>
  */
 public class App {
 

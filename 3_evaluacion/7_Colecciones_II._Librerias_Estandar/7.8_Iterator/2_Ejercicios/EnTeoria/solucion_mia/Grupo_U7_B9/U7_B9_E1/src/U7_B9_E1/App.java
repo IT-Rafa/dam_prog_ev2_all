@@ -6,18 +6,14 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Ejercicio U7_B9_E1:<p>
- * Resuelve este ejercicio con iterator.<p>
- * Ya que no hay modificaciones no es realmente necesario usar
- * iteradores pero lo hacemos para practicar el concepto.
+ * Clase con método ejecutor de Ejercicio U7_B9_E1:<p>
  */
 
 public class App {
 
   public static void main(String[] args) {
     Map<String, Double> hm = new HashMap<>();
-    // repasando autoboxing. La sentencia comentada tiene problemas con autoboxing
-    //El autoboxing permite pasar double a Double pero no int a Double. 1500 es int
+    //El autoboxing no permite pasar int a Double.
     //hm.put("Elías", 1500);
     hm.put("Elías", 1500.0);
     hm.put("Román", 1900.0);
