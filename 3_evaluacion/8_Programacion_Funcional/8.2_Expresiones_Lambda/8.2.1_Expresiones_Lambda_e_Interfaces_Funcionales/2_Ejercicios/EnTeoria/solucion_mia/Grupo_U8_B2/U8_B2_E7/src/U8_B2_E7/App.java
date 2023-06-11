@@ -12,16 +12,41 @@ public class App {
    *
    */
   public static void main(String[] args) {
+    // a ( con test interno sobreescrito) comprueba que n es menor que 0
     MiIntPredicateA a = new MiIntPredicateA();
+
+    // b ( con test interno sobreescrito) comprueba que n es par
     MiIntPredicateB b = new MiIntPredicateB();
-    // or no devuelve boolean, devuelve un IntPredicate más complejo
+
+    // Creamos nuevo predicado con a.or y la clase b
+    // Funciona como a || b; El segundo no se comprueba si
+    // el primero es cierto.
+    // Primero comprueba el primer predicado MiIntPredicateA,
+    // que comprueba que el valor sea menor que 0.
+    // Si es cierto, devuelve True directamente. Si no, es decir
+    // si es 0 o mayor, es False y comprueba el siguiente predicado
+    // que comprueba si  es par, y lo devuelve
     IntPredicate c = a.or(b);
-    System.out.println(c.test(5));
-    //lo mismo pero más compacto y dificil de entender
-    System.out.println(a.or(b).test(5));
+
+    // El valor del test es la expresión que se le pasa a
+    // ambos predicados
+
+    // A: n=-1 es negativo y directamente devuelve True
+    System.out.println(c.test(-1));
+
+    // A: n= 2 es positivo y da False; Se combrueba B
+    // B: n= 2 es par y devuelve True
+    System.out.println(c.test(2));
+
+    // A: n= 1 es positivo y da False; Se combrueba B
+    // B: n= 2 es impar y devuelve False
+    System.out.println(c.test(1));
   }
 }
 
+/**
+ * el método sobreescrito test devuelve true si el entero es negativo.
+ */
 class MiIntPredicateA implements IntPredicate {
 
   @Override
@@ -30,6 +55,9 @@ class MiIntPredicateA implements IntPredicate {
   }
 }
 
+/**
+ * el método sobreescrito test devuelve true si el entero es par.
+ */
 class MiIntPredicateB implements IntPredicate {
 
   @Override
