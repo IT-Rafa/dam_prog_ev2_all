@@ -40,6 +40,10 @@ public class App {
    * según el objeto IntPredicate incluido.
    * <p>
    * Muestra los elementos que devuelvan True
+   *
+   * @param list Array de enteros a analizar
+   * @param predicate Predicado que almacena un lambda, que recibe un
+   * entero y devuelve un boolean. Se ejecuta con su método test
    */
   public static void eval(int[] list, IntPredicate predicate) {
     //Recorre los elementos de la lista

@@ -18,6 +18,9 @@ public class App {
   /**
    * Método que recibe una lista para evaluar y el predicado
    * que usa su método .test para analizar cada elemento de la lista
+   * @param list Array de enteros a analizar
+   * @param predicate Predicado que almacena un lambda, que recibe un
+   * entero y devuelve un boolean. Se ejecuta con su método test
    */
   public static void eval(int[] list, IntPredicate predicate) {
     // Recorre los enteros de la lista

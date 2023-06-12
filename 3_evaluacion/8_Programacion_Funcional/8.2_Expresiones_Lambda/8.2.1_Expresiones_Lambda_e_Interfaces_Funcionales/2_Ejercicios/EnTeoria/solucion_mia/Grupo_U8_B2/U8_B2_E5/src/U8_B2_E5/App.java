@@ -26,8 +26,7 @@ public class App {
 class myIntSupplier implements IntSupplier {
 
   /**
-   * el getAsInt de IntSupplier debe no recibir
-   * nada y devolver un entero.
+   * el accept de IntConsumer debe no recibir nada y devolver un entero.
    */
   @Override
   public int getAsInt() {

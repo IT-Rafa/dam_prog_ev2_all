@@ -26,6 +26,10 @@ public class App {
    * Pasa por cada elemento del array y lo analiza con el
    * Predicate. Si la valoración es True, muesta el contenido en
    * consola.
+   *
+   * @param list Array de String a analizar
+   * @param predicate Predicado que almacena un lambda, que recibe un
+   * String y devuelve un boolean. Se ejecuta con su método test
    */
   public static void eval(String[] list, Predicate<String> predicate) {
     for (String st : list) {

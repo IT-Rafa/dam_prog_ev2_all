@@ -34,6 +34,9 @@ public class App {
    * Predicate. Si la valoración es True, muesta el contenido en
    * consola.
    *
+   * @param list Array de enteros a analizar
+   * @param predicate Predicado que almacena un lambda, que recibe un
+   * Integer y devuelve un boolean. Se ejecuta con su método test
    */
   public static void eval(int[] list, Predicate<Integer> predicate) {
     for (int n : list) {
@@ -45,11 +48,17 @@ public class App {
 }
 
 /**
- * el método sobreescrito test devuelve true siempre.
- * Todo número vale
+ * Usa interface Predicate<Integer>
  */
 class PredicateAll implements Predicate<Integer> {
 
+  /**
+   * Método sobreescrito que recibe un entero y devuelve True si
+   * en cualquier caso
+   *
+   * @param n Entero a analizar
+   * @return Siempre True
+   */
   @Override
   public boolean test(Integer n) {
     return true;
@@ -57,11 +66,17 @@ class PredicateAll implements Predicate<Integer> {
 }
 
 /**
- * el método sobreescrito test devuelve true si el número
- * es par.
+ * Usa interface Predicate<Integer>
  */
 class PredicatePares implements Predicate<Integer> {
 
+  /**
+   * Método sobreescrito que recibe un entero y devuelve True si
+   * el entero es par; False en caso contrario
+   *
+   * @param n Entero a analizar
+   * @return True si el entero es par; False en caso contrario
+   */
   @Override
   public boolean test(Integer n) {
     return (n % 2 == 0);
@@ -69,11 +84,18 @@ class PredicatePares implements Predicate<Integer> {
 }
 
 /**
- * el método sobreescrito test devuelve true si el número
- * es mayor que 3.
+ * Usa interface Predicate<Integer>
  */
 class PredicateSup3 implements Predicate<Integer> {
 
+  /**
+   * Método sobreescrito que recibe un entero y devuelve True si
+   * el entero es mayor que 3; False en caso contrario
+   *
+   * @param n Entero a analizar
+   * @return True si el entero es mayor que 3;
+   * False en caso contrario
+   */
   @Override
   public boolean test(Integer n) {
     return n > 3;

@@ -20,7 +20,8 @@ public class App {
 
 /**
  * Clase que implementa IntConsumer<p>
- * Con método accept sobreescrito
+ * Con método accept sobreescrito que recibe un entero y
+ * devuelve void
  */
 class MiIntConsumer implements IntConsumer {
 

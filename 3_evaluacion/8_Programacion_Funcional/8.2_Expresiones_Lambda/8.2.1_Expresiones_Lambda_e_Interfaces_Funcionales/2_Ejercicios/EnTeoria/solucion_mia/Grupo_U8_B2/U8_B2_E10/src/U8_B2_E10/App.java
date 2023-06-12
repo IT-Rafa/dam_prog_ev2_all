@@ -17,21 +17,26 @@ public class App {
 
     // GENERICO con String
     System.out.println("Imprimir palabras de más de 5 car:");
-    // Creamos predicado de numeros superiores a
+    // Creamos predicado para numeros superiores a
     Predicate<String> predicado = s -> s.length() > 5;
     eval(listaPalabras, predicado);
 
     // GENERICO con Integer
     System.out.println("Imprimir numeros positivos: ");
-    // Pasamos predicado de numeros superiores a 0
+    // Pasamos predicado para numeros superiores a 0
     eval(listaNumeros, i -> i > 0);
   }
 
   /**
-   * Recibe una array de un tipo genérico y un Predicate genérico<p>
+   * Recibe un array de genericos y un Predicate para ese genérico<p>
    * Pasa por cada elemento del array y lo analiza con el
    * Predicate. Si la valoración es True, muesta el contenido en
    * consola.
+   *
+   * @param list Array de tipos genéricos a analizar
+   * @param predicate Predicado que almacena un lambda, que recibe el
+   * objeto genérico y devuelve un boolean. Se ejecuta con su método
+   * test
    */
   private static <T> void eval(T[] lista, Predicate<T> predicado) {
     for (T e : lista) {

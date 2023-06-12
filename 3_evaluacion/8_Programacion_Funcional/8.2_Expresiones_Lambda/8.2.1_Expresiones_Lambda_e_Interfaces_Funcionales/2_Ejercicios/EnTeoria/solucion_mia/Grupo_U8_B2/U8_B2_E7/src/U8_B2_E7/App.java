@@ -49,6 +49,13 @@ public class App {
  */
 class MiIntPredicateA implements IntPredicate {
 
+  /**
+   * Método sobreescrito que recibe un entero y devuelve True si
+   * es menor que 0 y False en caso contrario
+   *
+   * @param n Entero a analizar
+   * @return True si es menor que 0; False en caso contrario
+   */
   @Override
   public boolean test(int n) {
     return n < 0;
@@ -60,6 +67,13 @@ class MiIntPredicateA implements IntPredicate {
  */
 class MiIntPredicateB implements IntPredicate {
 
+  /**
+   * Método sobreescrito que recibe un entero y devuelve True si
+   * es par y False en caso contrario
+   *
+   * @param n Entero a analizar
+   * @return True si es par; False si no
+   */
   @Override
   public boolean test(int n) {
     return n % 2 == 0;
