@@ -1,19 +1,19 @@
-package U8_B3_E3;
+package U8_B3_E2.intMiembroVersion;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
 /**
- * Clase con ejecutable de Ejercicio U8_B3_E3<p>
+ * Clase con ejecutable de Ejercicio U8_B3_E2<p>
+ * Creamos versión de clase interna como miembro
  */
-public class App {
+public class AppIntMiembro {
 
   /**
-   * Ejecutable Ejercicio U8_B3_E3<p>
-   * En vez de crear la clase en otro lugar, la definimos y
-   * creamos directamente al llamarla en parámetro Comparator
-   * de Collections.sort
+   * Ejecutable Ejercicio U8_B3_E2<p>
+   * Creamos lista de artículos, añadimos artículos, ordenamos la
+   * lista y la mostramos.
    */
   public static void main(String[] args) {
     // Creamos lista
@@ -26,25 +26,37 @@ public class App {
     articulos.add(new Articulo("11", "plato", 6));
 
     // Ordenamos lista
-    // Con clase estática de esta clase AppStatic
-    Collections.sort(
-      articulos,
-      // Definimos y creamos clase anónima, que hereda del la clase
-      // Comparator (indicado por el constructor) y sobreescribimos
-      // el método compare
-      new Comparator<Articulo>() {
-        @Override
-        public int compare(Articulo o1, Articulo o2) {
-          return o1.codArticulo.compareTo(o2.codArticulo);
-        }
-      }
-    );
+    // Como estamos en método estático, no existe un objeto AppIntMiembro
+    // Creamos el objeto de esta clase AppIntMiembro.
+    AppIntMiembro miControlador = new AppIntMiembro();
+    // Usamos este objeto para llamar al su clase interna
+    Collections.sort(articulos, miControlador.new ComparadorArticulos());
 
     // Mostramos artículos
     for (Articulo a : articulos) {
       System.out.println(
         a.codArticulo + ", " + a.descripcion + ", " + a.cantidad
       );
+    }
+  }
+
+  /**
+   * Clase interna de objeto AppStatic.
+   * <p>
+   * Creada como instancia en la parte principal de la clase App, donde está
+   * el método que la usa
+   * <p>
+   * Gestiona el uso del Comparador ordenando según código
+   * del artículo (codArticulo)
+   */
+  class ComparadorArticulos implements Comparator<Articulo> {
+
+    /**
+     * Compara los artículos por el código del artículo (codArticulo)
+     */
+    @Override
+    public int compare(Articulo o1, Articulo o2) {
+      return o1.codArticulo.compareTo(o2.codArticulo);
     }
   }
 }

@@ -1,21 +1,41 @@
-package U8_B3_E3;
+package U8_B3_E2.intLocalVersion;
 
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 
 /**
- * Clase con ejecutable de Ejercicio U8_B3_E3<p>
+ * Clase con ejecutable de Ejercicio U8_B3_E2<p>
+ * Creamos versión de clase interna como local (en método)
  */
-public class App {
+public class AppIntLocal {
 
   /**
-   * Ejecutable Ejercicio U8_B3_E3<p>
-   * En vez de crear la clase en otro lugar, la definimos y
-   * creamos directamente al llamarla en parámetro Comparator
-   * de Collections.sort
+   * Ejecutable Ejercicio U8_B3_E2<p>
+   * Creamos lista de artículos, añadimos artículos, ordenamos la
+   * lista y la mostramos.
    */
   public static void main(String[] args) {
+    /**
+     * Clase interna de método main en  objeto AppStatic.
+     * <p>
+     * Creada en método método main de clase App, que es
+     * quien la usa
+     * <p>
+     * Gestiona el uso del Comparador ordenando según código
+     * del artículo (codArticulo)
+     */
+    class ComparadorArticulos implements Comparator<Articulo> {
+
+      /**
+       * Compara los artículos por el código del artículo (codArticulo)
+       */
+      @Override
+      public int compare(Articulo o1, Articulo o2) {
+        return o1.codArticulo.compareTo(o2.codArticulo);
+      }
+    }
+
     // Creamos lista
     LinkedList<Articulo> articulos = new LinkedList<Articulo>();
 
@@ -26,19 +46,8 @@ public class App {
     articulos.add(new Articulo("11", "plato", 6));
 
     // Ordenamos lista
-    // Con clase estática de esta clase AppStatic
-    Collections.sort(
-      articulos,
-      // Definimos y creamos clase anónima, que hereda del la clase
-      // Comparator (indicado por el constructor) y sobreescribimos
-      // el método compare
-      new Comparator<Articulo>() {
-        @Override
-        public int compare(Articulo o1, Articulo o2) {
-          return o1.codArticulo.compareTo(o2.codArticulo);
-        }
-      }
-    );
+    // Usamos la clase especificada en este método
+    Collections.sort(articulos, new ComparadorArticulos());
 
     // Mostramos artículos
     for (Articulo a : articulos) {
