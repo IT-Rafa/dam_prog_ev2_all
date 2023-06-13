@@ -16,7 +16,7 @@ public class App {
     // devuelve nada, con lo que usamos usamos la versión para
     // String, y usamos la expresión lambda con :: para sobreescribir
     // su único método accept(T objeto)
-    // ( T será un String indicado por el genérico)
+    // ( T será un String indicado por el genérico )
     Consumer<String> saludo = System.out::println;
 
     // Ejecutamos el accept de consumer con el String indicado
