@@ -1,7 +1,6 @@
 package U8_B3_E4;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 
 /**
@@ -41,15 +40,6 @@ public class App {
       System.out.println(
         a.codArticulo + ", " + a.descripcion + ", " + a.cantidad
       );
-    }
-  }
-
-  class comp implements Comparator<Integer> {
-
-    @Override
-    public int compare(Integer arg0, Integer arg1) {
-      // TODO Auto-generated method stub
-      throw new UnsupportedOperationException("Unimplemented method 'compare'");
     }
   }
 }
