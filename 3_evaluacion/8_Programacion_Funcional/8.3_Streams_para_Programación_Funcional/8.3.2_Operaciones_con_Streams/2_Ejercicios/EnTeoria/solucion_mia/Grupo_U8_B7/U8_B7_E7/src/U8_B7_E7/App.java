@@ -1,16 +1,11 @@
 package U8_B7_E7;
 
-<<<<<<< HEAD
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-=======
-import java.util.Scanner;
 import java.util.stream.IntStream;
-import java.util.stream.StreamSupport;
->>>>>>> 9f3a80d (U8_B7_E7)
+import java.util.stream.Stream;
 
 /**
  * Clase con ejecutable de Ejercicio U8_B7_E7
@@ -34,25 +29,13 @@ public class App {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-<<<<<<< HEAD
     Stream
       .generate(sc::nextInt)
       .takeWhile(n -> n > 0)
-      .forEach(System.out::println);
+      .map(n -> {
+        IntStream.range(0, n).forEach(System.out::print());
+      });
 
     sc.close();
-=======
-    StreamSupport
-      .stream(it.spliterator(), false)
-      .map(String::trim)
-      .mapToInt(st -> Integer.parseInt(st))
-      .forEach(n -> {
-        if (n != 0) {
-          IntStream.range(0, n).forEach(i -> System.out.print(1));
-        } else {
-          System.exit(0);
-        }
-      });
->>>>>>> 9f3a80d (U8_B7_E7)
   }
 }
