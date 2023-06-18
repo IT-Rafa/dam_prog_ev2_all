@@ -3,6 +3,7 @@ package U8_B7_E7;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -32,10 +33,13 @@ public class App {
     Stream
       .generate(sc::nextInt)
       .takeWhile(n -> n > 0)
-      .map(n -> {
-        IntStream.range(0, n).forEach(System.out::print());
-      });
-
+      .forEach(n -> IntStream.range(0, n).forEach(i -> System.out.print(1)));
     sc.close();
+  }
+
+  static String convertToBin(int n) {
+    String result = "";
+    IntStream streamInt = IntStream.range(0, n);
+    streamInt.forEach(i -> result + "1");
   }
 }
