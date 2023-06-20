@@ -33,13 +33,14 @@ public class App {
     Stream
       .generate(sc::nextInt)
       .takeWhile(n -> n > 0)
-      .forEach(n -> IntStream.range(0, n).forEach(i -> System.out.print(1)));
+      .map(n -> convertToBin(n))
+      .forEach(System.out::println);
     sc.close();
   }
 
-  static String convertToBin(int n) {
-    String result = "";
-    IntStream streamInt = IntStream.range(0, n);
-    streamInt.forEach(i -> result + "1");
+  static StringBuilder convertToBin(int n) {
+    StringBuilder result = new StringBuilder("");
+    IntStream.range(0, n).forEach(i -> result.append("1"));
+    return result;
   }
 }
