@@ -1,0 +1,17 @@
+<agenda>
+	<persona>
+		<nombre>Elías</nombre>
+		<apellido>Lozano</apellido>
+		<edad>7</edad>
+	</persona>
+	<persona>
+		<nombre>Román</nombre>
+		<apellido>López</apellido>
+		<edad>6</edad>
+	</persona>
+	<persona>
+		<nombre>Telma</nombre>
+		<apellido>Lozano López</apellido>
+		<edad>3</edad>
+	</persona>
+</agenda>
