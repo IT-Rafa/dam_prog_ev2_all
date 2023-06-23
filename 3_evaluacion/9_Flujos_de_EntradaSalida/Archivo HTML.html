@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+    <header>
+        <h1>Lectura y escritura de un fichero</h1>
+    </header>
+    <main>
+        <article>
+            <header>
+                <h2>Datos generales</h2>
+            </header>
+
+            <h3>Stream</h3>
+            <p>
+                Lista de datos que se pasan de un lugar a otro
+            </p>
+            <h3>Stream I/O</h3>
+            <p>
+                Lista de datos que se pasan de un lugar externo del programa (archivos,
+                datos en red (sockets), etc.) al propio programa
+            </p>
+            <h3>flujo de bytes</h3>
+            <p>
+                Se refiere a un Stream I/O que nos envía los datos directamente en
+                bytes, que es la forma en que se graban los datos mínimos en el
+                ordenador.
+                Este sistema es útil con archivos que no sean de texto,
+                en general archivos binarios, como archivos de imagen, ejecutables
+                binarios, sonido, etc.
+            </p>
+            <h3>flujo de caracteres</h3>
+            <p>
+                Se refiere a un Stream I/O que nos envía los datos organizados según
+                una codificación de caracteres, donde un carácter no es necesariamente
+                de un byte, sino que dependerá de su organización. (La codificación en
+                un byte suele coincidir con los datos ASCII)
+            </p>
+            <p>
+                Este sistema es útil con archivos que sean de texto. Por defecto, si
+                no se indica un código, se usará UTF-8, que es el sistema usado en el
+                S.O. Linux, la web, Java y recomendado en general.
+            </p>
+        </article>
+        <article>
+
+            <header>
+                <h2>Clases</h2>
+            </header>
+            <h3>FileReader</h3>
+            <p>
+                Clase pensada para acceder al flujo de caracteres de
+                un archivo del sistema, leyéndolos de carácter en carácter.
+                Al heredar de InputStreamReader usa un bucle para traducir
+                los bytes a caracteres, pero no para leer varios caracteres
+                a la vez.
+            </p>
+            <h3>FileInputStream</h3>
+            <p>
+                Clase pensada para acceder al flujo de bytes de un
+                archivo del sistema. (U)
+            </p>
+        </article>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
