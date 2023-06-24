@@ -27,14 +27,24 @@ public class App {
    * @throws IOException
    */
   public static void main(String[] args) throws IOException {
+    String nombreEscrFile;
+    String nombreLectFile;
     // ruta al proyecto del ejercicio
     String path =
       "9_Flujos_de_EntradaSalida/9.3_Ficheros_de_texto/2_Ejercicios/EnTeoria/solucion_mia/Grupo_U9_B3/U9_B3_E1/src/U9_B3_E1/";
 
-    // Nombre del archivo xml a leer
-    String nombreLectFile = path + "Agenda.xml";
-    // Nombre del archivo txt a escribir
-    String nombreEscrFile = path + "escrituraFunc.txt";
+    if (args.length > 1) {
+      nombreLectFile = path + args[0];
+      nombreEscrFile = path + args[1];
+    } else {
+      System.out.println("Argumentos no válidos; Usamos datos defecto.");
+      System.out.println("Agenda.xml -> escrituraFunc.txt");
+
+      // Nombre del archivo xml a leer
+      nombreLectFile = path + "Agenda.xml";
+      // Nombre del archivo txt a escribir
+      nombreEscrFile = path + "escrituraFunc.txt";
+    }
 
     try (
       // Definimos archivo a leer
