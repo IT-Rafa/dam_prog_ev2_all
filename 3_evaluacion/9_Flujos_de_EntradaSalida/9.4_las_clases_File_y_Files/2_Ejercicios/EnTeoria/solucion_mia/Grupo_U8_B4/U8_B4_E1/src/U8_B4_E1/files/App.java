@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 /**
  * Clase con ejecutable de Ejercicio U8_B4_E1<p>
@@ -25,21 +27,34 @@ public class App {
 
     // Si fichero existe
     if (Files.exists(ruta)) {
+      final String copiaRuta = ruta.toString();
       try {
+        System.out.println(
+          "\nArchivos en directorio:\n" + ruta.toAbsolutePath() + "\n"
+        );
+
+        // Preparamos regex como predicate para eliminar archivo vacío
+        Predicate<String> nameEmpty = Pattern
+          .compile("^\\[d\\] $")
+          .asPredicate()
+          .negate();
+
         // Sacamos ruta. Mostramos datos ruta en consola (solo nombres archivos/directorios)
         Files
-          .walk(ruta, 1)
-          .filter(p -> p.getFileName().toString() != "")
-          .map(p -> addDesc(p))
-          .forEach(s -> System.out.println(s));
+          .walk(ruta, 1) // Capturamos las rutas, solo la de este archivo
+          .map(p -> addDesc(p)) // Le añadimos descripción del archivo (archivo, dir, oculto)
+          .filter(nameEmpty) // Eliminamos los archivos vacíos (si es el de defecto)
+          .forEach(s -> System.out.println(s)); // Mostramos en consola cada ruta
       } catch (IOException e) {
         e.printStackTrace();
       }
+    } else {
+      System.out.println("Directorio \"" + ruta + "\" no existe");
     }
   }
 
   private static String addDesc(Path p) {
-    String result = "(";
+    String result = "[";
     try {
       if (Files.exists(p)) {
         if (Files.isDirectory(p)) {
@@ -50,7 +65,7 @@ public class App {
         if (Files.isHidden(p)) {
           result += "h";
         }
-        result += ") " + p.getFileName();
+        result += "] " + p.getFileName();
       }
     } catch (IOException e) {
       e.printStackTrace();

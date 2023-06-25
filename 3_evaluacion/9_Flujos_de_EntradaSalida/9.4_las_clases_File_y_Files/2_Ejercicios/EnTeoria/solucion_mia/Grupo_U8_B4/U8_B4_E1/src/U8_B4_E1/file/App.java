@@ -31,8 +31,11 @@ public class App {
 
       // Mostramos datos en consola
       for (String item : contenidoMiruta) {
+        // Guardamos archivo
         File fint = new File(item);
-        System.out.print("(");
+
+        // Según el archivo ponemos los indicadores
+        System.out.print("[");
 
         if (fint.isDirectory()) {
           System.out.print("d");
@@ -42,7 +45,7 @@ public class App {
         if (fint.isHidden()) {
           System.out.print("h");
         }
-        System.out.println(") " + item);
+        System.out.println("] " + item);
       }
     } else {
       System.out.println("Directorio \"" + f.getName() + "\" no existe");
