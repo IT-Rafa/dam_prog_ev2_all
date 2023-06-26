@@ -26,8 +26,7 @@ public class App {
     }
 
     // Si fichero existe
-    if (Files.exists(ruta)) {
-      final String copiaRuta = ruta.toString();
+    if (Files.exists(ruta) && Files.isDirectory(ruta)) {
       try {
         System.out.println(
           "\nArchivos en directorio:\n" + ruta.toAbsolutePath() + "\n"
@@ -35,7 +34,7 @@ public class App {
 
         // Preparamos regex como predicate para eliminar archivo vacío
         Predicate<String> nameEmpty = Pattern
-          .compile("^\\[d\\] $")
+          .compile("^\\[d\\] " + ruta + "$")
           .asPredicate()
           .negate();
 

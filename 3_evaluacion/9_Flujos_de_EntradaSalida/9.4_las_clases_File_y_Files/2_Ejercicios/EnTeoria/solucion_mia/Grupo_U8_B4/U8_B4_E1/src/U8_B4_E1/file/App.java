@@ -22,9 +22,9 @@ public class App {
       f = new File(f.getAbsoluteFile().toString());
     }
 
-    if (f.exists()) {
+    if (f.exists() && f.isDirectory()) {
       System.out.println(
-        "\nArchivos en directorio:\n" + f.getAbsolutePath() + "\n"
+        "\nRuta Absoluta de la carpeta: \n" + f.getAbsolutePath() + "\n"
       );
       // Capturamos ruta.
       String[] contenidoMiruta = f.list();
@@ -35,17 +35,13 @@ public class App {
         File fint = new File(item);
 
         // Según el archivo ponemos los indicadores
-        System.out.print("[");
+        System.out.print("./" + item);
 
         if (fint.isDirectory()) {
-          System.out.print("d");
-        } else if (fint.isFile()) {
-          System.out.print("f");
+          System.out.print("/");
         }
-        if (fint.isHidden()) {
-          System.out.print("h");
-        }
-        System.out.println("] " + item);
+
+        System.out.println();
       }
     } else {
       System.out.println("Directorio \"" + f.getName() + "\" no existe");
