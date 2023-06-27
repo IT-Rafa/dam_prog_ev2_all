@@ -21,17 +21,33 @@ public class App {
     } else {
       f = new File(f.getAbsoluteFile().toString());
     }
-    listarDirectorio(f);
-  }
+    System.out.println();
 
-  static void listarDirectorio(File f) {
-    if (f.isDirectory()) {
-      System.out.println(f.getName() + "/");
-      for (File fi : f.listFiles()) {
-        listarDirectorio(fi);
+    if (f.exists()) {
+      if (f.isDirectory()) {
+        System.out.println("Ruta absoluta:\n" + f.getAbsoluteFile() + "/\n");
+        listarDirectorio(f.listFiles(), "");
+      } else {
+        System.out.println(
+          "El archivo: " + f.getName() + " existe, pero no es un directorio"
+        );
       }
     } else {
-      System.out.println("\t" + f.getName());
+      System.out.println("El archivo " + f.getName() + " no existe");
+    }
+  }
+
+  static void listarDirectorio(File[] fs, String dir) {
+    for (int i = 0; i < fs.length; i++) {
+      if (fs[i].isDirectory()) {
+        System.out.print(fs[i].getName() + "/");
+
+        listarDirectorio(fs[i].listFiles(), dir);
+
+        dir = "";
+      } else {
+        System.out.println("\t" + fs[i].getName());
+      }
     }
   }
 
