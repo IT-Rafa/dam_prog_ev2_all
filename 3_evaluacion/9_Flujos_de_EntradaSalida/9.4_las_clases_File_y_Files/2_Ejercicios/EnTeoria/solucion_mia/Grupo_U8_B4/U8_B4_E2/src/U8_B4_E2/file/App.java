@@ -37,14 +37,14 @@ public class App {
     }
   }
 
-  static void listarDirectorio(File[] fs, String dir) {
+  static void listarDirectorio(File[] fs, String tabs) {
     for (int i = 0; i < fs.length; i++) {
       if (fs[i].isDirectory()) {
         System.out.print(fs[i].getName() + "/");
-
-        listarDirectorio(fs[i].listFiles(), dir);
-
-        dir = "";
+        tabs += "\t";
+        listarDirectorio(fs[i].listFiles(), tabs);
+        tabs = "";
+        System.out.println();
       } else {
         System.out.println("\t" + fs[i].getName());
       }
