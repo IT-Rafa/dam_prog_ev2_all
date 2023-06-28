@@ -1,4 +1,4 @@
-package U9_B3_E1.tradicional;
+package u9_b3_e1.tradicional;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,0 +1,21 @@
+ 
+9.3_Ficheros_de_texto/
+    1_Teoria/
+        03. Ficheros de texto.pdf
+    2_Ejercicios/
+        EnTeoria/
+            solucion_mia/
+                Grupo_U9_B3/
+                    U9_B3_E1/
+                        .vscode/
+                            settings.json
+                        lib/
+                        src/
+                            u9_b3_e1/
+                                funcional/
+                                    App.java
+                                tradicional/
+                                    App,java
+                        README.md
+            solucion_profesor/
+                03. Ficheros de texto-sol.pdf

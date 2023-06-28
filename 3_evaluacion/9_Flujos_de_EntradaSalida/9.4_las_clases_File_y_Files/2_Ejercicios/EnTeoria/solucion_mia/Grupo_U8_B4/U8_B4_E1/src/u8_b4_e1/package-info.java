@@ -25,4 +25,4 @@ DumpStack.log.tmp
  *  <li>2. Con Files.walk()</li>
  * </ul
  */
-package U8_B4_E1;
+package u8_b4_e1;

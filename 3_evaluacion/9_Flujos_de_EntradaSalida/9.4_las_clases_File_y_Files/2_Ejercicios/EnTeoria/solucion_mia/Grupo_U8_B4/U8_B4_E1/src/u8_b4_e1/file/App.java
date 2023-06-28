@@ -1,15 +1,15 @@
-package U8_B4_E2.file;
+package u8_b4_e1.file;
 
 import java.io.File;
 
 /**
- * Clase con ejecutable de Ejercicio U8_B4_E2<p>
+ * Clase con ejecutable de Ejercicio U8_B4_E1<p>
  * Con File de io
  */
 public class App {
 
   /**
-   * Ejecutable Ejercicio U8_B4_E2<p>
+   * Ejecutable Ejercicio U8_B4_E1<p>
    */
   public static void main(String[] args) {
     // Creamos la variable File con ruta carpeta actual
@@ -54,25 +54,5 @@ public class App {
     } else {
       System.out.println("Archivo " + f.getName() + " no existe");
     }
-  }
-
-  static void listarDirectorio(File[] fs, String tabs) {
-    for (int i = 0; i < fs.length; i++) {
-      if (fs[i].isDirectory()) {
-        System.out.print(fs[i].getName() + "/");
-        tabs += "\t";
-        listarDirectorio(fs[i].listFiles(), tabs);
-        tabs = "";
-      } else {
-        System.out.println("\t" + fs[i].getName());
-      }
-    }
-  }
-
-  public static String relative(final File base, final File file) {
-    final int rootLength = base.getAbsolutePath().length();
-    final String absFileName = file.getAbsolutePath();
-    final String relFileName = absFileName.substring(rootLength + 1);
-    return relFileName;
   }
 }
