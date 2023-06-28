@@ -31,23 +31,7 @@ public class App {
         );
 
         // Capturamos datos dentro directorio.
-        String[] contenidoMiruta = f.list();
-
-        // Mostramos datos internos en consola
-        for (String item : contenidoMiruta) {
-          // Guardamos archivo
-          File fint = new File(item);
-
-          // Ponemos nombre con ruta relativa
-          System.out.print("./" + item);
-
-          // Si es dir añadimos / al final
-          if (fint.isDirectory()) {
-            System.out.print("/");
-          }
-
-          System.out.println();
-        }
+        listarDirectorio(f, "");
       } else {
         System.out.println("Archivo " + f.getName() + " no es un directorio");
       }
@@ -56,16 +40,23 @@ public class App {
     }
   }
 
-  static void listarDirectorio(File[] fs, String tabs) {
-    for (int i = 0; i < fs.length; i++) {
-      if (fs[i].isDirectory()) {
-        System.out.print(fs[i].getName() + "/");
-        tabs += "\t";
-        listarDirectorio(fs[i].listFiles(), tabs);
-        tabs = "";
-      } else {
-        System.out.println("\t" + fs[i].getName());
+  static void listarDirectorio(File f, String dirs) {
+    if (f.isDirectory()) {
+      // Capturamos datos dentro directorio.
+      File[] fInt = f.listFiles();
+      for (int i = 0; i < fInt.length; i++) {
+        if (fInt[i].isDirectory()) {
+          dirs += fInt[i].getName() + "/";
+          System.out.println(dirs);
+
+          listarDirectorio(fInt[i], dirs);
+        } else {
+          //System.out.println(tabs + fInt[i].getName());
+        }
+        dirs = "";
       }
+    } else {
+      System.out.println(f.getName());
     }
   }
 
