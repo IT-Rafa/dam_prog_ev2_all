@@ -1,0 +1,33 @@
+Iniciamos programa.
+Arg =
+    ruta absoluta:
+        /run/media/it-ra/Datos/source/dam/prog2/dam_prog_ev2_all/3_evaluacion/9_Flujos_de_EntradaSalida/9.3_Ficheros_de_texto/
+
+    ruta relativa según carpeta actual
+        ./9_Flujos_de_EntradaSalida/9.3_Ficheros_de_texto/
+
+    solo nombre archivos en carpeta actual
+        cd 9_Flujos_de_EntradaSalida            9.3_Ficheros_de_texto
+
+------
+Mostramos ruta absoluta del archivo indicado
+Ruta absoluta directorio mostrado
+/run/media/it-ra/Datos/source/dam/prog2/dam_prog_ev2_all/3_evaluacion/9_Flujos_de_EntradaSalida/9.3_Ficheros_de_texto/
+
+------
+Mostramos los directorios y archivos de esta carpeta
+
+Capturamos ficheros internos
+    1_Teoria/
+    2_Ejercicios/
+    Archivo de texto.txt
+
+    Mostramos primero las carpetas
+        1º 1_Teoria/
+        Capturamos ficheros internos (con '\t')
+            Mostramos primero las carpetas
+                no hay
+            Mostramos archivos
+                "\t" + 03. Ficheros de texto.pdf
+
+        2º 2_Ejercicios/

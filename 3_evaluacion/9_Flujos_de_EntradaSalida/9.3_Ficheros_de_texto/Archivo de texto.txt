@@ -1,6 +1,8 @@
  
-9.3_Ficheros_de_texto/
-    1_Teoria/
+Ruta absoluta directorio mostrado:
+/run/media/it-ra/Datos/source/dam/prog2/dam_prog_ev2_all/3_evaluacion/9_Flujos_de_EntradaSalida/9.3_Ficheros_de_texto/
+
+1_Teoria/
         03. Ficheros de texto.pdf
     2_Ejercicios/
         EnTeoria/
@@ -16,6 +18,11 @@
                                     App.java
                                 tradicional/
                                     App,java
+                                Agenda.xml
+                                escrituraFunc.txt
+                                escrituraTrad.txt
+                                package-info.java
                         README.md
             solucion_profesor/
                 03. Ficheros de texto-sol.pdf
+    Archivo de texto.txt

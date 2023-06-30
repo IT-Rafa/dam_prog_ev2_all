@@ -31,7 +31,7 @@ public class App {
         );
 
         // Capturamos datos dentro directorio.
-        listarDirectorio(f, "");
+        listarDirectorio(f, f);
       } else {
         System.out.println("Archivo " + f.getName() + " no es un directorio");
       }
@@ -40,20 +40,17 @@ public class App {
     }
   }
 
-  static void listarDirectorio(File f, String dirs) {
+  static void listarDirectorio(File f, File base) {
     if (f.isDirectory()) {
       // Capturamos datos dentro directorio.
       File[] fInt = f.listFiles();
       for (int i = 0; i < fInt.length; i++) {
         if (fInt[i].isDirectory()) {
-          dirs += fInt[i].getName() + "/";
-          System.out.println(dirs);
-
-          listarDirectorio(fInt[i], dirs);
+          System.out.println(relative(fInt[i], fInt[i].getParentFile()));
+          listarDirectorio(fInt[i], f);
         } else {
           //System.out.println(tabs + fInt[i].getName());
         }
-        dirs = "";
       }
     } else {
       System.out.println(f.getName());

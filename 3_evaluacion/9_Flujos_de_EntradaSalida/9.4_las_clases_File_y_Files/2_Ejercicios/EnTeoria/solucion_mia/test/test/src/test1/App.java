@@ -1,3 +1,5 @@
+package test1;
+
 import java.io.File;
 
 public class App {
@@ -16,7 +18,10 @@ public class App {
       System.out.println("es Archivo");
     }
 
-    File nextFolder = new File(thisFolder + "/Fin_Examen_3");
+    File nextFolder = new File(
+      thisFolder.getAbsolutePath() +
+      "/9_Flujos_de_EntradaSalida/9.3_Ficheros_de_texto"
+    );
     System.out.println("Carpeta actual interna: " + nextFolder);
 
     if (nextFolder.isAbsolute()) {
@@ -33,12 +38,28 @@ public class App {
     System.out.println(
       "Ruta relativa archivo interno: " + relative(thisFolder, nextFolder)
     );
+    listarDir(nextFolder);
+  }
+
+  public static void listarDir(File ruta) {
+    for (File f : ruta.listFiles()) {
+      if (f.isDirectory()) {
+        System.out.print(relative(ruta, f) + "/");
+        listarDir(f);
+      }
+    }
+    System.out.println();
+    for (File f : ruta.listFiles()) {
+      if (!f.isDirectory()) {
+        System.out.println("\t" + relative(ruta, f));
+      }
+    }
   }
 
   public static String relative(final File base, final File file) {
     final int rootLength = base.getAbsolutePath().length();
     final String absFileName = file.getAbsolutePath();
     final String relFileName = absFileName.substring(rootLength + 1);
-    return "./" + relFileName;
+    return relFileName;
   }
 }
