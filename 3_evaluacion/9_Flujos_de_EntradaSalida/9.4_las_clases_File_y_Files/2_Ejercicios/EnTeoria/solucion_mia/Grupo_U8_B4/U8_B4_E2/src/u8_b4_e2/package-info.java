@@ -9,4 +9,4 @@
  * Con File hay que escribir un método recursivo.
  * Con walk no hay que hacer nada.
  */
-package U8_B4_E2;
+package u8_b4_e2;

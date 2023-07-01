@@ -1,4 +1,4 @@
-package U8_B4_E2.files;
+package u8_b4_e2.files;
 
 import java.io.IOException;
 import java.nio.file.Files;

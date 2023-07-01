@@ -1,10 +1,6 @@
 package U8_B7_E7;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.Scanner;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -38,8 +34,12 @@ public class App {
     sc.close();
   }
 
+  /**
+   * @param n
+   * @return
+   */
   static StringBuilder convertToBin(int n) {
-    StringBuilder result = new StringBuilder("");
+    final StringBuilder result = new StringBuilder("");
     IntStream.range(0, n).forEach(i -> result.append("1"));
     return result;
   }

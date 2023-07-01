@@ -4,7 +4,7 @@ import java.io.File;
 
 /**
  * Clase con ejecutable de Ejercicio U8_B4_E1<p>
- * Con File de io
+ * Mostrar archivos y directorios de una carpeta usando java.io.File
  */
 public class App {
 
