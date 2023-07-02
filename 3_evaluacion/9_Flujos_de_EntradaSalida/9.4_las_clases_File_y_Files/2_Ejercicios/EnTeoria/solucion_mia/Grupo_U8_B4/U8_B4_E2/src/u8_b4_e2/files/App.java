@@ -11,29 +11,62 @@ import java.nio.file.Paths;
  */
 public class App {
 
+  private static String spacesSubfolder = "  ";
+
   /**
    * Ejecutable Ejercicio U8_B4_E2<p>
    */
   public static void main(String[] args) {
-    // Creamos la variable Path con ruta archivo
-    Path ruta = Paths.get("");
+    // Almacenamos la ruta
 
-    if (args.length > 0) {
-      // Si hay argumentos, los usamos;
+    // Creamos la variable Path con ruta carpeta actual
+    Path ruta = Paths.get("").toAbsolutePath();
+
+    // Si se introdució un argumento, se usa ese
+    if (args.length == 1) {
       ruta = Paths.get(args[0]);
-    } else { // Si no hay argumentos, mostramos datos defecto;
-      ruta = Paths.get("");
     }
+
     // Si fichero existe
     if (Files.exists(ruta)) {
-      try {
-        // Sacamos ruta. Mostramos datos ruta en consola (solo nombres archivos/directorios)
-        Files.walk(ruta, 2).forEach(s -> System.out.println(s));
-      } catch (java.io.UncheckedIOException e) {
-        e.printStackTrace();
-      } catch (IOException e) {
-        e.printStackTrace();
+      if (Files.isDirectory(ruta)) {
+        try {
+          System.out.println("\nRuta absoluta del directorio padre:");
+          System.out.println(ruta.getParent().toAbsolutePath() + "/");
+          System.out.println();
+
+          // Preparamos regex como predicate para eliminar archivo vacío
+          System.out.println(ruta.getFileName() + "/");
+
+          // Sacamos ruta. Mostramos datos ruta en consola (solo nombres archivos/directorios)
+          Files
+            .walk(ruta) // Capturamos las rutas internas, incluyendo el padre
+            .skip(1) // Eliminamos 1º archivo, por ser la ruta del directorio
+            .map(p -> addDesc(p)) // Le añadimos / a los directorios
+            .forEach(s -> System.out.println(spacesSubfolder + s)); // Mostramos en consola cada ruta
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      } else {
+        System.out.println("Archivo " + ruta + " no es un directorio");
+      }
+    } else {
+      System.out.println("Archivo " + ruta + " no existe");
+    }
+  }
+
+  /**
+   * Convertimos Path a String como ruta relativa, con / en dir
+   */
+  private static String addDesc(Path ruta) {
+    String result = "";
+    if (Files.exists(ruta)) {
+      result += ruta.getFileName();
+      if (Files.isDirectory(ruta)) {
+        result += "/";
       }
     }
+
+    return result;
   }
 }

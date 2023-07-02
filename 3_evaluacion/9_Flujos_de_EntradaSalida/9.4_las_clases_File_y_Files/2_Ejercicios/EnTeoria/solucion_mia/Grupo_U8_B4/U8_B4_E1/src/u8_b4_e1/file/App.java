@@ -1,6 +1,7 @@
 package u8_b4_e1.file;
 
 import java.io.File;
+import java.io.FileFilter;
 
 /**
  * Clase con ejecutable de Ejercicio U8_B4_E1<p>
@@ -9,50 +10,60 @@ import java.io.File;
 public class App {
 
   /**
+   * espacios para separar archivos en directorios
+   */
+  private static String spacesSubfolder = "  ";
+
+  /**
    * Ejecutable Ejercicio U8_B4_E1<p>
    */
   public static void main(String[] args) {
-    // Creamos la variable File con ruta carpeta actual
-    File f = new File("");
+    // Almacenamos la ruta
+    // Guardamos ruta absoluta del directorio actual
+    File f = new File(".").getAbsoluteFile().getParentFile();
 
-    if (args.length > 0) {
-      // Si hay argumentos, los usamos;
-      f = new File(args[0]);
-    } else {
-      // Si no almacenamos ruta absoluta
-      f = new File(f.getAbsoluteFile().toString());
+    // Si se introdució un argumento, se usa ese
+    if (args.length == 1) {
+      f = new File(args[0]).getAbsoluteFile();
     }
 
+    // si archivo existe
     if (f.exists()) {
+      // y si es un directorio, lo mostramos con sus datos internos
       if (f.isDirectory()) {
-        // Mostramos ruta absoluta de este directorio
-        System.out.println(
-          "\nRuta Absoluta de la carpeta: \n" + f.getAbsolutePath() + "\n"
-        );
+        // Mostramos la ruta absoluta del padre
+        System.out.println("\nRuta absoluta del directorio padre:");
+        System.out.println(f.getParentFile().getAbsolutePath() + "/");
+        System.out.println();
 
-        // Capturamos datos dentro directorio.
-        String[] contenidoMiruta = f.list();
+        // Mostramos en nombre del directorio a mostrar
+        System.out.println(f.getName() + "/");
 
-        // Mostramos datos internos en consola
-        for (String item : contenidoMiruta) {
-          // Guardamos archivo
-          File fint = new File(item);
+        // Preparamos FileFilter para solo carpetas y solo archivos
+        FileFilter folderFilter = file -> {
+          return file.isDirectory();
+        };
+        FileFilter fileFilter = file -> {
+          return !file.isDirectory();
+        };
 
-          // Ponemos nombre con ruta relativa
-          System.out.print("./" + item);
+        // Creamos lista de archivos internos, filtrados por carpetas
+        for (File intF : f.listFiles(folderFilter)) {
+          // los mostramos con espacio por ser subdirectorio y
+          // al final, para mostrar que es una carpeta
+          System.out.println(spacesSubfolder + intF.getName() + "/");
+        }
 
-          // Si es dir añadimos / al final
-          if (fint.isDirectory()) {
-            System.out.print("/");
-          }
-
-          System.out.println();
+        // Creamos lista de archivos internos, filtrados por no carpetas
+        for (File intF : f.listFiles(fileFilter)) {
+          // los mostramos con espacio por ser archivos internos
+          System.out.println(spacesSubfolder + intF.getName());
         }
       } else {
-        System.out.println("Archivo " + f.getName() + " no es un directorio");
+        System.out.println("no dir");
       }
     } else {
-      System.out.println("Archivo " + f.getName() + " no existe");
+      System.out.println("no exist");
     }
   }
 }

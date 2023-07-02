@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
 
 /**
  * Clase con ejecutable de Ejercicio U8_B4_E1<p>
@@ -13,15 +11,19 @@ import java.util.regex.Pattern;
  */
 public class App {
 
+  private static String spacesSubfolder = "  ";
+
   /**
    * Ejecutable Ejercicio U8_B4_E1<p>
    */
   public static void main(String[] args) {
-    // Creamos la variable Path con ruta carpeta actual
-    Path ruta = Paths.get("");
+    // Almacenamos la ruta
 
-    // Si hay argumentos, los usamos;
-    if (args.length > 0) {
+    // Creamos la variable Path con ruta carpeta actual
+    Path ruta = Paths.get("").toAbsolutePath();
+
+    // Si se introdució un argumento, se usa ese
+    if (args.length == 1) {
       ruta = Paths.get(args[0]);
     }
 
@@ -29,21 +31,19 @@ public class App {
     if (Files.exists(ruta)) {
       if (Files.isDirectory(ruta)) {
         try {
-          System.out.println(
-            "\nRuta Absoluta de la carpeta:\n" + ruta.toAbsolutePath() + "\n"
-          );
+          System.out.println("\nRuta absoluta del directorio padre:");
+          System.out.println(ruta.getParent().toAbsolutePath() + "/");
+          System.out.println();
+
           // Preparamos regex como predicate para eliminar archivo vacío
-          Predicate<String> nameEmpty = Pattern
-            .compile("^\\./" + ruta + "/?$")
-            .asPredicate()
-            .negate();
+          System.out.println(ruta.getFileName() + "/");
 
           // Sacamos ruta. Mostramos datos ruta en consola (solo nombres archivos/directorios)
           Files
             .walk(ruta, 1) // Capturamos las rutas internas, incluyendo el padre
-            .map(p -> addDesc(p)) // Convertimos a String como relativa, con / en dir
-            .filter(nameEmpty) // Eliminamos los archivos vacíos (el dir padre)
-            .forEach(s -> System.out.println(s)); // Mostramos en consola cada ruta
+            .skip(1) // Eliminamos 1º archivo, por ser la ruta del directorio
+            .map(p -> addDesc(p)) // Le añadimos / a los directorios
+            .forEach(s -> System.out.println(spacesSubfolder + s)); // Mostramos en consola cada ruta
         } catch (IOException e) {
           e.printStackTrace();
         }
@@ -59,7 +59,7 @@ public class App {
    * Convertimos Path a String como ruta relativa, con / en dir
    */
   private static String addDesc(Path ruta) {
-    String result = "./";
+    String result = "";
     if (Files.exists(ruta)) {
       result += ruta.getFileName();
       if (Files.isDirectory(ruta)) {

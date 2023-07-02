@@ -25,13 +25,13 @@ public class App {
   public static void main(String[] args) {
     // Almacenamos la ruta
     // Guardamos ruta absoluta del directorio actual
-    File f = new File(".").getAbsoluteFile();
-    // Si se introdució un argumento, se usa ese
+    File f = new File(".").getAbsoluteFile().getParentFile();
 
+    // Si se introdució un argumento, se usa ese
     if (args.length == 1) {
       f = new File(args[0]).getAbsoluteFile();
     }
-    System.out.println(f);
+
     if (f.exists()) {
       if (f.isDirectory()) {
         System.out.println("\nRuta absoluta del directorio padre:");
