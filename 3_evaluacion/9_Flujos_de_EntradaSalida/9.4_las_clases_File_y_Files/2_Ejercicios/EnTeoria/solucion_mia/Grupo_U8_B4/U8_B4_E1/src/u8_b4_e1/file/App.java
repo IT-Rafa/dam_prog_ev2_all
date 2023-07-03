@@ -10,7 +10,7 @@ import java.io.FileFilter;
 public class App {
 
   /**
-   * espacios para separar archivos en directorios
+   * Espacios usados para separar el contenido interno
    */
   private static String spacesSubfolder = "  ";
 
@@ -31,6 +31,8 @@ public class App {
     if (f.exists()) {
       // y si es un directorio, lo mostramos con sus datos internos
       if (f.isDirectory()) {
+        System.out.println();
+        System.out.println("Contenido interno del directorio (no recursivo): ");
         // Mostramos la ruta absoluta del padre
         System.out.println("\nRuta absoluta del directorio padre:");
         System.out.println(f.getParentFile().getAbsolutePath() + "/");

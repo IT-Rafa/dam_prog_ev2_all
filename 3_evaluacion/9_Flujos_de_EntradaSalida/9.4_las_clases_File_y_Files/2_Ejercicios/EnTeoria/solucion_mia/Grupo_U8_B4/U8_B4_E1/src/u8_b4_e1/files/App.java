@@ -11,6 +11,9 @@ import java.nio.file.Paths;
  */
 public class App {
 
+  /**
+   * Espacios usados para separar el contenido interno
+   */
   private static String spacesSubfolder = "  ";
 
   /**
@@ -31,6 +34,10 @@ public class App {
     if (Files.exists(ruta)) {
       if (Files.isDirectory(ruta)) {
         try {
+          System.out.println();
+          System.out.println(
+            "Contenido interno del directorio (no recursivo): "
+          );
           System.out.println("\nRuta absoluta del directorio padre:");
           System.out.println(ruta.getParent().toAbsolutePath() + "/");
           System.out.println();

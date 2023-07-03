@@ -8,6 +8,27 @@
 			"type": "java",
 			"name": "App",
 			"request": "launch",
+			"mainClass": "U8_B4_E5.App",
+			"projectName": "3_evaluacion_3b1e721"
+		},
+		{
+			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "U8_B4_E4.App",
+			"projectName": "3_evaluacion_3b1e721"
+		},
+		{
+			"type": "java",
+			"name": "App",
+			"request": "launch",
+			"mainClass": "U8_B4_E3.App",
+			"projectName": "3_evaluacion_3b1e721"
+		},
+		{
+			"type": "java",
+			"name": "App",
+			"request": "launch",
 			"mainClass": "u8_b4_e2.files.App",
 			"projectName": "3_evaluacion_3b1e721"
 		},

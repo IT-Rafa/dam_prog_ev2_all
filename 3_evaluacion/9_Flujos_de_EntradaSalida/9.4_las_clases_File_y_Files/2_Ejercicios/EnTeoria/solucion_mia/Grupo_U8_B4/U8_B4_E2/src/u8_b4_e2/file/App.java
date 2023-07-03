@@ -9,6 +9,9 @@ import java.io.File;
  */
 public class App {
 
+  /**
+   * Espacios usados para separar el contenido interno
+   */
   private static String spacesSubfolder = "  ";
 
   /**
@@ -19,7 +22,8 @@ public class App {
    *    <li>Ejecutado en IDE es la carpeta del proyecto.</li>
    *    <li>Ejecutado en consola es la carpeta donde se está ahora mismo</li>
    * </ul>
-   * Mostramos carpetas con '/' al final, y luego ficheros
+   * Mostramos carpetas con '/' al final, y luego ficheros.
+   * Añadimos tabulador para mostrar los directorios internos y los ficheros
    *
    */
   public static void main(String[] args) {
@@ -34,9 +38,14 @@ public class App {
 
     if (f.exists()) {
       if (f.isDirectory()) {
+        System.out.println();
+        System.out.println(
+          "Contenido interno del directorio (recursivo y ordenado según subdirectorios): "
+        );
         System.out.println("\nRuta absoluta del directorio padre:");
         System.out.println(f.getParentFile().getAbsolutePath() + "/");
         System.out.println();
+
         listarDirectorio(f, "");
       } else {
         System.out.println("no dir");
